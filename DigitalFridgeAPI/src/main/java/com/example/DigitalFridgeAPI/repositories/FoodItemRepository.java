@@ -15,10 +15,5 @@ public interface FoodItemRepository extends JpaRepository <FoodItem, Long>  {
     Optional<FoodItem> findByFoodItemName(String foodItem);
 
     List<FoodItem> findByFoodGroup(String foodItem);
-
-
-
-
-
-
+    FoodItem updateByFoodItemId(Long id);
 }

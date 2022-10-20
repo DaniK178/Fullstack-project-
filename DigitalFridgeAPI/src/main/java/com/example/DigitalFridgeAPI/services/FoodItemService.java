@@ -16,7 +16,7 @@ public class FoodItemService {
     //get All FoodItems:
 
     public List<FoodItem> getAllFoodItems() {
-        return FoodItemRepository.findAll();
+        return foodItemRepository.findAll();
     }
 
     // get a specific foodItem by id:
@@ -30,11 +30,25 @@ public class FoodItemService {
         return foodItemRepository.findByFoodItemName(foodItem);
     }
 
-    //Add FoodItem:
+    //Add New FoodItem:
 
     public FoodItem saveFoodItem(FoodItem foodItem){
         FoodItem savedFoodItem = foodItemRepository.save(foodItem);
         return foodItem;
+    }
+
+    //Delete FoodItem:
+
+    public void deleteFoodItemById(long id){
+        foodItemRepository.deleteById(id);
+    }
+
+    //get a specific foodItem by expiration true/false ??
+
+    //update foodItem:
+
+    public FoodItem updateFoodItem(Long id){
+        return foodItemRepository.updateByFoodItemId(id);
     }
 
 

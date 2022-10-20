@@ -18,13 +18,13 @@ public class FoodItem {
     private String name;
 
     @Column
-    private Enum FoodGroup;
+    private Enum foodGroup;
 
     @Column
-    private int ExpiryDate;
+    private int expiryDate;
 
     @Column
-    private float Quantity; //To allow decimals of e.g. 3.5 ml
+    private float quantity; //To allow decimals of e.g. 3.5 ml
 
     @Column
     private boolean isExpired;
@@ -38,9 +38,9 @@ public class FoodItem {
 
     public FoodItem(String name, Enum foodGroup, int expiryDate, float quantity, boolean isExpired) {
         this.name = name;
-        FoodGroup = foodGroup;
-        ExpiryDate = expiryDate;
-        Quantity = quantity;
+        this.foodGroup = foodGroup;
+        this.expiryDate = expiryDate;
+        this.quantity = quantity;
         this.isExpired = isExpired;
 
     }
@@ -72,29 +72,29 @@ public class FoodItem {
 
     //For the FoodGroup Property:
     public Enum getFoodGroup() {
-        return FoodGroup;
+        return foodGroup;
     }
 
     public void setFoodGroup(Enum foodGroup) {
-        FoodGroup = foodGroup;
+        this.foodGroup = foodGroup;
     }
 
     //For the ExpiryDate Property:
     public int getExpiryDate() {
-        return ExpiryDate;
+        return expiryDate;
     }
 
     public void setExpiryDate(int expiryDate) {
-        ExpiryDate = expiryDate;
+        this.expiryDate = expiryDate;
     }
 
     //For the Quantity Property:
     public float getQuantity() {
-        return Quantity;
+        return quantity;
     }
 
     public void setQuantity(float quantity) {
-        Quantity = quantity;
+        this.quantity = quantity;
     }
 
     //For the isExpired property
