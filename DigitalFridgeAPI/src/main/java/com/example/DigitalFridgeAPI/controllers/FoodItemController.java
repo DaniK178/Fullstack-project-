@@ -66,10 +66,6 @@ public class FoodItemController {
     public void deleteById(@PathVariable Long id) {
         foodItemService.deleteFoodItemById(id);
     }
-//PUT MAPPING (update)
-
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<>
 
 
 

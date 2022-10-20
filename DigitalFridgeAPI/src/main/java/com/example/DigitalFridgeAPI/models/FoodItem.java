@@ -46,7 +46,7 @@ public class FoodItem {
     }
 
     // no arg constructor/ empty constructor
-    public FoodItem(){
+    public FoodItem() {
 
     }
 
@@ -79,36 +79,4 @@ public class FoodItem {
         this.foodGroup = foodGroup;
     }
 
-    //For the ExpiryDate Property:
-    public int getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(int expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    //For the Quantity Property:
-    public float getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(float quantity) {
-        this.quantity = quantity;
-    }
-
-    //For the isExpired property
-    public boolean isExpired() {
-        return isExpired;
-    }
-
-    public void setExpired(boolean expired) {
-        isExpired = expired;
-    }
 }
-
-
-
-
-
-
