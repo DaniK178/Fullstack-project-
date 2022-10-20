@@ -5,7 +5,7 @@ const Fridge =() => {
     return(
 
     <>
-    <p>frige</p>
+    <p>fridge</p>
     </>
     
     )

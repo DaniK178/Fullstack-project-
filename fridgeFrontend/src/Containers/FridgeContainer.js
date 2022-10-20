@@ -10,28 +10,51 @@ const FridgeContainer =() => {
     return(
 
     <>
+
     <BrowserRouter>
-    <nav>
+    <nav className="navbar">
+        
         <div className="logo">
             <p>logo</p>
         </div>
+        <div className="nav-links">
         <div className="menu">
             <li><Link to = '/'>Login</Link></li>
-            <li><Link to = '/frige'>Fridge</Link></li>
-            <li><Link to = '/frige/shopplingList'>Shopping List</Link></li>
-            <li> Dropdown</li>
-            <li>
-                {/* <Dropdown></Dropdown> */}
-                
+            <li><Link to = '/Fridge'>Fridge</Link></li>
+            <li><Link to = '/ShoppingList'>Shopping List</Link></li>
+            <li><a href="#">User</a>
+            <ul className="dropdown">
+                <li><Link to = '/fridge'>Fridges</Link></li>
+                <li><Link to = '/FavouriteList'>Favourite List</Link></li>
+                <li><Link to = '/'>Log Out</Link></li>
+            </ul>
             </li>
+
+
+                {/* <li>
+                <div className="dropdown">
+                    <button className="dropbt">Dropdown &dtrif;<i className="fa fa-caret-down"></i></button>
+                    <div className="dropdown-content">
+                        <a className="dropdown-content" href="#">Fridges</a>
+                        <a className="dropdown-content" href="#">FavouriteList</a>
+                        <a className="dropdown-content" href="#">LogOut</a>
+                    </div>
+                </div>
+
+            </li> */}
+            
+
+            </div>
+            
         </div>
+        
     </nav>
 
     <Routes>
         <Route path="/" element={<Login />}/>
         <Route path="/fridge" element={<Fridge />}/>
-        <Route path="/fridge/shoppingList" element={<ShoppingList />}/>
-        <Route path="/favoriteList" element={<FavouriteList />}/>
+        <Route path="/shoppingList" element={<ShoppingList />}/>
+        <Route path="/favouriteList" element={<FavouriteList />}/>
     </Routes>
 
     </BrowserRouter>
@@ -44,15 +67,12 @@ const FridgeContainer =() => {
 
         <ul className="nav-links">
             <div className="menu">
-                <li><Link to = '/'>Login</Link></li>
-                <li><Link to = '/frige'>Fridge</Link></li>
-                <li><Link to = '/frige/shopplingList'>Shopping List</Link></li>
                 <li>
                     <Dropdown>
                         <Dropdown.Toggle variant="dark">Users</Dropdown.Toggle>
 
                         <Dropdown.Menue>
-                            <Dropdown.item href="#">Friges</Dropdown.item>
+                            <Dropdown.item href="#">Fridges</Dropdown.item>
                         </Dropdown.Menue>
 
                         <Dropdown.Menue>
@@ -71,12 +91,7 @@ const FridgeContainer =() => {
 
     </nav>
     
-    <Routes>
-        <Route path="/" element={<Login />}/>
-        <Route path="/fridge" element={<Fridge />}/>
-        <Route path="/fridge/shoppingList" element={<ShoppingList />}/>
-        <Route path="/favoriteList" element={<FavouriteList />}/>
-    </Routes>
+   
     </BrowserRouter> */}
 
     </>
