@@ -12,13 +12,13 @@ const FridgeContainer =() => {
     <>
 
     <BrowserRouter>
-    <nav className="navbar">
+    <nav className="primary-navigation">
         
         <div className="logo">
             <p>logo</p>
         </div>
         <div className="nav-links">
-        <div className="menu">
+        <ul className="menu">
             <li><Link to = '/'>Login</Link></li>
             <li><Link to = '/Fridge'>Fridge</Link></li>
             <li><Link to = '/ShoppingList'>Shopping List</Link></li>
@@ -30,21 +30,7 @@ const FridgeContainer =() => {
             </ul>
             </li>
 
-
-                {/* <li>
-                <div className="dropdown">
-                    <button className="dropbt">Dropdown &dtrif;<i className="fa fa-caret-down"></i></button>
-                    <div className="dropdown-content">
-                        <a className="dropdown-content" href="#">Fridges</a>
-                        <a className="dropdown-content" href="#">FavouriteList</a>
-                        <a className="dropdown-content" href="#">LogOut</a>
-                    </div>
-                </div>
-
-            </li> */}
-            
-
-            </div>
+            </ul>
             
         </div>
         
