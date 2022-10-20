@@ -1,4 +1,4 @@
 package com.example.DigitalFridgeAPI.services;
 
-public class FoodItem {
+public class FoodItemService {
 }
