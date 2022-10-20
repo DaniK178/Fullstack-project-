@@ -43,7 +43,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity addNewUser(@RequestBody Map<String, String> userParams) {
         userService.addUser(userParams);
-        return new ResponseEntity<>(mull, HttpStatus.CREATED);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
     }
 
 
