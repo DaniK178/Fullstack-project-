@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 public class ShoppingListItem {
 
-    @Entity(name = "shopping_list_item")
+    @Entity(name = "shopping_list_items")
     public class FridgeItem {
 
         @EmbeddedId

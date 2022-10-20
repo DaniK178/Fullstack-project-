@@ -3,7 +3,7 @@ package com.example.DigitalFridgeAPI.models;
 
 import javax.persistence.*;
 
-@Entity(name = "fridge_item")
+@Entity(name = "fridge_items")
 public class FridgeItem {
 
     @EmbeddedId

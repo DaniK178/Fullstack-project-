@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 //@Entity is a table named = "..." :
-@Entity(name= "foodItems")
+@Entity(name= "food_items")
 public class FoodItem {
 
     //    PROPERTIES:::::::::::::;
@@ -32,7 +32,7 @@ public class FoodItem {
 //    @ManyToMany
 
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
-    @JsonIgnoreProperties({"foodItems"})
+    @JsonIgnoreProperties({"food_items"})
 
     //    CONSTRUCTOR::::::::::
 

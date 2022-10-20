@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@Entity(name = "fridge")
+@Entity(name = "fridges")
 public class Fridge {
 
     @Id

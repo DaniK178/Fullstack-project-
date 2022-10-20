@@ -3,7 +3,7 @@ package com.example.DigitalFridgeAPI.models;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "shopping_list")
+@Entity(name = "shopping_lists")
     public class Shopping {
 
         @Id
