@@ -26,7 +26,7 @@ const FridgeContainer =() => {
             <ul className="dropdown">
                 <li><Link to = '/fridge'>Fridges</Link></li>
                 <li><Link to = '/FavouriteList'>Favourite List</Link></li>
-                <li><Link to = '/'>Log Out</Link></li>
+                <li><Link to = '/login'>Log Out</Link></li>
             </ul>
             </li>
 
