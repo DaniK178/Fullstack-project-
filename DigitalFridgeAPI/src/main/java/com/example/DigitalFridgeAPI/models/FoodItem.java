@@ -29,7 +29,7 @@ public class FoodItem {
     @Column
     private boolean isExpired;
 
-    @ManyToMany
+//    @ManyToMany
 
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
     @JsonIgnoreProperties({"foodItems"})
