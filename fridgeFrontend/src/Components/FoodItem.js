@@ -6,6 +6,7 @@ const FoodItem =() => {
     return(
 
     <>
+    <p>FoodItem</p>
     </>
     
     )

@@ -5,6 +5,7 @@ const Fridge =() => {
     return(
 
     <>
+    <p>frige</p>
     </>
     
     )

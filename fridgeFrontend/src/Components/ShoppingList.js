@@ -5,6 +5,7 @@ const ShoppingList =() => {
     return(
 
     <>
+    <p>Shopping</p>
     </>
     
     )
