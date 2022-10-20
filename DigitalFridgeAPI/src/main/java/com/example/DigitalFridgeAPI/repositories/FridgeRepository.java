@@ -1,4 +1,4 @@
-package com.example.DigitalFridgeAPI;
+package com.example.DigitalFridgeAPI.repositories;
 
 import com.example.DigitalFridgeAPI.models.Fridge;
 import org.springframework.data.jpa.repository.JpaRepository;

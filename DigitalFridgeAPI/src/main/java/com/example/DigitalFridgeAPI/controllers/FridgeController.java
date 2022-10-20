@@ -1,4 +1,4 @@
-package com.example.DigitalFridgeAPI;
+package com.example.DigitalFridgeAPI.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import java.util.List;
 public class FridgeController {
 
     @Autowired
-    FridgeService FridgeService;
+    com.example.DigitalFridgeAPI.services.FridgeService FridgeService;
 
 }
 
