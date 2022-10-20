@@ -19,14 +19,14 @@ const FridgeContainer =() => {
         </div>
         <div className="nav-links">
         <ul className="menu">
-            <li><Link to = '/'>Login</Link></li>
-            <li><Link to = '/Fridge'>Fridge</Link></li>
-            <li><Link to = '/ShoppingList'>Shopping List</Link></li>
-            <li><a href="#">User</a>
+            <li><Link to = '/' className="link">Login</Link></li>
+            <li><Link to = '/Fridge' className="link">Fridge</Link></li>
+            <li><Link to = '/ShoppingList' className="link">Shopping List</Link></li>
+            <li><a href="#" className="link">User</a>
             <ul className="dropdown">
-                <li><Link to = '/fridge'>Fridges</Link></li>
-                <li><Link to = '/FavouriteList'>Favourite List</Link></li>
-                <li><Link to = '/login'>Log Out</Link></li>
+                <li><Link to = '/fridge' className="link">Fridges</Link></li>
+                <li><Link to = '/FavouriteList' className="link">Favourites</Link></li>
+                <li><Link to = '/login' className="link">Log Out</Link></li>
             </ul>
             </li>
 
@@ -44,41 +44,6 @@ const FridgeContainer =() => {
     </Routes>
 
     </BrowserRouter>
-
-    {/* <BrowserRouter>
-    <nav className="navbar">
-        <div className="logo">
-            <p>logo</p>
-        </div>
-
-        <ul className="nav-links">
-            <div className="menu">
-                <li>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="dark">Users</Dropdown.Toggle>
-
-                        <Dropdown.Menue>
-                            <Dropdown.item href="#">Fridges</Dropdown.item>
-                        </Dropdown.Menue>
-
-                        <Dropdown.Menue>
-                            <Dropdown.item href="#">Favourite List</Dropdown.item>
-                        </Dropdown.Menue>
-
-                        <Dropdown.Menue>
-                            <Dropdown.item href="#">Log out</Dropdown.item>
-                        </Dropdown.Menue>
-
-                    </Dropdown>
-                </li>
-            </div>
-
-        </ul>
-
-    </nav>
-    
-   
-    </BrowserRouter> */}
 
     </>
     )
