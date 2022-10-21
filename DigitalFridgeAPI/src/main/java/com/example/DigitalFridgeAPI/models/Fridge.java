@@ -25,19 +25,67 @@ public class Fridge {
     Set<FridgeItem> quantity;
     //to paste  into food item
 
-
-
    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
-    private List<Shopping> shoppingList;
+   private List<Shopping> shoppingList;
 
+   private List<FridgeItem> reminderItems;
 
+   //Constructor
 
-   private List<FoodItem> ReminderItems;
+   public Fridge(String name,  List<Shopping> shoppingList, List<FridgeItem> reminderItems ){
+       this.name = name;
+       this.shoppingList = shoppingList;
+       this.reminderItems = reminderItems;
+   }
 
+   //Getters and Setters
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
+    public Set<FridgeItem> getExpiryDate() {
+        return expiryDate;
+    }
+
+    public void setExpiryDate(Set<FridgeItem> expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public Set<FridgeItem> getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Set<FridgeItem> quantity) {
+        this.quantity = quantity;
+    }
+
+    public List<Shopping> getShoppingList() {
+        return shoppingList;
+    }
+
+    public void setShoppingList(List<Shopping> shoppingList) {
+        this.shoppingList = shoppingList;
+    }
+
+    public List<FridgeItem> getReminderItems() {
+        return reminderItems;
+    }
+
+    public void setReminderItems(List<FridgeItem> reminderItems) {
+        this.reminderItems = reminderItems;
+    }
 }
