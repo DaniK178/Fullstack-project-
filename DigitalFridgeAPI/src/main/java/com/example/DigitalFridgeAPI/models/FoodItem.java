@@ -19,10 +19,11 @@ public class FoodItem {
     private String name;
 
     @Column(name = "foodGroup")
-    private Enum foodGroup;
+    @Enumerated(EnumType.STRING)
+    private FoodGroup foodGroup;
 
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
-    @JsonIgnoreProperties({"food_items"})
+    @JsonIgnoreProperties(value = {"food_items"})
 
 
     @OneToMany(mappedBy = "fridge")
@@ -39,7 +40,7 @@ public class FoodItem {
 
     //    CONSTRUCTOR::::::::::
 
-    public FoodItem(String name, Enum foodGroup) {
+    public FoodItem(String name, FoodGroup foodGroup) {
         this.name = name;
         this.foodGroup = foodGroup;
 
@@ -72,11 +73,11 @@ public class FoodItem {
     }
 
     //For the FoodGroup Property:
-    public Enum getFoodGroup() {
+    public FoodGroup getFoodGroup() {
         return foodGroup;
     }
 
-    public void setFoodGroup(Enum foodGroup) {
+    public void setFoodGroup(FoodGroup foodGroup) {
         this.foodGroup = foodGroup;
     }
 
