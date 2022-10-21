@@ -3,6 +3,7 @@ package com.example.DigitalFridgeAPI.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Set;
 
 //@Entity is a table named = "..." :
 @Entity(name= "food_items")
@@ -22,6 +23,18 @@ public class FoodItem {
 
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
     @JsonIgnoreProperties({"food_items"})
+
+
+    @OneToMany(mappedBy = "fridge")
+    Set<FridgeItem> expiryDate;
+
+    @OneToMany(mappedBy = "fridge")
+    Set<FridgeItem> quantity;
+
+
+    @OneToMany(mappedBy = "shopping_list")
+    Set<FridgeItem> shoppingQuantity;
+    //to paste  into food item
     
 
     //    CONSTRUCTOR::::::::::

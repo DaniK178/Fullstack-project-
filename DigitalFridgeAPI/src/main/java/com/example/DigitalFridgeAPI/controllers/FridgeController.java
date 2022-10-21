@@ -52,9 +52,5 @@ public class FridgeController {
     //Get fridge food item by id
 
 
-
-
-
-
 }
 
