@@ -26,10 +26,10 @@ public class FoodItem {
     @JsonIgnoreProperties(value = {"food_items"})
 
 
-    @OneToMany(mappedBy = "fridge")
+    @OneToMany(mappedBy = "food_item")
     Set<FridgeItem> expiryDate;
 
-    @OneToMany(mappedBy = "fridge")
+    @OneToMany(mappedBy = "food_item")
     Set<FridgeItem> quantity;
 
 

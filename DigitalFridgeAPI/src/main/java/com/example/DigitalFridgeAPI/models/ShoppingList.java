@@ -17,7 +17,7 @@ import java.util.Set;
     private Fridge fridge;
 
     //Shopping List Item - JOIN TABLE
-    @OneToMany(mappedBy = "shopping_list")
+    @OneToMany(mappedBy = "food_item")
     Set<ShoppingListItem> quantity;
     // to paste into Food Item
 
