@@ -1,6 +1,3 @@
-//    need to import oodItem model here
-
-
 package com.example.DigitalFridgeAPI.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,14 +18,20 @@ public class User {
     @Column
     private String password;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "favourites_id", referencedColumnName = "id")
     @JsonIgnoreProperties({"user"})
-    private List<FoodItem> favItemsList;
+//    making a list of FavListItem within the Favourites class
+ private List<FavListItem> favourites;
+//    or this   ??
+//    private List<Favourites> favourites;
+
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.favItemsList = new ArrayList<>();
+        this.favourites = new ArrayList<>();
+
     }
 
     public User() {}
@@ -57,15 +60,16 @@ public class User {
         this.password = password;
     }
 
-    public List<FoodItem> getFavItemsList() {
-        return favItemsList;
+
+    public List<FavListItem> getFavourites() {
+        return favourites;
     }
 
-    public void setFavItemsList(List<FoodItem> favItemsList) {
-        this.favItemsList = favItemsList;
+    public void setFavourites(List<FavListItem> favourites) {
+        this.favourites = favourites;
     }
 
-    public void addToFavList (FoodItem foodItem) {
-        this.favItemsList.add(foodItem);
+    public void addToFavourites (FavListItem favListItem) {
+        this.favourites.add(favListItem);
     }
 }
