@@ -1,19 +1,26 @@
 import { Dropdown } from "bootstrap";
 import { Routes, Route, useNavigate, BrowserRouter, Link } from "react-router-dom";
 import ShoppingList from "../Components/ShoppingList";
-import Login from "../Components/Login";
+import Login from "../Components/Login/Login";
 import FavouriteList from "../Components/FavouriteList";
 import Fridge from "../Components/Fridge";
+import NavBar from "../Components/NavBar";
+import React, { useState,useEffect } from "react";
 
 const FridgeContainer =() => {
+
+    const [isShowAddItem, setIsShowAddItem] = useState(false);
+    const handleAddItemClick =() => {
+        setIsShowAddItem(!isShowAddItem);
+    };
+    
 
     return(
 
     <>
 
     <BrowserRouter>
-    <nav className="primary-navigation">
-        
+    <nav className="navbar">
         <div className="logo">
             <p>logo</p>
         </div>
@@ -29,11 +36,8 @@ const FridgeContainer =() => {
                 <li><Link to = '/login' className="link">Log Out</Link></li>
             </ul>
             </li>
-
             </ul>
-            
         </div>
-        
     </nav>
 
     <Routes>
@@ -44,6 +48,10 @@ const FridgeContainer =() => {
     </Routes>
 
     </BrowserRouter>
+
+
+    <NavBar handleAddItemClick = {handleAddItemClick} isShownAddItem={isShowAddItem} />
+    <Login  />
 
     </>
     )
