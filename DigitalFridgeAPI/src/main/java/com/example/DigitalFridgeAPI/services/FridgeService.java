@@ -13,11 +13,8 @@ public class FridgeService {
     FridgeRepository fridgeRepository;
 
 
+//
 
-    public Fridge addNewItem (Fridge fridge, FridgeItem fridgeItem){
-        fridgeRepository.save(fridgeItem);
-        return fridge;
-    }
 
 
 

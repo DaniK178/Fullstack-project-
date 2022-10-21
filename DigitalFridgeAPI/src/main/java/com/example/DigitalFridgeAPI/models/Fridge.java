@@ -18,7 +18,7 @@ public class Fridge {
     @Column
     private String name;
 
-    //Fridge Item Table
+    //Fridge Item JOIN Table
     @OneToMany(mappedBy = "fridge")
     Set<FridgeItem> expiryDate;
 
@@ -26,23 +26,27 @@ public class Fridge {
     Set<FridgeItem> quantity;
     //to paste  into food item
 
-    //
+    //Fridge - Shopping list JOIN
    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
-   private List<Shopping> shoppingList;
+   private List<ShoppingList> shoppingList;
 
+    // REMINDER ITEMS
    @Column
    private List<FridgeItem> reminderItems;
 
-   //Constructor
+   //CONSTRUCTORS
 
-   public Fridge(String name,  List<Shopping> shoppingList, List<FridgeItem> reminderItems ){
+   public Fridge(String name,  List<ShoppingList> shoppingList, List<FridgeItem> reminderItems ){
        this.name = name;
        this.shoppingList = shoppingList;
        this.reminderItems = reminderItems;
    }
 
-   //Getters and Setters
+    public Fridge() {
+    }
+
+    //Getters and Setters
 
     public long getId() {
         return id;
@@ -76,11 +80,11 @@ public class Fridge {
         this.quantity = quantity;
     }
 
-    public List<Shopping> getShoppingList() {
+    public List<ShoppingList> getShoppingList() {
         return shoppingList;
     }
 
-    public void setShoppingList(List<Shopping> shoppingList) {
+    public void setShoppingList(List<ShoppingList> shoppingList) {
         this.shoppingList = shoppingList;
     }
 

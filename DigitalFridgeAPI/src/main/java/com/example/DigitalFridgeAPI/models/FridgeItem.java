@@ -7,30 +7,33 @@ import javax.persistence.*;
 public class FridgeItem {
 
     @EmbeddedId
-    @Column
+    @Column (name = "fridge_item_id")
     private FridgeItemCompositeKey id;
 //    private FridgeItemCompositeKey id = new FridgeItemCompositeKey();
 
+    //JOIN TO FRIDGE
     @ManyToOne
     @MapsId("fridge_id")
     @JoinColumn(name = "fridge_id")
     private Fridge fridge;
 
+    //JOIN TO FOOD ITEM
     @ManyToOne
     @MapsId("food_item_id")
     @JoinColumn(name = "food_item_id")
     private FoodItem foodItem;
 
-    @Column(name = "isExpired")
+    //ADDITIONAL PROPERTIES
+    @Column(name = "is_expired")
     private boolean isExpired;
 
-
-    @Column
+    @Column(name = "expiry_date")
     private Long expiryDate;
 
-    @Column
+    @Column(name = "quantity")
     private Float quantity;
 
+    //CONSTRUCTOR
     public FridgeItem(FridgeItemCompositeKey id, Fridge fridge, FoodItem foodItem, Long expiryDate, Float quantity, Boolean isExpired) {
         this.id = id;
         this.fridge = fridge;
@@ -38,6 +41,9 @@ public class FridgeItem {
         this.expiryDate = expiryDate;
         this.quantity = quantity;
         this.isExpired = isExpired;
+    }
+
+    public FridgeItem() {
     }
 
     public FridgeItemCompositeKey getId() {

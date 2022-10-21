@@ -4,28 +4,32 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity(name = "shopping_lists")
-    public class Shopping {
+    public class ShoppingList {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private long id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @Column
     private String name;
 
-        @OneToOne(mappedBy = "shopping_list")
-        private Fridge fridge;
+    //Fridge to Shopping List -JOIN
+    @OneToOne(mappedBy = "shopping_list")
+    private Fridge fridge;
 
+    //Shopping List Item - JOIN TABLE
     @OneToMany(mappedBy = "shopping_list")
     Set<ShoppingListItem> quantity;
     // to paste into Food Item
 
 
-    public Shopping(long id, String name, Fridge fridge, Set<ShoppingListItem> quantity) {
+    public ShoppingList(long id, String name, Fridge fridge, Set<ShoppingListItem> quantity) {
         this.id = id;
         this.name = name;
         this.fridge = fridge;
         this.quantity = quantity;
+    }
+
+    public ShoppingList() {
     }
 
     public long getId() {
