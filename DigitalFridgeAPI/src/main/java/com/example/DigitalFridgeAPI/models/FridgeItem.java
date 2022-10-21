@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class FridgeItem {
 
     @EmbeddedId
+    @Column
     private FridgeItemCompositeKey id;
 //    private FridgeItemCompositeKey id = new FridgeItemCompositeKey();
 
@@ -20,16 +21,23 @@ public class FridgeItem {
     @JoinColumn(name = "food_item_id")
     private FoodItem foodItem;
 
+    @Column(name = "isExpired")
+    private boolean isExpired;
+
+
+    @Column
     private Long expiryDate;
 
+    @Column
     private Float quantity;
 
-    public FridgeItem(FridgeItemCompositeKey id, com.example.DigitalFridgeAPI.models.Fridge fridge, FoodItem foodItem, Long expiryDate, Float quantity) {
+    public FridgeItem(FridgeItemCompositeKey id, Fridge fridge, FoodItem foodItem, Long expiryDate, Float quantity, Boolean isExpired) {
         this.id = id;
         this.fridge = fridge;
         this.foodItem = foodItem;
         this.expiryDate = expiryDate;
         this.quantity = quantity;
+        this.isExpired = isExpired;
     }
 
     public FridgeItemCompositeKey getId() {
@@ -40,11 +48,11 @@ public class FridgeItem {
         this.id = id;
     }
 
-    public com.example.DigitalFridgeAPI.models.Fridge getFridge() {
+    public Fridge getFridge() {
         return fridge;
     }
 
-    public void setFridge(com.example.DigitalFridgeAPI.models.Fridge fridge) {
+    public void setFridge(Fridge fridge) {
         this.fridge = fridge;
     }
 
@@ -70,6 +78,14 @@ public class FridgeItem {
 
     public void setQuantity(Float quantity) {
         this.quantity = quantity;
+    }
+
+    public boolean isExpired() {
+        return isExpired;
+    }
+
+    public void setExpired(boolean expired) {
+        isExpired = expired;
     }
 
 }

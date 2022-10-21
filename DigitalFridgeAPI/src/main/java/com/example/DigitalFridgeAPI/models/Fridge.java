@@ -1,7 +1,7 @@
 package com.example.DigitalFridgeAPI.models;
 
 
-import com.example.DigitalFridgeAPI.services.FoodItem;
+FoodItem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -29,6 +29,7 @@ public class Fridge {
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
    private List<Shopping> shoppingList;
 
+   @Column
    private List<FridgeItem> reminderItems;
 
    //Constructor

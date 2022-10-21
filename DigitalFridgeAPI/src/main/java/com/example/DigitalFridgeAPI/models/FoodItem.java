@@ -33,10 +33,10 @@ public class FoodItem {
 
     //    CONSTRUCTOR::::::::::
 
-    public FoodItem(String name, Enum foodGroup, boolean isExpired) {
+    public FoodItem(String name, Enum foodGroup,) {
         this.name = name;
         this.foodGroup = foodGroup;
-        this.isExpired = isExpired;
+
 
     }
 
@@ -74,12 +74,5 @@ public class FoodItem {
         this.foodGroup = foodGroup;
     }
 
-    public boolean isExpired() {
-        return isExpired;
-    }
-
-    public void setExpired(boolean expired) {
-        isExpired = expired;
-    }
 
 }
