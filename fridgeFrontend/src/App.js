@@ -5,8 +5,9 @@ import UserContainer from './Containers/UserContainer';
 function App() {
   return (
     <>
-    <UserContainer />
     <FridgeContainer />
+    <UserContainer />
+    
 
     
     
