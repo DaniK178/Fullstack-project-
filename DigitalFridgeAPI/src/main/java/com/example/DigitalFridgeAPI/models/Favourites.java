@@ -14,14 +14,14 @@ public class Favourites {
     @Column
     private String name;
 
-// not sure if favourites should contain shopping list and fridge list?
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shopping_id", referencedColumnName = "id")
-    private List<Shopping> shoppingList;
-    // not sure if favourites should contain shopping list and fridge list?
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "fridge_id", referencedColumnName = "id")
-    private List<Fridge> fridgeList;
+//// not sure if favourites should contain shopping list and fridge list?
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "shopping_id", referencedColumnName = "id")
+//    private List<Shopping> shoppingList;
+//    // not sure if favourites should contain shopping list and fridge list?
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "fridge_id", referencedColumnName = "id")
+//    private List<Fridge> fridgeList;
 
 
     @OneToOne(mappedBy = "users")
@@ -58,21 +58,21 @@ public class Favourites {
         this.name = name;
     }
 
-    public List<Shopping> getShoppingList() {
-        return shoppingList;
-    }
+//    public List<Shopping> getShoppingList() {
+//        return shoppingList;
+//    }
 
-    public void setShoppingList(List<Shopping> shoppingList) {
-        this.shoppingList = shoppingList;
-    }
+//    public void setShoppingList(List<Shopping> shoppingList) {
+//        this.shoppingList = shoppingList;
+//    }
 
-    public List<Fridge> getFridgeList() {
-        return fridgeList;
-    }
+//    public List<Fridge> getFridgeList() {
+//        return fridgeList;
+//    }
 
-    public void setFridgeList(List<Fridge> fridgeList) {
-        this.fridgeList = fridgeList;
-    }
+//    public void setFridgeList(List<Fridge> fridgeList) {
+//        this.fridgeList = fridgeList;
+//    }
 
     public List<FavListItem> getFavList() {
         return favList;

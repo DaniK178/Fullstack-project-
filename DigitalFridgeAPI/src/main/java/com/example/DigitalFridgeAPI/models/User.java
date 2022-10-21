@@ -20,18 +20,21 @@ public class User {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "favourites_id", referencedColumnName = "id")
-    @JsonIgnoreProperties({"user"})
-//    making a list of FavListItem within the Favourites class
- private List<FavListItem> favourites;
-//    or this   ??
-//    private List<Favourites> favourites;
+    @JsonIgnoreProperties({"users"})
+    private Favourites favourites;
+
+    @ManyToMany
+    @JoinTable(name ="users_fridges", joinColumns = {@JoinColumn(name="users_id",nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name="fridges_id",nullable = false)})
+    @JsonIgnoreProperties({"users"})
+    private Fridge fridge;
 
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.favourites = new ArrayList<>();
-
+        this.favourites = null;
+        this.fridge= null;
     }
 
     public User() {}
@@ -60,16 +63,11 @@ public class User {
         this.password = password;
     }
 
-
-    public List<FavListItem> getFavourites() {
+    public Favourites getFavourites() {
         return favourites;
     }
 
-    public void setFavourites(List<FavListItem> favourites) {
+    public void setFavourites(Favourites favourites) {
         this.favourites = favourites;
-    }
-
-    public void addToFavourites (FavListItem favListItem) {
-        this.favourites.add(favListItem);
     }
 }
