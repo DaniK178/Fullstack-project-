@@ -20,20 +20,13 @@ public class FoodItem {
     @Column(name = "foodGroup")
     private Enum foodGroup;
 
-    @Column(name = "expiryDate")
-    private int expiryDate;
-
-    @Column(name = "isExpired")
-    private boolean isExpired
-
-    @ManyToMany
-
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
     @JsonIgnoreProperties({"food_items"})
+    
 
     //    CONSTRUCTOR::::::::::
 
-    public FoodItem(String name, Enum foodGroup,) {
+    public FoodItem(String name, Enum foodGroup) {
         this.name = name;
         this.foodGroup = foodGroup;
 
