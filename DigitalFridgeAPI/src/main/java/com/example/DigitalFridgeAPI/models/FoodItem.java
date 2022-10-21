@@ -14,33 +14,28 @@ public class FoodItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "foodGroup")
     private Enum foodGroup;
 
-    @Column
+    @Column(name = "expiryDate")
     private int expiryDate;
 
-    @Column
-    private float quantity; //To allow decimals of e.g. 3.5 ml
+    @Column(name = "isExpired")
+    private boolean isExpired
 
-    @Column
-    private boolean isExpired;
-
-//    @ManyToMany
+    @ManyToMany
 
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
     @JsonIgnoreProperties({"food_items"})
 
     //    CONSTRUCTOR::::::::::
 
-    public FoodItem(String name, Enum foodGroup, int expiryDate, float quantity, boolean isExpired) {
+    public FoodItem(String name, Enum foodGroup, boolean isExpired) {
         this.name = name;
         this.foodGroup = foodGroup;
-        this.expiryDate = expiryDate;
-        this.quantity = quantity;
         this.isExpired = isExpired;
 
     }
@@ -77,6 +72,14 @@ public class FoodItem {
 
     public void setFoodGroup(Enum foodGroup) {
         this.foodGroup = foodGroup;
+    }
+
+    public boolean isExpired() {
+        return isExpired;
+    }
+
+    public void setExpired(boolean expired) {
+        isExpired = expired;
     }
 
 }
