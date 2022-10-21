@@ -63,8 +63,8 @@ public class FridgeService {
 
 
 
-    public void removeUser(Long id){
-        userRepository.deleteById(id);
-    }
+//    public void removeUser(Long id){
+//        userRepository.deleteById(id);
+//    }
 
 }

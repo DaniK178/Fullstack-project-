@@ -24,7 +24,7 @@ public class Favourites {
 //    private List<Fridge> fridgeList;
 
 
-    @OneToOne(mappedBy = "users")
+    @OneToOne(mappedBy = "user")
     private User user;
 
 
