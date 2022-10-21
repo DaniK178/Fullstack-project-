@@ -18,6 +18,7 @@ public class Fridge {
     @Column
     private String name;
 
+    //Fridge Item Table
     @OneToMany(mappedBy = "fridge")
     Set<FridgeItem> expiryDate;
 
@@ -25,6 +26,7 @@ public class Fridge {
     Set<FridgeItem> quantity;
     //to paste  into food item
 
+    //
    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
    private List<Shopping> shoppingList;
