@@ -1,10 +1,9 @@
 package com.example.DigitalFridgeAPI.models;
 
-
-FoodItem;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -14,34 +13,36 @@ public class Fridge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @Column
     private String name;
 
     //Fridge Item JOIN Table
     @OneToMany(mappedBy = "fridge")
     Set<FridgeItem> expiryDate;
-
     @OneToMany(mappedBy = "fridge")
     Set<FridgeItem> quantity;
-    //to paste  into food item
 
     //Fridge - Shopping list JOIN
    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
    private List<ShoppingList> shoppingList;
 
-    // REMINDER ITEMS
+    // LISTS FOR FRIDGE ITEMS
    @Column
    private List<FridgeItem> reminderItems;
 
+    @Column
+    private List<FridgeItem> fridgeItems;
+
    //CONSTRUCTORS
 
-   public Fridge(String name,  List<ShoppingList> shoppingList, List<FridgeItem> reminderItems ){
-       this.name = name;
-       this.shoppingList = shoppingList;
-       this.reminderItems = reminderItems;
-   }
+
+    public Fridge(String name, List<ShoppingList> shoppingList, List<FridgeItem> fridgeItems) {
+        this.name = name;
+        this.shoppingList = shoppingList;
+        this.reminderItems = new ArrayList<>();
+        this.fridgeItems = fridgeItems;
+    }
 
     public Fridge() {
     }

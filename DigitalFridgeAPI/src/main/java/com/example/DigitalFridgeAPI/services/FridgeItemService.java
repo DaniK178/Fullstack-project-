@@ -5,6 +5,9 @@ import com.example.DigitalFridgeAPI.repositories.FridgeItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FridgeItemService {
 
@@ -18,14 +21,20 @@ public class FridgeItemService {
     }
 
     //get all food items
-    public
-
+    public List<FridgeItem> getallFridgeItems(){
+        return fridgeItemRepository.findAll();
+    }
 
     //get item by ID
+    public Optional<FridgeItem> getFridgeItemsByID(Long id){
+        return fridgeItemRepository.findById(id);
+    }
 
     //get item by name
+    public List<FridgeItem> getFridgeItemByName(String name){
+        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
+    }
 
-    //get all food items
 
     //update Item
 

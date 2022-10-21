@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class FridgeItem {
 
     @EmbeddedId
-    @Column (name = "fridge_item_id")
+//    @Column (name = "fridge_item_id")
     private FridgeItemCompositeKey id;
 //    private FridgeItemCompositeKey id = new FridgeItemCompositeKey();
 
