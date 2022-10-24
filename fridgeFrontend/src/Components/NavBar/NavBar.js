@@ -45,7 +45,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
             <br></br>
             <input type="text" name="foodname" className="additem-box" />
             <br></br>
-            <label>Category</label>
+            <label>Category</label> //Using option tag to enable Category choose
             <br></br>
             <input type="text" name="expiry date" className="additem-box" />
             <br></br>
