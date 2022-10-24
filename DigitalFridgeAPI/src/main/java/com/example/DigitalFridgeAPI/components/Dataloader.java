@@ -29,6 +29,12 @@ public class Dataloader implements ApplicationRunner {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    FavouritesRepository favouritesRepository;
+
+    @Autowired
+    FavListItemRepository favListItemRepository;
+
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -62,8 +68,39 @@ public class Dataloader implements ApplicationRunner {
         fridgeItemRepository.save(fridgeItem4);
         fridgeItemRepository.save(fridgeItem5);
 
+
         User user1 = new User("danielleK", "bnta", "danielle@gmail.com");
         userRepository.save(user1);
+        User user2 = new User("random", "bnta", "random@gmail.com");
+        userRepository.save(user2);
+
+//        adding to user1 favourites list:
+
+        Favourites favourites1= new Favourites("favourites1",user1);
+        favouritesRepository.save(favourites1);
+        FavListItem favListItem1 = new FavListItem(favourites1,foodItem1);
+        FavListItem favListItem2 = new FavListItem(favourites1,foodItem2);
+        FavListItem favListItem3 = new FavListItem(favourites1,foodItem3);
+        favListItemRepository.save(favListItem1);
+        favListItemRepository.save(favListItem2);
+        favListItemRepository.save(favListItem3);
+        user1.setFavourites(favourites1);
+        userRepository.save(user1);
+
+//        adding to user2 favourites list:
+        Favourites favourites2= new Favourites("favourites2",user2);
+        favouritesRepository.save(favourites2);
+        FavListItem favListItem1_2 = new FavListItem(favourites2,foodItem1);
+        FavListItem favListItem2_2 = new FavListItem(favourites2,foodItem2);
+        FavListItem favListItem3_2 = new FavListItem(favourites2,foodItem3);
+        favListItemRepository.save(favListItem1_2);
+        favListItemRepository.save(favListItem2_2);
+        favListItemRepository.save(favListItem3_2);
+        user2.setFavourites(favourites2);
+        userRepository.save(user2);
+
+
+
 
 
 

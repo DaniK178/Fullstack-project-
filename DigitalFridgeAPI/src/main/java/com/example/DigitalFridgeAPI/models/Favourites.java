@@ -28,19 +28,21 @@ public class Favourites {
     @OneToOne(mappedBy = "favourites")
     private User user;
 
-    @OneToMany(mappedBy = "favourites")
-    Set<FavListItem> expiryDate;
+//    @OneToMany(mappedBy = "favourites")
+//    Set<FavListItem> expiryDate;
 
 
 //    @Column
-//    private List<FavListItem> favList;
+//    @OneToMany(mappedBy = "favourites")
+//    private List<FavListItem> favItems;
 
     public Favourites( String name, User user) {
         this.name = name;
         this.user = user;
+//        this.favItems = new ArrayList<>();
 //        this.shoppingList = new ArrayList<>();
 //        this.fridgeList = new ArrayList<>();
-//        this.favList = new ArrayList<>();
+
     }
 
     public Favourites() {}
@@ -62,6 +64,14 @@ public class Favourites {
         this.name = name;
     }
 
+//        public List<FavListItem> getFavItems() {
+//        return favItems;
+//    }
+//
+//    public void setFavItems(List<FavListItem> favItems) {
+//        this.favItems = favItems;
+//    }
+
 //    public List<Shopping> getShoppingList() {
 //        return shoppingList;
 //    }
@@ -78,12 +88,5 @@ public class Favourites {
 //        this.fridgeList = fridgeList;
 //    }
 
-//    public List<FavListItem> getFavList() {
-//        return favList;
-//    }
-//
-//    public void setFavList(List<FavListItem> favList) {
-//        this.favList = favList;
-//    }
 }
 
