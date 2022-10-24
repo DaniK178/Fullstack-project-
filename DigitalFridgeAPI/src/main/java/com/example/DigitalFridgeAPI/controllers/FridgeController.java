@@ -43,6 +43,29 @@ public class FridgeController {
         return fridge.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
+    //create a new fridge
+
+    @PostMapping
+    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
+        Fridge newFridge = fridgeService.addNewFridge(fridge);
+        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
+    }
+
+    //delete a fridge
+//    @DeleteMapping(value = "/delete/{id}")
+//    public void deleteById(@PathVariable Long id) {
+//        fridgeService.deleteFridgeById(id);
+//    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<String> deleteFridgeById(@PathVariable Long id){
+        fridgeService.removeFridge(id);
+        String message = "Fridge" + id + " has been deleted";
+        return new ResponseEntity<>(message,HttpStatus.OK);
+    }
+
+    //Fridge Item
+
     @GetMapping("/{fridgeId}/fridgeItem")
     public ResponseEntity<List<FridgeItem>> getAllFridgeItems(@PathVariable Long fridgeId) {
         List<FridgeItem> fridgeItems = fridgeItemService.getAllFridgeItems(fridgeId);
@@ -61,6 +84,20 @@ public class FridgeController {
              }
     }
 
+    @DeleteMapping(value = "/delete/{id}")
+    public ResponseEntity<String> deleteFridgeById(@PathVariable Long id){
+        fridgeService.removeFridge(id);
+        String message = "Fridge" + id + " has been deleted";
+        return new ResponseEntity<>(message,HttpStatus.OK);
+    }
+
+
+    @PostMapping
+    public ResponseEntity<ShoppingListItem> addNewFridge(@RequestBody Fridge fridge){
+        Fridge newFridge = fridgeService.addNewFridge(fridge);
+        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
+    }
+
 
     }
 
@@ -73,19 +110,7 @@ public class FridgeController {
 //        return new ResponseEntity<>(fridges, HttpStatus.OK);
 //    }
 
-    //create a new fridge
-//
-//    @PostMapping
-//    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
-//        Fridge newFridge = fridgeService.addNewFridge(fridge);
-//        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
-//    }
-//
-//    @GetMapping (value = "/{id}")
-//    public ResponseEntity<List<Fridge>> getAllFridgebyID() {
-//        List<Fridge> fridges = fridgeService.getAllFridgeByID();
-//        return new ResponseEntity<>(fridges, HttpStatus.OK);
-//    }
+
 //
 //    @PostMapping
 //    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){

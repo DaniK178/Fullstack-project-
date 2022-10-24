@@ -35,6 +35,15 @@ public class FridgeService {
         return fridgeRepository.findById(id);
     }
 
+//    public void deleteFridgeById(Long id) {
+//        fridgeRepository.deleteById(id);
+//    }
+
+    public void removeFridge(Long id){
+        fridgeRepository.deleteById(id);
+    }
+
+
     //get fridge by name
 //    public List<Fridge> getFridgeByName(String name){
 //        List<Fridge> fridges = fridgeRepository.findByFridgeName(name);

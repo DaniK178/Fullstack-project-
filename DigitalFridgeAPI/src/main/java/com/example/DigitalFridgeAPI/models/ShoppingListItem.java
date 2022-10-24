@@ -33,6 +33,7 @@ import javax.persistence.*;
         //CONSTRUCTOR
 
         public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Float quantity) {
+            this.id = new ShoppingListItemCompositeKey(shoppingList.getId(), foodItem.getId());
             this.shoppingList = shoppingList;
             this.foodItem = foodItem;
             this.quantity = quantity;

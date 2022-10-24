@@ -1,6 +1,7 @@
 package com.example.DigitalFridgeAPI.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "shopping_lists")
@@ -18,15 +19,15 @@ import java.util.Set;
 
     //Shopping List Item - JOIN TABLE
     @OneToMany(mappedBy = "shoppingList")
-    Set<ShoppingListItem> quantity;
+    Set<ShoppingListItem> shoppingListItems;
     // to paste into Food Item
 
 
-    public ShoppingList(long id, String name, Fridge fridge, Set<ShoppingListItem> quantity) {
-        this.id = id;
+    public ShoppingList(String name, Fridge fridge) {
         this.name = name;
         this.fridge = fridge;
-        this.quantity = quantity;
+        this.shoppingListItems= new HashSet<>();
+
     }
 
     public ShoppingList() {
@@ -56,11 +57,11 @@ import java.util.Set;
         this.fridge = fridge;
     }
 
-    public Set<ShoppingListItem> getQuantity() {
-        return quantity;
+    public Set<ShoppingListItem> getShoppingListItems() {
+        return shoppingListItems;
     }
 
-    public void setQuantity(Set<ShoppingListItem> quantity) {
-        this.quantity = quantity;
+    public void setShoppingListItems(Set<ShoppingListItem> shoppingListItems) {
+        this.shoppingListItems = shoppingListItems;
     }
 }
