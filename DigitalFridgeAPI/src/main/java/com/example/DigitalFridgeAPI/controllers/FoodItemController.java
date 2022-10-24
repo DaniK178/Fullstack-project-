@@ -37,16 +37,16 @@ public class FoodItemController {
 
     //Method to get foodItem by id:
 
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
-//        Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);
-//        if (foodItem.isPresent()) {
-//            return new ResponseEntity<>(foodItem.get(), HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-//        }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
+        Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);
+        if (foodItem.isPresent()) {
+            return new ResponseEntity<>(foodItem.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
 
-//    }
+    }
 //POST MAPPING (create)
 
     //method to add a new foodItem:
