@@ -35,6 +35,14 @@ public class FoodItemController {
 
     }
 
+    //method: find foodItem by name:
+    @GetMapping("/foodItem/name")
+    public void findByName(@PathVariable String foodItem) {
+        foodItemService.getByName(foodItem);
+    }
+
+
+
     //Method to get foodItem by id:
 
     @GetMapping(value = "/{id}")
