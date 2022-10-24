@@ -10,4 +10,7 @@ public class DigitalFridgeApiApplication {
 		SpringApplication.run(DigitalFridgeApiApplication.class, args);
 	}
 
+
+
+
 }
