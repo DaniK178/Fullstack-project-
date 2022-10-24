@@ -21,14 +21,14 @@ public class FoodItemService {
 
     // get a specific foodItem by id:
 
-    public Optional<FoodItem> getFoodItemById(Long id){     //  Optional: means it either has something in it or it doesn't
-        return foodItemRepository.findByFoodItemId(id);
-    }
+//    public Optional<FoodItem> getFoodItemById(Long id){     //  Optional: means it either has something in it or it doesn't
+//        return foodItemRepository.findByFoodItemId(id);
+//    }
 
     // get a specific foodItem by name:
-    public Optional<FoodItem> getFoodItemByName(String foodItem){
-        return foodItemRepository.findByFoodItemName(foodItem);
-    }
+//    public Optional<FoodItem> getFoodItemByName(String foodItem){
+//        return foodItemRepository.findByFoodItemName(foodItem);
+//    }
 
     //Add New FoodItem:
 
@@ -47,9 +47,9 @@ public class FoodItemService {
 
     //update foodItem:
 
-    public FoodItem updateFoodItem(Long id){
-        return foodItemRepository.updateByFoodItemId(id);
-    }
+//    public FoodItem updateFoodItem(Long id){
+//        return foodItemRepository.updateByFoodItemId(id);
+//    }
 
 
 

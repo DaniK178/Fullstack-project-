@@ -31,9 +31,9 @@ public class FridgeItemService {
     }
 
     //get item by name
-    public List<FridgeItem> getFridgeItemByName(String name){
-        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
-    }
+//    public List<FridgeItem> getFridgeItemByName(String name){
+//        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
+//    }
 
 
     //update Item

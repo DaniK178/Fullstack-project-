@@ -31,17 +31,17 @@ public class FridgeController {
     ShoppingListItemService shoppingListItemService;
 
 
-    @GetMapping
-    public ResponseEntity<List<Fridge>> getAllFridges() {
-        List<Fridge> fridges = fridgeService.getAllFridges();
-        return new ResponseEntity<>(fridges, HttpStatus.OK);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Fridge>> getAllFridgebyID() {
-        List<Fridge> fridges = fridgeService.getAllFridgeByID();
-        return new ResponseEntity<>(fridges, HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Fridge>> getAllFridges() {
+//        List<Fridge> fridges = fridgeService.getAllFridges();
+//        return new ResponseEntity<>(fridges, HttpStatus.OK);
+//    }
+//
+//    @GetMapping
+//    public ResponseEntity<List<Fridge>> getAllFridgebyID() {
+//        List<Fridge> fridges = fridgeService.getAllFridgeByID();
+//        return new ResponseEntity<>(fridges, HttpStatus.OK);
+//    }
 
     //Get a fridge by name
 //    @GetMapping
@@ -51,24 +51,24 @@ public class FridgeController {
 //    }
 
     //create a new fridge
-
-    @PostMapping
-    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
-        Fridge newFridge = fridgeService.addNewFridge(fridge);
-        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
-    }
-
-    @GetMapping (value = "/{id}")
-    public ResponseEntity<List<Fridge>> getAllFridgebyID() {
-        List<Fridge> fridges = fridgeService.getAllFridgeByID();
-        return new ResponseEntity<>(fridges, HttpStatus.OK);
-    }
-
-    @PostMapping
-    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
-        Fridge newFridge = fridgeService.addNewFridge(fridge);
-        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
-    }
+//
+//    @PostMapping
+//    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
+//        Fridge newFridge = fridgeService.addNewFridge(fridge);
+//        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
+//    }
+//
+//    @GetMapping (value = "/{id}")
+//    public ResponseEntity<List<Fridge>> getAllFridgebyID() {
+//        List<Fridge> fridges = fridgeService.getAllFridgeByID();
+//        return new ResponseEntity<>(fridges, HttpStatus.OK);
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
+//        Fridge newFridge = fridgeService.addNewFridge(fridge);
+//        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
+//    }
 
     @PostMapping
     public ResponseEntity<ShoppingListItem>addNewShoppingListItemfromFridgeItem(@RequestBody

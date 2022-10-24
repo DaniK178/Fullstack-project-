@@ -1,4 +1,5 @@
 package com.example.DigitalFridgeAPI.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -18,20 +19,31 @@ public class User {
     @Column
     private String password;
 
+    @Column(name = "email")
+    private String email;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "favourites_id", referencedColumnName = "id")
-    @JsonIgnoreProperties({"user"})
-//    making a list of FavListItem within the Favourites class
- private List<FavListItem> favourites;
-//    or this   ??
-//    private List<Favourites> favourites;
+//    @JsonIgnoreProperties({"users"})
+    private Favourites favourites;
+
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name ="users_fridges",
+            joinColumns = {@JoinColumn(name = "user_id",nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name="fridge_id",nullable = false)}
+        )
+//    @JsonIgnoreProperties({"users"})
+    private List<Fridge> userFridges;
 
 
-    public User(String username, String password) {
+    public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.favourites = new ArrayList<>();
-
+        this.email = email;
+        this.favourites = null;
+        this.userFridges= new ArrayList<>();
     }
 
     public User() {}
@@ -60,16 +72,27 @@ public class User {
         this.password = password;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
-    public List<FavListItem> getFavourites() {
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Favourites getFavourites() {
         return favourites;
     }
 
-    public void setFavourites(List<FavListItem> favourites) {
+    public void setFavourites(Favourites favourites) {
         this.favourites = favourites;
     }
 
-    public void addToFavourites (FavListItem favListItem) {
-        this.favourites.add(favListItem);
+    public List<Fridge> getUserFridges() {
+        return userFridges;
+    }
+
+    public void setUserFridges(List<Fridge> userFridges) {
+        this.userFridges = userFridges;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.DigitalFridgeAPI.controllers;
 
 
+import com.example.DigitalFridgeAPI.models.FoodGroup;
 import com.example.DigitalFridgeAPI.models.FoodItem;
 import com.example.DigitalFridgeAPI.repositories.FoodItemRepository;
 import com.example.DigitalFridgeAPI.services.FoodItemService;
@@ -36,26 +37,24 @@ public class FoodItemController {
 
     //Method to get foodItem by id:
 
-    @GetMapping(value = "/{id}")
-    public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
-        Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);
-        if (foodItem.isPresent()) {
-            return new ResponseEntity<>(foodItem.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
+//    @GetMapping(value = "/{id}")
+//    public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
+//        Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);
+//        if (foodItem.isPresent()) {
+//            return new ResponseEntity<>(foodItem.get(), HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//        }
 
-    }
+//    }
 //POST MAPPING (create)
 
     //method to add a new foodItem:
     @PostMapping("/add")
     public ResponseEntity<FoodItem> addNewFoodItem(@RequestBody String name,
-                                                   @RequestBody Enum foodGroup,
-                                                   @RequestBody int expiryDate,
-                                                   @RequestBody float quantity,
-                                                   @RequestBody boolean isExpired){
-        FoodItem newFoodItem = new FoodItem(name, foodGroup,expiryDate,quantity,isExpired);
+                                                   @RequestBody FoodGroup foodGroup
+                                                   ){
+        FoodItem newFoodItem = new FoodItem ( name, foodGroup);
         foodItemService.saveFoodItem(newFoodItem);
         System.out.println(name + " has been added!");
         return ResponseEntity.ok().body(newFoodItem);
