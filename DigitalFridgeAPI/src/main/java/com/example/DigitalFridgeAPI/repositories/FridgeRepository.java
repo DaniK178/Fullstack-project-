@@ -14,4 +14,5 @@ public interface FridgeRepository extends JpaRepository<Fridge, Long> {
 
 
 
+
 }

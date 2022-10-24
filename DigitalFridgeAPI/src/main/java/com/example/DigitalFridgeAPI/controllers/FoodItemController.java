@@ -25,9 +25,9 @@ public class FoodItemController {
 
 //GET METHODS (show)
 
-    //Method 1: get all recipes - grab all the foodItems from foodItemRepository (our database)
+    //Method 1: get all foodItems - grab all the foodItems from foodItemRepository (our database)
 
-    @GetMapping
+    @GetMapping("/foodItem/All")
     public ResponseEntity<List<FoodItem>> getAllFoodItems() {
         // the controller will call the getAllFoodItems method from the foodItemService
         List<FoodItem> foodItems = foodItemService.getAllFoodItems();
@@ -35,18 +35,32 @@ public class FoodItemController {
 
     }
 
+    //method: find foodItem by name:
+    @GetMapping("/foodItem/name")
+    public void findByName(@PathVariable String foodItem) {
+        foodItemService.getByName(foodItem);
+    }
+
+    //method: find foodItem by food Group:
+
+    @GetMapping("/foodItem/food_Group")
+    public void findByFoodGroup(@PathVariable String foodItem){
+        foodItemService.getByFoodGroup(foodItem);
+    }
+
+
     //Method to get foodItem by id:
 
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
-//        Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);
-//        if (foodItem.isPresent()) {
-//            return new ResponseEntity<>(foodItem.get(), HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-//        }
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
+        Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);
+        if (foodItem.isPresent()) {
+            return new ResponseEntity<>(foodItem.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
 
-//    }
+    }
 //POST MAPPING (create)
 
     //method to add a new foodItem:

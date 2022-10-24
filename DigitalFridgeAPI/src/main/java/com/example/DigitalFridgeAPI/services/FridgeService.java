@@ -25,12 +25,12 @@ public class FridgeService {
         return fridge;
     }
 
-    //get all fridges
-    public List<Fridge> getallFridges(){
+    //GET ALL FRIDGES
+    public List<Fridge> getAllFridges(){
         return fridgeRepository.findAll();
     }
 
-    //get fridge by ID
+    //GET FRIDGE BY ID
     public Optional<Fridge> getFridgeByID(Long id){
         return fridgeRepository.findById(id);
     }

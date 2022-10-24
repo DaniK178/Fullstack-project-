@@ -41,18 +41,18 @@ public class FridgeItemCompositeKey implements Serializable {
 
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        FridgeItemCompositeKey that = (FridgeItemCompositeKey) o;
-        return Objects.equals(fridgeId, that.fridgeId) && Objects.equals(foodItemId, that.foodItemId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(fridgeId, foodItemId);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        FridgeItemCompositeKey that = (FridgeItemCompositeKey) o;
+//        return Objects.equals(fridgeId, that.fridgeId) && Objects.equals(foodItemId, that.foodItemId);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(fridgeId, foodItemId);
+//    }
 }
 
 

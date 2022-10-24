@@ -11,6 +11,7 @@ public class FridgeItem {
     private FridgeItemCompositeKey id;
 //    private FridgeItemCompositeKey id = new FridgeItemCompositeKey();
 
+
     //JOIN TO FRIDGE
     @ManyToOne
     @MapsId("fridge_id")
