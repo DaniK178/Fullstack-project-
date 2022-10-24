@@ -25,15 +25,15 @@ public class FoodItem {
     //@JsonIgnoreProperties TO AVOID INFINITE dependencies LOOP ISSUE.
     @JsonIgnoreProperties(value = {"food_items"})
 
-
-    @OneToMany(mappedBy = "food_item")
+    // //FOODITEM TO FRIDGE JOIN
+    @OneToMany(mappedBy = "foodItem")
     Set<FridgeItem> expiryDate;
 
-    @OneToMany(mappedBy = "food_item")
+    @OneToMany(mappedBy = "foodItem")
     Set<FridgeItem> quantity;
 
-
-    @OneToMany(mappedBy = "shopping_list")
+    ////FOOD ITEM TO SHOPPING JOIN
+    @OneToMany(mappedBy = "foodItem")
     Set<FridgeItem> shoppingQuantity;
     //to paste  into food item
     

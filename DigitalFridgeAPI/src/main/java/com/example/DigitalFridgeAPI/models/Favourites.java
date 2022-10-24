@@ -3,6 +3,7 @@ package com.example.DigitalFridgeAPI.models;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name="favourites")
 public class Favourites {
@@ -27,16 +28,19 @@ public class Favourites {
     @OneToOne(mappedBy = "favourites")
     private User user;
 
+    @OneToMany(mappedBy = "favourites")
+    Set<FavListItem> expiryDate;
 
-    @Column
-    private List<FavListItem> favList;
+
+//    @Column
+//    private List<FavListItem> favList;
 
     public Favourites( String name, User user) {
         this.name = name;
         this.user = user;
 //        this.shoppingList = new ArrayList<>();
 //        this.fridgeList = new ArrayList<>();
-        this.favList = new ArrayList<>();
+//        this.favList = new ArrayList<>();
     }
 
     public Favourites() {}
@@ -74,12 +78,12 @@ public class Favourites {
 //        this.fridgeList = fridgeList;
 //    }
 
-    public List<FavListItem> getFavList() {
-        return favList;
-    }
-
-    public void setFavList(List<FavListItem> favList) {
-        this.favList = favList;
-    }
+//    public List<FavListItem> getFavList() {
+//        return favList;
+//    }
+//
+//    public void setFavList(List<FavListItem> favList) {
+//        this.favList = favList;
+//    }
 }
 

@@ -23,8 +23,8 @@ public class Dataloader implements ApplicationRunner {
     @Autowired
     FridgeItemRepository fridgeItemRepository;
 
-    @Autowired
-    ShoppingListItem shoppingListItem;
+//    @Autowired
+//    ShoppingListItemRepository shoppingListItemRepository;
 
     @Autowired
     ShoppingListRepository shoppingListRepository;

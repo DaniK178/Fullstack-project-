@@ -36,10 +36,10 @@ public class FridgeService {
     }
 
     //get fridge by name
-    public List<Fridge> getFridgeByName(String name){
-        List<Fridge> fridges = fridgeRepository.findByFridgeName(name);
-        return fridges;
-    }
+//    public List<Fridge> getFridgeByName(String name){
+//        List<Fridge> fridges = fridgeRepository.findByFridgeName(name);
+//        return fridges;
+//    }
 
     //Get the fridge reminder items
 

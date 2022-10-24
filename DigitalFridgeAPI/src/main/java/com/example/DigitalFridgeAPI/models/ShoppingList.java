@@ -13,11 +13,11 @@ import java.util.Set;
     private String name;
 
     //Fridge to Shopping List -JOIN
-    @OneToOne(mappedBy = "shopping_list")
+    @OneToOne(mappedBy = "shoppingList")
     private Fridge fridge;
 
     //Shopping List Item - JOIN TABLE
-    @OneToMany(mappedBy = "food_item")
+    @OneToMany(mappedBy = "shoppingList")
     Set<ShoppingListItem> quantity;
     // to paste into Food Item
 
