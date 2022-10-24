@@ -1,21 +1,21 @@
-import React from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import React from "react";
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
 
 
-const Login =({users, loggedInUser, postUser})=> {
-    const navigate = useNavigate();
+// const Login =({users, loggedInUser, postUser})=> {
+//     const navigate = useNavigate();
 
-    const [details, setDetails] = useState({name: "", email: "", password: "",favList:[]});
+//     const [details, setDetails] = useState({name: "", email: "", password: "",favList:[]});
     
-    const handleChange = event => {//will be replaced by authe for user login setup
-        const userId = parseInt(event.target.value);
-    }
+//     const handleChange = event => {//will be replaced by authe for user login setup
+//         const userId = parseInt(event.target.value);
+//     }
 
-    const handleFormSubmit = event => { //auth might replace
-        event.preventDefault();
-        loggedInUser(details);
-    }
+//     const handleFormSubmit = event => { //auth might replace
+//         event.preventDefault();
+//         loggedInUser(details);
+//     }
 // tutorial login setup 
     // const login = details=> { //
     //     console.log(details);
@@ -33,12 +33,12 @@ const Login =({users, loggedInUser, postUser})=> {
     //     setError("details not found");// user detail not match
     //   };
     
-      const Logout = () => {
-        console.log("Logout");
-      }
+    //   const Logout = () => {
+    //     console.log("Logout");
+    //   }
 
-      const [user, setUser] = useState({name:"", email: "", password:""});//user chosen
-      const [error, setError] = useState("");
+    //   const [user, setUser] = useState({name:"", email: "", password:""});//user chosen
+    //   const [error, setError] = useState("");
 
      
     //   const handleRegisterChange = event => {
@@ -75,6 +75,6 @@ const Login =({users, loggedInUser, postUser})=> {
     //     </>
     // )
 
-};
+// };
 
-export default Login;
+// export default Login;
