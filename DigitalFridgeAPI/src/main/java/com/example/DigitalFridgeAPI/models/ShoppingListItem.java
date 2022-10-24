@@ -32,12 +32,11 @@ import javax.persistence.*;
 
         //CONSTRUCTOR
 
-        public ShoppingListItem(ShoppingListItemCompositeKey id, ShoppingList shoppingList, FoodItem foodItem, Float quantity, String shop) {
-            this.id = id;
+        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Float quantity) {
             this.shoppingList = shoppingList;
             this.foodItem = foodItem;
             this.quantity = quantity;
-            this.shop = shop;
+            this.shop = null;
         }
 
         public ShoppingListItem() {

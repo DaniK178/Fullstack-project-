@@ -1,6 +1,7 @@
 package com.example.DigitalFridgeAPI.controllers;
 
 import com.example.DigitalFridgeAPI.models.Fridge;
+import com.example.DigitalFridgeAPI.models.ShoppingListItem;
 import com.example.DigitalFridgeAPI.services.FridgeItemService;
 import com.example.DigitalFridgeAPI.services.FridgeService;
 import com.example.DigitalFridgeAPI.services.ShoppingListItemService;
@@ -68,6 +69,15 @@ public class FridgeController {
         Fridge newFridge = fridgeService.addNewFridge(fridge);
         return new ResponseEntity<>(fridge, HttpStatus.CREATED);
     }
+
+    @PostMapping
+    public ResponseEntity<ShoppingListItem>addNewShoppingListItemfromFridgeItem(@RequestBody
+                                                                                    @RequestBody String name,
+                                                                                @RequestBody float averageRating,
+                                                                                @RequestBody  int time,
+                                                                                @RequestBody  int calories,
+
+                                                                                )
 
 
 

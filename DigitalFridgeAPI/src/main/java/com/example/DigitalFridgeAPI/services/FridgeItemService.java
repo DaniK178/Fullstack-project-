@@ -48,7 +48,12 @@ public class FridgeItemService {
 
     //add to Shopping List
     //for it to access the food item ID, within the fridge item, and add that to the list
+    public void addToShoppingList(FridgeItem fridgeItem){
+         Long fridgeItemFoodID = fridgeItem.getFoodItem().getId();
+         //post method  passing in food ID- to create shopping Item
 
+
+    }
     //add to favourites List
 
 
