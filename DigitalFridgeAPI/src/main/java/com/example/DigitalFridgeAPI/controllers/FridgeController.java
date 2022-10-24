@@ -1,7 +1,6 @@
 package com.example.DigitalFridgeAPI.controllers;
 
-import com.example.DigitalFridgeAPI.models.Fridge;
-import com.example.DigitalFridgeAPI.models.ShoppingListItem;
+import com.example.DigitalFridgeAPI.models.*;
 import com.example.DigitalFridgeAPI.services.FridgeItemService;
 import com.example.DigitalFridgeAPI.services.FridgeService;
 import com.example.DigitalFridgeAPI.services.ShoppingListItemService;
@@ -12,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 //@RequestMapping = endpoint
@@ -31,17 +31,40 @@ public class FridgeController {
     ShoppingListItemService shoppingListItemService;
 
 
-//    @GetMapping
-//    public ResponseEntity<List<Fridge>> getAllFridges() {
-//        List<Fridge> fridges = fridgeService.getAllFridges();
-//        return new ResponseEntity<>(fridges, HttpStatus.OK);
-//    }
-//
-//    @GetMapping
-//    public ResponseEntity<List<Fridge>> getAllFridgebyID() {
-//        List<Fridge> fridges = fridgeService.getAllFridgeByID();
-//        return new ResponseEntity<>(fridges, HttpStatus.OK);
-//    }
+    @GetMapping
+    public ResponseEntity<List<Fridge>> getAllFridges() {
+        List<Fridge> fridges = fridgeService.getAllFridges();
+        return new ResponseEntity<>(fridges, HttpStatus.OK);
+    }
+
+    @GetMapping ("/{id}")
+    public ResponseEntity<Fridge> getFridgebyID(@PathVariable Long id) {
+        Optional<Fridge> fridge = fridgeService.getFridgeByID(id);
+        return fridge.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
+    }
+
+    @GetMapping("/{fridgeId}/fridgeItem")
+    public ResponseEntity<List<FridgeItem>> getAllFridgeItems(@PathVariable Long fridgeId) {
+        List<FridgeItem> fridgeItems = fridgeItemService.getAllFridgeItems(fridgeId);
+        return new ResponseEntity<>(fridgeItems, HttpStatus.OK);
+    }
+
+    @GetMapping("/{fridgeId}/fridgeItem/{foodId}")
+    public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long fridgeId, @PathVariable Long foodId) {
+         FridgeItemCompositeKey id = new FridgeItemCompositeKey(fridgeId, foodId);
+         Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemByID(id);
+             if (fridgeItem.isPresent()) {
+                 return new ResponseEntity<>(fridgeItem.get(), HttpStatus.OK);
+
+             } else {
+                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+             }
+    }
+
+
+    }
+
+
 
     //Get a fridge by name
 //    @GetMapping
@@ -93,5 +116,6 @@ public class FridgeController {
     //Get fridge food item by id
 
 
-}
+
+
 

@@ -14,4 +14,5 @@ public class FavListItemCompositeKey implements Serializable {
         Long favListItemId;
 
 
+
 }
