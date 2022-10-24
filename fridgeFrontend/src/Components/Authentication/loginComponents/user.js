@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
-import UserService from "../services/user.service";
+import UserService from "../services/userService";
 import EventBus from "../common/EventBus";
 import Fridge from "../../Fridge";
+
 
 export default class BoardUser extends Component {
   constructor(props) {
@@ -43,8 +44,6 @@ export default class BoardUser extends Component {
           <h3>{this.state.content}</h3>
         </header>
         <Fridge />
-        <ShoppingList />
-        <FavouriteList />
       </div>
     );
   }

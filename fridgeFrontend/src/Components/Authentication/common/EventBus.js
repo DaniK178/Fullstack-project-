@@ -1,4 +1,4 @@
-const eventBus = {
+const eventBus =  {
     on(event, callback) {
       document.addEventListener(event, (e) => callback(e.detail));
     },
@@ -11,5 +11,3 @@ const eventBus = {
   };
   
   export default eventBus;
-
-  /Users/yingyinghebnta/coursework/fullstack/fridgeFrontend/src/Components/Authentication/common/auth-verify.js
