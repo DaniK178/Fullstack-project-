@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity(name = "fav_list_items")
 public class FavListItem {
     @EmbeddedId
-    private FavListItemCompositeKey id = new FavListItemCompositeKey();
+    @Column (name = "fav_list_item_id")
+    private FavListItemCompositeKey id;
 
     @ManyToOne
     @MapsId("favourites_id")
@@ -17,11 +18,12 @@ public class FavListItem {
     @JoinColumn(name = "food_item_id")
     private FoodItem foodItem;
 
-    public FavListItem(FavListItemCompositeKey id, Favourites favourites, FoodItem foodItem) {
-        this.id = id;
+    public FavListItem(Favourites favourites, FoodItem foodItem) {
+        this.id = new FavListItemCompositeKey(favourites.getId(), foodItem.getId());
         this.favourites = favourites;
         this.foodItem = foodItem;
     }
+    public FavListItem(){}
 
     public FavListItemCompositeKey getId() {
         return id;
