@@ -17,7 +17,6 @@ const FridgeContainer =() => {
 
     <>
     <NavBar handleAddItemClick = {handleAddItemClick} isShownAddItem={isShowAddItem} />
-    <Login  />
 
     </>
     )

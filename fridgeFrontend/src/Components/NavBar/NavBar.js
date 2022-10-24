@@ -60,7 +60,6 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
    </nav>
 
         <Routes>
-        <Route path="/" element={<Login />}/>
         <Route path="/fridge" element={<Fridge />}/>
         <Route path="/shoppingList" element={<ShoppingList />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
