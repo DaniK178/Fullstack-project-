@@ -40,7 +40,8 @@ public class UserService {
     public void addUser(Map<String, String> userParams) {
         String username = (userParams.get("username"));
         String password = (userParams.get("password"));
-        User user = new User(username, password);
+        String email = (userParams.get("email"));
+        User user = new User(username, password,email);
         saveUser(user);
         }
 

@@ -8,28 +8,38 @@ import javax.persistence.*;
     public class ShoppingListItem {
 
         @EmbeddedId
-        private ShoppingListItemCompositeKey id = new ShoppingListItemCompositeKey();
+        @Column (name = "shopping_list_item_id")
+        private ShoppingListItemCompositeKey id;
+//        private ShoppingListItemCompositeKey id = new ShoppingListItemCompositeKey();
 
+        //JOIN TO SHOPPING LIST
         @ManyToOne
         @MapsId("shopping_list_id")
         @JoinColumn(name = "shopping_list_id")
-        private Fridge Fridge;
+        private ShoppingList shoppingList;
 
+        //JOIN TO FOOD ITEM
         @ManyToOne
         @MapsId("food_item_id")
         @JoinColumn(name = "food_item_id")
         private FoodItem foodItem;
 
-
+        //ADDITIONAL PROPERTIES
+        @Column(name = "quantity")
         private Float quantity;
-        private String Shop;
+        @Column(name = "shop")
+        private String shop;
 
-        public ShoppingListItem(ShoppingListItemCompositeKey id, com.example.DigitalFridgeAPI.models.Fridge fridge, FoodItem foodItem, Float quantity, String shop) {
-            this.id = id;
-            Fridge = fridge;
+        //CONSTRUCTOR
+
+        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Float quantity) {
+            this.shoppingList = shoppingList;
             this.foodItem = foodItem;
             this.quantity = quantity;
-            Shop = shop;
+            this.shop = null;
+        }
+
+        public ShoppingListItem() {
         }
 
         public ShoppingListItemCompositeKey getId() {
@@ -40,12 +50,12 @@ import javax.persistence.*;
             this.id = id;
         }
 
-        public com.example.DigitalFridgeAPI.models.Fridge getFridge() {
-            return Fridge;
+        public ShoppingList getShoppingList() {
+            return shoppingList;
         }
 
-        public void setFridge(com.example.DigitalFridgeAPI.models.Fridge fridge) {
-            Fridge = fridge;
+        public void setShoppingList(ShoppingList shoppingList) {
+            this.shoppingList = shoppingList;
         }
 
         public FoodItem getFoodItem() {
@@ -65,11 +75,11 @@ import javax.persistence.*;
         }
 
         public String getShop() {
-            return Shop;
+            return shop;
         }
 
         public void setShop(String shop) {
-            Shop = shop;
+            shop = shop;
         }
     }
 

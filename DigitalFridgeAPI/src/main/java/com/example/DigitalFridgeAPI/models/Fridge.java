@@ -1,10 +1,11 @@
 package com.example.DigitalFridgeAPI.models;
 
-
-FoodItem;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -14,35 +15,54 @@ public class Fridge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column
+    @Column (name = "name")
     private String name;
 
-    //Fridge Item Table
-    @OneToMany(mappedBy = "fridge")
-    Set<FridgeItem> expiryDate;
+    //TO FOOD ITEM JOIN TABLE
+//    @OneToMany(mappedBy = "fridge")
+//    Set<FridgeItem> expiryDate;
+//    @OneToMany(mappedBy = "fridge")
+//    Set<FridgeItem> quantity;
 
     @OneToMany(mappedBy = "fridge")
-    Set<FridgeItem> quantity;
-    //to paste  into food item
+    Set<FridgeItem> fridgeItems;
 
-    //
+    //Fridge - Shopping list JOIN
    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "shopping_id", referencedColumnName = "id")
-   private List<Shopping> shoppingList;
+   private ShoppingList shoppingList;
 
-   @Column
-   private List<FridgeItem> reminderItems;
+    //TO USER JOIN TABLE
+   @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name ="users_fridges",
+            joinColumns = {@JoinColumn(name="fridge_id",nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name="user_id",nullable = false)})
+    @JsonIgnoreProperties({"fridges"})
+    private List<User> fridgeUsers;
 
-   //Constructor
+    // LISTS FOR FRIDGE ITEMS
+//   @Column
+//   private List<FridgeItem> reminderItems;
+//    @Column
+//    private List<FridgeItem> fridgeItems;
 
-   public Fridge(String name,  List<Shopping> shoppingList, List<FridgeItem> reminderItems ){
-       this.name = name;
-       this.shoppingList = shoppingList;
-       this.reminderItems = reminderItems;
-   }
+   //CONSTRUCTORS
 
-   //Getters and Setters
+    public Fridge(String name) {
+        this.name = name;
+        this.shoppingList = null;
+        this.fridgeItems = new HashSet<>();
+//        this.reminderItems = new ArrayList<>();
+//        this.fridgeItems = new ArrayList<>();
+        this.fridgeUsers = new ArrayList<>();
+    }
+
+    public Fridge() {
+    }
+
+    //GETTER AND SETTERS
 
     public long getId() {
         return id;
@@ -60,35 +80,51 @@ public class Fridge {
         this.name = name;
     }
 
-    public Set<FridgeItem> getExpiryDate() {
-        return expiryDate;
-    }
+//    public Set<FridgeItem> getExpiryDate() {
+//        return expiryDate;
+//    }
+//
+//    public void setExpiryDate(Set<FridgeItem> expiryDate) {
+//        this.expiryDate = expiryDate;
+//    }
+//
+//    public Set<FridgeItem> getQuantity() {
+//        return quantity;
+//    }
+//
+//    public void setQuantity(Set<FridgeItem> quantity) {
+//        this.quantity = quantity;
+//    }
 
-    public void setExpiryDate(Set<FridgeItem> expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public Set<FridgeItem> getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Set<FridgeItem> quantity) {
-        this.quantity = quantity;
-    }
-
-    public List<Shopping> getShoppingList() {
+    public ShoppingList getShoppingList() {
         return shoppingList;
     }
 
-    public void setShoppingList(List<Shopping> shoppingList) {
+    public void setShoppingList(ShoppingList shoppingList) {
         this.shoppingList = shoppingList;
     }
 
-    public List<FridgeItem> getReminderItems() {
-        return reminderItems;
+//    public List<FridgeItem> getReminderItems() {
+//        return reminderItems;
+//    }
+//
+//    public void setReminderItems(List<FridgeItem> reminderItems) {
+//        this.reminderItems = reminderItems;
+//    }
+
+    public List<User> getFridgeUsers() {
+        return fridgeUsers;
     }
 
-    public void setReminderItems(List<FridgeItem> reminderItems) {
-        this.reminderItems = reminderItems;
+    public void setFridgeUsers(List<User> fridgeUsers) {
+        this.fridgeUsers = fridgeUsers;
     }
+//
+//    public List<FridgeItem> getFridgeItems() {
+//        return fridgeItems;
+//    }
+//
+//    public void setFridgeItems(List<FridgeItem> fridgeItems) {
+//        this.fridgeItems = fridgeItems;
+//    }
 }

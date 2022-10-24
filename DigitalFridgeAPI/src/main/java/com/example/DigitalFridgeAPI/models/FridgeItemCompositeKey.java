@@ -20,6 +20,9 @@ public class FridgeItemCompositeKey implements Serializable {
         this.foodItemId = foodItemId;
     }
 
+    public FridgeItemCompositeKey() {
+    }
+
     public Long getFridgeId() {
         return fridgeId;
     }
