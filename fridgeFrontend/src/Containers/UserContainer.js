@@ -4,24 +4,14 @@ import User from "../Components/User";
 const UserContainer =({loggedInUser, onlineUser, user}) => {
 
     return(
+      <>
+      { onlineUser === undefined ?
+      <Login loggedInUser={loggedInUser} /> :
+      <User user={onlineUser} loggedInUser={loggedInUser}/>
+      }
+      </>
+  )
 
-    <>
-    <p>UserContainer</p>
-    
-    <div>//welcome page after correct user info
-    {(user.email !=="") ? (
-      <div className='welcome'>
-        <h2>Welcome, <span>{user.name}</span></h2>
-        <button>Logout</button> 
-      </div> ): null }
-    </div>
-
-
-    <Login loggedInUser={} error={error} />
-    <User user={user} />
-    </>
-    
-    )
 };
 
 export default UserContainer;
