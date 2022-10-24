@@ -11,9 +11,11 @@ import java.util.Optional;
 public interface FoodItemRepository extends JpaRepository <FoodItem, Long>  {
 
 
-//    Optional<FoodItem> findById(Long id);
-//    Optional<FoodItem> findByFoodItemName(String foodItem);
-//
-//    List<FoodItem> findByFoodGroup(String foodItem);
-////    FoodItem updateByFoodItemId(Long id);
+    Optional<FoodItem> findById(Long id);
+    Optional<FoodItem> findByName(String foodItem);
+    List<FoodItem> findByFoodGroup(String foodItem);
+
+
+
+
 }

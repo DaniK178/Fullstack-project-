@@ -34,4 +34,5 @@ public class FavListItemCompositeKey implements Serializable {
         public void setFoodItemId(Long foodItemId) {
                 this.foodItemId = foodItemId;
         }
+
 }

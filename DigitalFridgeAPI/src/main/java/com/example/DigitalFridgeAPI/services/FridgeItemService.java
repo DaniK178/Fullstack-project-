@@ -1,6 +1,7 @@
 package com.example.DigitalFridgeAPI.services;
 
 import com.example.DigitalFridgeAPI.models.FridgeItem;
+import com.example.DigitalFridgeAPI.models.FridgeItemCompositeKey;
 import com.example.DigitalFridgeAPI.repositories.FridgeItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,19 +22,25 @@ public class FridgeItemService {
     }
 
     //get all food items
-    public List<FridgeItem> getallFridgeItems(){
-        return fridgeItemRepository.findAll();
+    public List<FridgeItem> getAllFridgeItems(Long id){
+        //we want to look into the fridge Item respository - find where fridge == fridge id
+//        List <FridgeItem> allFridgeItems =
+//        System.out.println(allFridgeItems);
+         return fridgeItemRepository.findAllByFridgeId(id);
+
     }
 
-    //get item by ID
-//    public Optional<FridgeItem> getFridgeItemsByID(Long id){
-//        return fridgeItemRepository.findById(id);
-//    }
+//    get fridgeItem by ID
+    public Optional<FridgeItem> getFridgeItemByID(FridgeItemCompositeKey id){
+        return fridgeItemRepository.findById(id);
+    }
 //
-//    //get item by name
-////    public List<FridgeItem> getFridgeItemByName(String name){
-////        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
-////    }
+    //get item by name
+//    public List<FridgeItem> getFridgeItemByName(String name){
+//        //you want to search through the name of all the food items listed in the
+//        fridgeItemRepository.findBy().
+//        return;
+//    }
 //
 //
 //    //update Item
@@ -58,7 +65,7 @@ public class FridgeItemService {
 
 
 
-
+// return fridgeItemRepository.findById(id).get().getFridge().getReminderItems()
 
 
 }
