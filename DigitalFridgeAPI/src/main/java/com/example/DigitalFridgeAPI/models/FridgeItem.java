@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class FridgeItem {
 
     @EmbeddedId
-//    @Column (name = "fridge_item_id")
+    @Column (name = "fridge_item_id")
     private FridgeItemCompositeKey id;
 //    private FridgeItemCompositeKey id = new FridgeItemCompositeKey();
 
@@ -28,14 +28,14 @@ public class FridgeItem {
     private boolean isExpired;
 
     @Column(name = "expiry_date")
-    private Long expiryDate;
+    private Integer expiryDate;
 
     @Column(name = "quantity")
     private Float quantity;
 
     //CONSTRUCTOR
-    public FridgeItem(FridgeItemCompositeKey id, Fridge fridge, FoodItem foodItem, Long expiryDate, Float quantity, Boolean isExpired) {
-        this.id = id;
+    public FridgeItem(Fridge fridge, FoodItem foodItem, Integer expiryDate, Float quantity, Boolean isExpired) {
+        this.id = new FridgeItemCompositeKey(fridge.getId(), foodItem.getId());
         this.fridge = fridge;
         this.foodItem = foodItem;
         this.expiryDate = expiryDate;
@@ -70,11 +70,11 @@ public class FridgeItem {
         this.foodItem = foodItem;
     }
 
-    public Long getExpiryDate() {
+    public Integer getExpiryDate() {
         return expiryDate;
     }
 
-    public void setExpiryDate(Long expiryDate) {
+    public void setExpiryDate(Integer expiryDate) {
         this.expiryDate = expiryDate;
     }
 

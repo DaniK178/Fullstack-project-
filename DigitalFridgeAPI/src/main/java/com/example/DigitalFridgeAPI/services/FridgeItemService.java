@@ -26,22 +26,22 @@ public class FridgeItemService {
     }
 
     //get item by ID
-    public Optional<FridgeItem> getFridgeItemsByID(Long id){
-        return fridgeItemRepository.findById(id);
-    }
-
-    //get item by name
-//    public List<FridgeItem> getFridgeItemByName(String name){
-//        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
+//    public Optional<FridgeItem> getFridgeItemsByID(Long id){
+//        return fridgeItemRepository.findById(id);
 //    }
-
-
-    //update Item
-
-    //delete item by ID
-    public void removeItem (Long id){
-        fridgeItemRepository.deleteById(id);
-    }
+//
+//    //get item by name
+////    public List<FridgeItem> getFridgeItemByName(String name){
+////        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
+////    }
+//
+//
+//    //update Item
+//
+//    //delete item by ID
+//    public void removeItem (Long id){
+//        fridgeItemRepository.deleteById(id);
+//    }
 
     //delete item by Name
 

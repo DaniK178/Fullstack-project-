@@ -70,14 +70,14 @@ public class FridgeController {
 //        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
 //    }
 
-    @PostMapping
-    public ResponseEntity<ShoppingListItem>addNewShoppingListItemfromFridgeItem(@RequestBody
-                                                                                    @RequestBody String name,
-                                                                                @RequestBody float averageRating,
-                                                                                @RequestBody  int time,
-                                                                                @RequestBody  int calories,
-
-                                                                                )
+//    @PostMapping
+//    public ResponseEntity<ShoppingListItem>addNewShoppingListItemfromFridgeItem(@RequestBody
+//                                                                                    @RequestBody String name,
+//                                                                                @RequestBody float averageRating,
+//                                                                                @RequestBody  int time,
+//                                                                                @RequestBody  int calories,
+//
+//                                                                                )
 
 
 
