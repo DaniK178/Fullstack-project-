@@ -1,6 +1,6 @@
 
 
-const currentFridge =() => {
+const CurrentFridge =() => {
 
     return(
 
@@ -12,4 +12,4 @@ const currentFridge =() => {
 
 };
 
-export default currentFridge;
+export default CurrentFridge;

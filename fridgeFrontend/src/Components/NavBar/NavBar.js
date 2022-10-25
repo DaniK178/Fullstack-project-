@@ -2,10 +2,10 @@ import React from "react"
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import ShoppingList from "../ShoppingList";
 import FavouriteList from "../FavouriteList";
-import currentFridge from "../currentFridge";
-import "./NavBar.css";
-import addFridge from "../addFridge";
-import fridgeList from "../fridgeList";
+import CurrentFridge from "../currentFridge";
+import "./Navbar.css";
+import AddFridge from "../addFridge";
+import FridgeList from "../fridgeList";
 
 
 const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
@@ -27,8 +27,8 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
         <div className="nav-links">
         <ul className="menu">
           {/* need add fridge function  */}
-            <li><Link to = '/addFridge' className="link">Add Fridge</Link></li> 
-            <li><Link to = '/currentFridge' className="link">Current Fridge</Link></li>
+            <li><Link to = '/AddFridge' className="link">Add Fridge</Link></li> 
+            <li><Link to = '/CurrentFridge' className="link">Current Fridge</Link></li>
             <li><Link to = '/ShoppingList' className="link">Shopping List</Link></li>
             <li><a href="user profile" className="link">User</a>
             <ul className="dropdown">
@@ -69,11 +69,11 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
    </nav>
 
         <Routes>
-        <Route path="/addfridge" element={<addFridge />} />
-        <Route path="/currentfridge" element={<curerntFridge />}/>
+        <Route path="/addfridge" element={<AddFridge />} />
+        <Route path="/currentfridge" element={<CurrentFridge />}/>
         <Route path="/ShoppingList" element={<ShoppingList />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
-        <Route path="/fridgeList" element={<fridgeList/>} />
+        <Route path="/fridgeList" element={<FridgeList/>} />
     </Routes>
     </BrowserRouter>
 

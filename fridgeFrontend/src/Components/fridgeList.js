@@ -1,6 +1,6 @@
 
 
-const fridgeList =() => {
+const FridgeList =() => {
 
     return(
 
@@ -12,4 +12,4 @@ const fridgeList =() => {
     )
 }
 
-export default fridgeList;
+export default FridgeList;

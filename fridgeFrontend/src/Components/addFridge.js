@@ -1,13 +1,13 @@
 
-const addFridge =() => {
+const AddFridge =() => {
 
 
     return(
         <>
         <p>add fridge</p>
-        
+
         </>
     )
 }
 
-export default addFridge;
+export default AddFridge;
