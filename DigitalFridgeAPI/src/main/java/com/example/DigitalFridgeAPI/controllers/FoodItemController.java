@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -38,15 +39,17 @@ public class FoodItemController {
 
     }
 
-    //method: find foodItem by name: //test
-//    @GetMapping("/name")
-//    public ResponseEntity<List<FoodItem>> getAllFoodItemsByName(
-//            @RequestParam String foodItem1) {
-//        foodItemService.getByName(foodItem);
-//    }
+    //method: find foodItem by name:
+    @GetMapping(value = "/byName/{name}")   //localhost:8080/foodItems/byName/carrots (or any foodItem name)
+    public ResponseEntity<List<FoodItem>> getFoodItemsByName(
+            @PathVariable String name) {
+
+        List<FoodItem> foodItem = foodItemService.getFoodItemByName(name);
+            return new ResponseEntity<>(foodItem, HttpStatus.OK);
+    }
 
     //method: find foodItem by food Group: 
-    @GetMapping(value = "/foodGroup") // localhost:8080/foodItems/foodGroup + type enum in JSON e.g. "VEGETABLES"
+    @GetMapping(value = "/foodGroup")   //localhost:8080/foodItems/foodGroup + type enum in JSON e.g. "VEGETABLES"
     public ResponseEntity<List<FoodItem>> getFoodItemByFoodGroup(
             @RequestBody FoodGroup foodGroup
             ){
@@ -88,8 +91,14 @@ public class FoodItemController {
 
 //DELETE MAPPING (remove)
     @DeleteMapping("/delete/{id}") //localhost:8080/foodItems/delete/1 (or any other id)
-    public void deleteById(@PathVariable Long id) {
+    public ResponseEntity <String> deleteById(@PathVariable Long id) {
+
+        String foodItemName = foodItemService.getFoodItemById(id).get().getName();
+        String message = String.format("The food Item: ( %s ) has been removed", foodItemName);
         foodItemService.deleteFoodItemById(id);
+        return new ResponseEntity<>(message,HttpStatus.OK);
+
+
     }
 
 

@@ -13,7 +13,7 @@ public interface FoodItemRepository extends JpaRepository <FoodItem, Long>  {
 
 
     Optional<FoodItem> findById(Long id);
-    Optional<FoodItem> findByName(String foodItem);
+   List<FoodItem> findByName(String name);
     List<FoodItem> findByFoodGroup(FoodGroup foodGroup);
 
 

@@ -30,8 +30,8 @@ public class FoodItemService {
     }
 
     // get a specific foodItem by name:
-    public Optional<FoodItem> getByName(String foodItem){
-        return foodItemRepository.findByName(foodItem);
+    public List<FoodItem> getFoodItemByName(String name){
+        return foodItemRepository.findByName(name);
     }
 
     // get foodItems by GroupName:
@@ -45,14 +45,6 @@ public class FoodItemService {
         foodItemRepository.save(foodItem);
         return foodItem;
     }
-
-//    public void addNewFoodItem(String name,FoodGroup foodGroup) {
-//        String name = (userParams.get("username"));
-//        String password = (userParams.get("password"));
-//        String email = (userParams.get("email"));
-//        User user = new User(username, password,email);
-//        saveUser(user);
-//    }
 
     //Delete FoodItem:
 
