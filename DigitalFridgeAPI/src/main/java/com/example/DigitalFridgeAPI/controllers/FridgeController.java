@@ -75,18 +75,18 @@ public class FridgeController {
                  return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
              }
     }
-    @PostMapping("/{fridgeId}/fridgeItem")
-    public ResponseEntity<FridgeItem> addNewFridgeItem(
-            @PathVariable Fridge fridgeId,
-            @RequestBody FoodItem foodItem,
-            @RequestBody  Integer expiryDate,
-            @RequestBody  Float quantity,
-            @RequestBody  Boolean isExpired)
-    {
-        FridgeItem fridgeItem = new FridgeItem(fridgeId,foodItem,expiryDate,quantity,isExpired);
-        fridgeItemService.addNewItem(fridgeItem);
-        return ResponseEntity.ok().body(fridgeItem);
-    }
+//    @PostMapping("/{fridgeId}/fridgeItem")
+//    public ResponseEntity<FridgeItem> addNewFridgeItem(
+//            @PathVariable Fridge fridgeId,
+//            @RequestBody FoodItem foodItem,
+//            @RequestBody  Integer expiryDate,
+//            @RequestBody  Float quantity,
+//            @RequestBody  Boolean isExpired)
+//    {
+//        FridgeItem fridgeItem = new FridgeItem(frifoodItem,expiryDate,quantity,isExpired);
+//        fridgeItemService.addNewItem(fridgeItem);
+//        return ResponseEntity.ok().body(fridgeItem);
+//    }
 
     @PatchMapping("/{fridgeId}/fridgeItem/{foodId}"
 
