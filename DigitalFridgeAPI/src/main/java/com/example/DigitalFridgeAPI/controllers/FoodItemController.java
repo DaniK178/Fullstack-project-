@@ -84,7 +84,7 @@ public class FoodItemController {
     }
 
 //DELETE MAPPING (remove)
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}") //localhost:8080/foodItems/delete/1 (or any other id)
     public void deleteById(@PathVariable Long id) {
         foodItemService.deleteFoodItemById(id);
     }
