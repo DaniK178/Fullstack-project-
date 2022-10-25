@@ -99,6 +99,12 @@ public class Dataloader implements ApplicationRunner {
         user2.setFavourites(favourites2);
         userRepository.save(user2);
 
+        ShoppingList shoppingList1 = new ShoppingList("shoppingList1",fridge1);
+        shoppingListRepository.save(shoppingList1);
+
+        ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5);
+        shoppingListItemRepository.save(shoppingListItem1);
+
 
 
 

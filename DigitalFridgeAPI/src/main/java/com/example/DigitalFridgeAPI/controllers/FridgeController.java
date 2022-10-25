@@ -30,7 +30,7 @@ public class FridgeController {
     @Autowired
     ShoppingListItemService shoppingListItemService;
 
-
+// FRIDGE METHODS
     @GetMapping
     public ResponseEntity<List<Fridge>> getAllFridges() {
         List<Fridge> fridges = fridgeService.getAllFridges();
@@ -43,19 +43,11 @@ public class FridgeController {
         return fridge.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(null, HttpStatus.NOT_FOUND));
     }
 
-    //create a new fridge
-
     @PostMapping
     public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
         Fridge newFridge = fridgeService.addNewFridge(fridge);
         return new ResponseEntity<>(fridge, HttpStatus.CREATED);
     }
-
-    //delete a fridge
-//    @DeleteMapping(value = "/delete/{id}")
-//    public void deleteById(@PathVariable Long id) {
-//        fridgeService.deleteFridgeById(id);
-//    }
 
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<String> deleteFridgeById(@PathVariable Long id){
@@ -64,7 +56,7 @@ public class FridgeController {
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
-    //Fridge Item
+    //FRIDGE ITEMS ----
 
     @GetMapping("/{fridgeId}/fridgeItem")
     public ResponseEntity<List<FridgeItem>> getAllFridgeItems(@PathVariable Long fridgeId) {
@@ -83,24 +75,62 @@ public class FridgeController {
                  return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
              }
     }
+    @PostMapping("/{fridgeId}/fridgeItem")
+    public ResponseEntity<FridgeItem> addNewFridgeItem(
+            @PathVariable Fridge fridgeId,
+            @RequestBody FoodItem foodItem,
+            @RequestBody  Integer expiryDate,
+            @RequestBody  Float quantity,
+            @RequestBody  Boolean isExpired)
+    {
+        FridgeItem fridgeItem = new FridgeItem(fridgeId,foodItem,expiryDate,quantity,isExpired);
+        fridgeItemService.addNewItem(fridgeItem);
+        return ResponseEntity.ok().body(fridgeItem);
+    }
+
+    @PatchMapping("/{fridgeId}/fridgeItem/{foodId}"
+
+    )
+
 
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<String> deleteFridgeById(@PathVariable Long id){
+    public ResponseEntity<String> deleteFridgeItemById(@PathVariable Long id){
         fridgeService.removeFridge(id);
         String message = "Fridge" + id + " has been deleted";
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
+// SHOPPING LIST ITEMS
 
-    @PostMapping
-    public ResponseEntity<ShoppingListItem> addNewFridge(@RequestBody Fridge fridge){
-        Fridge newFridge = fridgeService.addNewFridge(fridge);
-        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
+    //get a shopping list item
+    @GetMapping("/{fridgeId}/shoppingList")
+    public ResponseEntity<ShoppingList> getShoppingListById(@PathVariable Long fridgeId) {
+        Optional <ShoppingList> shoppingList = shoppingListService.getShoppingListByID(fridgeId);
+        if (shoppingList.isPresent()) {
+            return new ResponseEntity<>(shoppingList.get(), HttpStatus.OK);
+
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
     }
 
 
-    }
+    // Add a shopping list item
 
+
+//
+//    @PostMapping
+//    public ResponseEntity<ShoppingListItem> addNewFridgeItem(@RequestBody Fridge fridge){
+//        Fridge newFridge = fridgeService.addNewFridge(fridge);
+//        return new ResponseEntity<>(fridgeItem, HttpStatus.CREATED);
+//    }
+
+    //remove a  shopping list item
+
+    //update a shopping list item
+
+
+    }
 
 
     //Get a fridge by name
@@ -111,34 +141,11 @@ public class FridgeController {
 //    }
 
 
-//
-//    @PostMapping
-//    public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
-//        Fridge newFridge = fridgeService.addNewFridge(fridge);
-//        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
-//    }
-
-//    @PostMapping
-//    public ResponseEntity<ShoppingListItem>addNewShoppingListItemfromFridgeItem(@RequestBody
-//                                                                                    @RequestBody String name,
-//                                                                                @RequestBody float averageRating,
-//                                                                                @RequestBody  int time,
-//                                                                                @RequestBody  int calories,
-//
-//                                                                                )
-
-
-
-
     //Get shopping List for the fridge by ID
     //Get Shopping List by Name
 
     //Get Shopping List for every fridge the user is attached to  - frontend?
 
-
-    //Get Fridge Food items
-
-    //Get fridge food item by id
 
 
 

@@ -26,13 +26,13 @@ import javax.persistence.*;
 
         //ADDITIONAL PROPERTIES
         @Column(name = "quantity")
-        private Float quantity;
+        private Integer quantity;
         @Column(name = "shop")
         private String shop;
 
         //CONSTRUCTOR
 
-        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Float quantity) {
+        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Integer quantity) {
             this.id = new ShoppingListItemCompositeKey(shoppingList.getId(), foodItem.getId());
             this.shoppingList = shoppingList;
             this.foodItem = foodItem;
@@ -67,11 +67,11 @@ import javax.persistence.*;
             this.foodItem = foodItem;
         }
 
-        public Float getQuantity() {
+        public Integer getQuantity() {
             return quantity;
         }
 
-        public void setQuantity(Float quantity) {
+        public void setQuantity(Integer quantity) {
             this.quantity = quantity;
         }
 
