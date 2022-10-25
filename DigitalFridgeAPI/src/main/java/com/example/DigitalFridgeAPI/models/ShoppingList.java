@@ -1,7 +1,11 @@
 package com.example.DigitalFridgeAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity(name = "shopping_lists")
@@ -18,15 +22,20 @@ import java.util.Set;
     private Fridge fridge;
 
     //Shopping List Item - JOIN TABLE
-    @OneToMany(mappedBy = "shoppingList")
-    Set<ShoppingListItem> shoppingListItems;
+
+
+
+    @OneToMany(mappedBy = "shoppingList", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"shoppingList"})
+//    Set<ShoppingListItem> shoppingListItems;
+    List<ShoppingListItem> shoppingListItems;
     // to paste into Food Item
 
 
     public ShoppingList(String name, Fridge fridge) {
         this.name = name;
         this.fridge = fridge;
-        this.shoppingListItems= new HashSet<>();
+        this.shoppingListItems= new ArrayList<>();
 
     }
 
@@ -57,11 +66,19 @@ import java.util.Set;
         this.fridge = fridge;
     }
 
-    public Set<ShoppingListItem> getShoppingListItems() {
+//    public Set<ShoppingListItem> getShoppingListItems() {
+//        return shoppingListItems;
+//    }
+//
+//    public void setShoppingListItems(Set<ShoppingListItem> shoppingListItems) {
+//        this.shoppingListItems = shoppingListItems;
+//    }
+
+    public List<ShoppingListItem> getShoppingListItems() {
         return shoppingListItems;
     }
 
-    public void setShoppingListItems(Set<ShoppingListItem> shoppingListItems) {
+    public void setShoppingListItems(List<ShoppingListItem> shoppingListItems) {
         this.shoppingListItems = shoppingListItems;
     }
 }

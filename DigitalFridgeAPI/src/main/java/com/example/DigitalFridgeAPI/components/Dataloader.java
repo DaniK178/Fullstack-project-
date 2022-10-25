@@ -39,6 +39,15 @@ public class Dataloader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        FoodItem foodItem1 = new FoodItem("bread", FoodGroup.CARBS);
+        FoodItem foodItem2 = new FoodItem("pasta", FoodGroup.CARBS);
+        FoodItem foodItem3 = new FoodItem("carrots", FoodGroup.VEGETABLES);
+        FoodItem foodItem4 = new FoodItem("broccoli", FoodGroup.VEGETABLES);
+
+        foodItemRepository.save(foodItem1);
+        foodItemRepository.save(foodItem2);
+        foodItemRepository.save(foodItem3);
+
         Fridge fridge1 = new Fridge("fridge1");
         Fridge fridge2 = new Fridge("fridge2");
         Fridge fridge3 = new Fridge("fridge3");
@@ -48,14 +57,20 @@ public class Dataloader implements ApplicationRunner {
         fridgeRepository.save(fridge3);
 
 
-        FoodItem foodItem1 = new FoodItem("bread", FoodGroup.CARBS);
-        FoodItem foodItem2 = new FoodItem("pasta", FoodGroup.CARBS);
-        FoodItem foodItem3 = new FoodItem("carrots", FoodGroup.VEGETABLES);
-        FoodItem foodItem4 = new FoodItem("broccoli", FoodGroup.VEGETABLES);
+        ShoppingList shoppingList1 = new ShoppingList("shoppingList1",fridge1);
+        shoppingListRepository.save(shoppingList1);
 
-        foodItemRepository.save(foodItem1);
-        foodItemRepository.save(foodItem2);
-        foodItemRepository.save(foodItem3);
+        ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5);
+        shoppingListItemRepository.save(shoppingListItem1);
+
+        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem1, 7);
+        shoppingListItemRepository.save(shoppingListItem2);
+
+
+
+
+
+
 
         FridgeItem fridgeItem1 = new FridgeItem(fridge1, foodItem1, 310022, 5.23f, true);
         FridgeItem fridgeItem2 = new FridgeItem(fridge1,  foodItem2, 170222, 5.23f, true);
@@ -100,11 +115,7 @@ public class Dataloader implements ApplicationRunner {
         user2.setFavourites(favourites2);
         userRepository.save(user2);
 
-        ShoppingList shoppingList1 = new ShoppingList("shoppingList1",fridge1);
-        shoppingListRepository.save(shoppingList1);
 
-        ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5);
-        shoppingListItemRepository.save(shoppingListItem1);
 
 
 

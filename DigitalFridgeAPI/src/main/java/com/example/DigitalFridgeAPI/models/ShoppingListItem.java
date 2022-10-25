@@ -10,7 +10,12 @@ import javax.persistence.*;
         @EmbeddedId
         @Column (name = "shopping_list_item_id")
         private ShoppingListItemCompositeKey id;
-//        private ShoppingListItemCompositeKey id = new ShoppingListItemCompositeKey();
+
+//        @Id
+//        @GeneratedValue(strategy = GenerationType.IDENTITY)
+//        @Column (name = "shopping_list_item_id")
+//        private long id;
+//
 
         //JOIN TO SHOPPING LIST
         @ManyToOne
@@ -50,6 +55,15 @@ import javax.persistence.*;
         public void setId(ShoppingListItemCompositeKey id) {
             this.id = id;
         }
+
+
+//        public Long getId() {
+//            return id;
+//        }
+//
+//        public void setId(Long id) {
+//            this.id = id;
+//        }
 
         public ShoppingList getShoppingList() {
             return shoppingList;

@@ -32,7 +32,7 @@ public class FridgeController {
     @Autowired
     ShoppingListItemService shoppingListItemService;
 
-// FRIDGE METHODS
+// FRIDGE METHODS ---
     @GetMapping
     public ResponseEntity<List<Fridge>> getAllFridges() {
         List<Fridge> fridges = fridgeService.getAllFridges();
@@ -48,6 +48,7 @@ public class FridgeController {
     @PostMapping
     public ResponseEntity<Fridge> addNewFridge(@RequestBody Fridge fridge){
         Fridge newFridge = fridgeService.addNewFridge(fridge);
+
         return new ResponseEntity<>(fridge, HttpStatus.CREATED);
     }
 
@@ -66,17 +67,6 @@ public class FridgeController {
         return new ResponseEntity<>(fridgeItems, HttpStatus.OK);
     }
 
-//    @GetMapping("/{fridgeId}/{foodItemId}/fridgeItem")
-//    public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long fridgeId, @PathVariable Long foodItemId) {
-//         FridgeItemCompositeKey id = new FridgeItemCompositeKey(fridgeId, foodItemId);
-//         Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemByID(id);
-//             if (fridgeItem.isPresent()) {
-//                 return new ResponseEntity<>(fridgeItem.get(), HttpStatus.OK);
-//
-//             } else {
-//                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-//             }
-//    }
 
     @GetMapping("/fridgeItem/{id}")
     public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long id) {
@@ -102,8 +92,6 @@ public class FridgeController {
         System.out.println("worked till here");
         FridgeItem fridgeItem = new FridgeItem(fridge,foodItem, request.getExpiryDate(), request.getQuantity(), request.getExpired());
         fridgeItemService.addNewItem(fridgeItem);
-//        String message = "item has been added to fridge";
-//        return new ResponseEntity<>(message,HttpStatus.CREATED);
         return ResponseEntity.ok().body(fridgeItem);
     }
 
@@ -122,34 +110,70 @@ public class FridgeController {
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
-// SHOPPING LIST ITEMS
+// SHOPPING LIST ITEMS---------
 
-    //get a shopping list item
-    @GetMapping("/{fridgeId}/shoppingList")
-    public ResponseEntity<ShoppingList> getShoppingListById(@PathVariable Long fridgeId) {
-        Optional <ShoppingList> shoppingList = shoppingListService.getShoppingListByID(fridgeId);
-        if (shoppingList.isPresent()) {
-            return new ResponseEntity<>(shoppingList.get(), HttpStatus.OK);
-
-        } else {
-            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-        }
-    }
-
-
-    // Add a shopping list item
-
-
-//
 //    @PostMapping
-//    public ResponseEntity<ShoppingListItem> addNewFridgeItem(@RequestBody Fridge fridge){
+//    public ResponseEntity<ShoppingList> addNewFridge(@RequestBody Fridge fridge){
 //        Fridge newFridge = fridgeService.addNewFridge(fridge);
-//        return new ResponseEntity<>(fridgeItem, HttpStatus.CREATED);
+//        return new ResponseEntity<>(fridge, HttpStatus.CREATED);
 //    }
 
-    //remove a  shopping list item
+    //Post a shopping List Item
+//    @PostMapping("/{fridgeId}/shoppingList/{foodItemId}")
+//    public ResponseEntity<ShoppingListItem> addNewShoppingListItem(
+//            @PathVariable Long fridgeId,
+//            @PathVariable Long foodItemId,
+//            @RequestBody ShoppingListRequestPojo request)
+//    {
+//        ShoppingList shoppingList = shoppingListService.getShoppingListByID(fridgeId).get();
+//        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
+//        System.out.println("worked till here");
+//        ShoppingListItem shoppingListItem = new ShoppingListItem(shoppingList, foodItem, request.getQuantity());
+//        shoppingListItemService.addNewItem(shoppingListItem);
+//        return ResponseEntity.ok().body(shoppingListItem);
+//    }
+//
+//    //---Get Shopping List --
+//    @GetMapping("/{fridgeId}/shoppingList")
+//    public ResponseEntity<ShoppingList> getShoppingListById(@PathVariable Long fridgeId) {
+//        Optional <ShoppingList> shoppingList = shoppingListService.getShoppingListByID(fridgeId);
+//        if (shoppingList.isPresent()) {
+//            return new ResponseEntity<>(shoppingList.get(), HttpStatus.OK);
+//
+//        } else {
+//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//        }
+//    }
+//
+//    //---Get ALl Shopping List Items --
+//
+////    @GetMapping("{fridgeID}/shoppingList")
+////    public ResponseEntity<List<ShoppingListItem>> getAllShoppingListItem(@PathVariable Long fridgeId) {
+////        List<ShoppingListItem> shoppingListItems = shoppingListItemService.getAllShoppingListItems(fridgeId);
+////        return new ResponseEntity<>(shoppingListItems, HttpStatus.OK);
+////    }
+//
+//    //---Get Shopping List Item by ID --
+//
+//    @GetMapping("shoppingList/{id}")
+//    public ResponseEntity<ShoppingListItem> getShoppingListItemByID(@PathVariable Long id) {
+//        Optional <ShoppingListItem> shoppingListItem = shoppingListItemService.getShoppingListItemById(id);
+//        if (shoppingListItem.isPresent()) {
+//            return new ResponseEntity<>(shoppingListItem.get(), HttpStatus.OK);
+//
+//        } else {
+//            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//        }
+//    }
+//
+//   // - Delete shopping List Item by ID
+//    @DeleteMapping(value = "{fridgeId}/delete/shoppingList/{id}")
+//    public ResponseEntity<String> deleteShoppingListItemById(@PathVariable Long id){
+//        shoppingListItemService.removeShoppingListItem(id);
+//        String message = "Shopping List Item " + id + " has been deleted";
+//        return new ResponseEntity<>(message,HttpStatus.OK);
+//    }
 
-    //update a shopping list item
 
 
     }

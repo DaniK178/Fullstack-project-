@@ -2,8 +2,10 @@ package com.example.DigitalFridgeAPI.services;
 
 import com.example.DigitalFridgeAPI.models.Fridge;
 import com.example.DigitalFridgeAPI.models.FridgeItem;
+import com.example.DigitalFridgeAPI.models.ShoppingList;
 import com.example.DigitalFridgeAPI.repositories.FridgeItemRepository;
 import com.example.DigitalFridgeAPI.repositories.FridgeRepository;
+import com.example.DigitalFridgeAPI.repositories.ShoppingListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,20 @@ public class FridgeService {
     @Autowired
     FridgeItemRepository fridgeItemRepository;
 
+    @Autowired
+    ShoppingListRepository shoppingListRepository;
+
     //Add a new fridge
     public Fridge addNewFridge (Fridge fridge){
         fridgeRepository.save(fridge);
         return fridge;
     }
+
+//    public Fridge addNewFridge (Fridge fridge, ShoppingList shoppingList){
+//        fridgeRepository.save(fridge);
+//        shoppingListRepository.save(shoppingList);
+//        return fridge;
+//    }
 
     //GET ALL FRIDGES
     public List<Fridge> getAllFridges(){
