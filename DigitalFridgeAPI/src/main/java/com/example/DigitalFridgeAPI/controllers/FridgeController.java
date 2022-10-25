@@ -132,12 +132,12 @@ public class FridgeController {
 
 
 
-    @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<String> deleteFridgeItemById(@PathVariable Long id){
-        fridgeService.removeFridge(id);
-        String message = "Fridge" + id + " has been deleted";
-        return new ResponseEntity<>(message,HttpStatus.OK);
-    }
+//    @DeleteMapping(value = "/delete/foodItem/{id}")
+//    public ResponseEntity<String> deleteFridgeItemById(@PathVariable Long id){
+//        fridgeItemService.removeFridge(id);
+//        String message = "Fridge" + id + " has been deleted";
+//        return new ResponseEntity<>(message,HttpStatus.OK);
+//    }
 
 // SHOPPING LIST ITEMS
 
