@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,32 +39,22 @@ public class FoodItemController {
     }
 
     //method: find foodItem by name: //test
-    @GetMapping("/name")
-    public void findByName(@PathVariable String foodItem) {
-        foodItemService.getByName(foodItem);
-    }
-
-    //method: find foodItem by food Group: //test
-
-    @GetMapping("/{foodGroup}") // localhost:8080/
-    public ResponseEntity<List<FoodGroup>> searchFoodItemByFoodGroup (
-            @PathVariable String foodGroup) {
-        String fg = foodGroup.toUpperCase();
-        List<FoodGroup> found = foodItemRepository.findByFoodGroup(FoodGroup.valueOf(fg));
-        return new ResponseEntity<>(found, HttpStatus.OK);
-    }
-
-
-
-
-//    @GetMapping("/foodGroup")
-//    public void findByFoodGroup(@PathVariable String foodItem){
-//        foodItemService.getByFoodGroup(foodItem);
+//    @GetMapping("/name")
+//    public ResponseEntity<List<FoodItem>> getAllFoodItemsByName(
+//            @RequestParam String foodItem1) {
+//        foodItemService.getByName(foodItem);
 //    }
 
+    //method: find foodItem by food Group: 
+    @GetMapping(value = "/foodGroup") // localhost:8080/foodItems/foodGroup + type enum in JSON e.g. "VEGETABLES"
+    public ResponseEntity<List<FoodItem>> getFoodItemByFoodGroup(
+            @RequestBody FoodGroup foodGroup
+            ){
+        List<FoodItem> foodItems = foodItemService.getAllFoodItemsByFoodGroup(foodGroup);
+        return new ResponseEntity<>(foodItems, HttpStatus.OK);
+    }
 
     //Method to get foodItem by id:
-
     @GetMapping("/{id}") // localhost:8080/foodItems/2
     public ResponseEntity<FoodItem> getFoodItemsById(@PathVariable Long id) {
         Optional<FoodItem> foodItem = foodItemService.getFoodItemById(id);

@@ -35,9 +35,9 @@ public class FoodItemService {
     }
 
     // get foodItems by GroupName:
-//    public List<FoodItem> getByFoodGroup(String foodItem){
-//        return foodItemRepository.findByFoodGroup(foodItem);
-//    }
+    public List<FoodItem> getAllFoodItemsByFoodGroup(FoodGroup foodGroup){
+        return foodItemRepository.findByFoodGroup(foodGroup);
+    }
 
     //Add New FoodItem:
 
