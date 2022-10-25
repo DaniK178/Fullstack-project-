@@ -1,14 +1,14 @@
 package com.example.DigitalFridgeAPI.models;
 
-public class ShoppingListRequestPojo {
+public class ShoppingListItemRequestPojo {
 
     private Integer quantity;
 
-    public ShoppingListRequestPojo(Integer quantity) {
+    public ShoppingListItemRequestPojo(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public ShoppingListRequestPojo() {
+    public ShoppingListItemRequestPojo() {
     }
 
     public Integer getQuantity() {

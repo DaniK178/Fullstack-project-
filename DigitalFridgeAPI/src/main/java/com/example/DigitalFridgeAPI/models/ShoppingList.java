@@ -27,7 +27,6 @@ import java.util.Set;
 
     @OneToMany(mappedBy = "shoppingList", cascade = CascadeType.ALL)
     @JsonIgnoreProperties({"shoppingList"})
-//    Set<ShoppingListItem> shoppingListItems;
     List<ShoppingListItem> shoppingListItems;
     // to paste into Food Item
 
@@ -58,20 +57,12 @@ import java.util.Set;
         this.name = name;
     }
 
-    public Fridge getFridge() {
-        return fridge;
-    }
-
-    public void setFridge(Fridge fridge) {
-        this.fridge = fridge;
-    }
-
-//    public Set<ShoppingListItem> getShoppingListItems() {
-//        return shoppingListItems;
+//    public Fridge getFridge() {
+//        return fridge;
 //    }
 //
-//    public void setShoppingListItems(Set<ShoppingListItem> shoppingListItems) {
-//        this.shoppingListItems = shoppingListItems;
+//    public void setFridge(Fridge fridge) {
+//        this.fridge = fridge;
 //    }
 
     public List<ShoppingListItem> getShoppingListItems() {

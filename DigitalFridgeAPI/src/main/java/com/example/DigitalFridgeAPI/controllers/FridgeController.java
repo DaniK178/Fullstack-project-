@@ -123,7 +123,7 @@ public class FridgeController {
 //    public ResponseEntity<ShoppingListItem> addNewShoppingListItem(
 //            @PathVariable Long fridgeId,
 //            @PathVariable Long foodItemId,
-//            @RequestBody ShoppingListRequestPojo request)
+//            @RequestBody ShoppingListItemRequestPojo request)
 //    {
 //        ShoppingList shoppingList = shoppingListService.getShoppingListByID(fridgeId).get();
 //        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
@@ -174,6 +174,23 @@ public class FridgeController {
 //        return new ResponseEntity<>(message,HttpStatus.OK);
 //    }
 
+    @PostMapping(value="/{fridgeId}/shoppingList")
+    public ResponseEntity addShoppingList( @RequestBody ShoppingListRequest shoppingListRequest,
+//                                           @RequestBody ShoppingList shoppingList,
+                                           @PathVariable Long fridgeId)
+    {
+//        Fridge fridge = fridgeService.getFridgeByID(fridgeId).get();
+//        ShoppingList newShoppingList = new ShoppingList(shoppingList.getName(), fridge);
+        fridgeService.addShoppingList(shoppingListRequest.getName(), fridgeId);
+//        return ResponseEntity.ok().body(shoppingList);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+//    @PostMapping(value="/favourites/{userId}")
+//    public ResponseEntity addFavList(@RequestBody Map<String, String> bodyParams,@PathVariable Long userId) {
+//        userService.addFavList(bodyParams.get("name"),userId);
+//        return new ResponseEntity<>(null, HttpStatus.CREATED);
+//    }
 
 
     }

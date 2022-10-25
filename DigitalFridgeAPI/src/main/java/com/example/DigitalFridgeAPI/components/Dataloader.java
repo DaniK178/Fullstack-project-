@@ -56,20 +56,28 @@ public class Dataloader implements ApplicationRunner {
         fridgeRepository.save(fridge2);
         fridgeRepository.save(fridge3);
 
-
         ShoppingList shoppingList1 = new ShoppingList("shoppingList1",fridge1);
+        ShoppingList shoppingList2 = new ShoppingList("shoppingList2",fridge2);
+        ShoppingList shoppingList3 = new ShoppingList("shoppingList3",fridge3);
+
         shoppingListRepository.save(shoppingList1);
+        shoppingListRepository.save(shoppingList2);
+        shoppingListRepository.save(shoppingList3);
+
+
 
         ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5);
+        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem2, 7);
         shoppingListItemRepository.save(shoppingListItem1);
-
-        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem1, 7);
         shoppingListItemRepository.save(shoppingListItem2);
 
+        fridge1.setShoppingList(shoppingList1);
+        fridge2.setShoppingList(shoppingList2);
+        fridge3.setShoppingList(shoppingList3);
 
-
-
-
+        fridgeRepository.save(fridge1);
+        fridgeRepository.save(fridge2);
+        fridgeRepository.save(fridge3);
 
 
         FridgeItem fridgeItem1 = new FridgeItem(fridge1, foodItem1, 310022, 5.23f, true);
