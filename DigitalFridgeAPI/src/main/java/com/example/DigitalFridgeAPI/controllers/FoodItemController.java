@@ -6,6 +6,7 @@ import com.example.DigitalFridgeAPI.models.FoodItem;
 import com.example.DigitalFridgeAPI.repositories.FoodItemRepository;
 import com.example.DigitalFridgeAPI.services.FoodItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Repository;
@@ -44,10 +45,21 @@ public class FoodItemController {
 
     //method: find foodItem by food Group: //test
 
-    @GetMapping("/foodGroup")
-    public void findByFoodGroup(@PathVariable String foodItem){
-        foodItemService.getByFoodGroup(foodItem);
+    @GetMapping("/{foodGroup}") // localhost:8080/
+    public ResponseEntity<List<FoodGroup>> searchFoodItemByFoodGroup (
+            @PathVariable String foodGroup) {
+        String fg = foodGroup.toUpperCase();
+        List<FoodGroup> found = foodItemRepository.findByFoodGroup(FoodGroup.valueOf(fg));
+        return new ResponseEntity<>(found, HttpStatus.OK);
     }
+
+
+
+
+//    @GetMapping("/foodGroup")
+//    public void findByFoodGroup(@PathVariable String foodItem){
+//        foodItemService.getByFoodGroup(foodItem);
+//    }
 
 
     //Method to get foodItem by id:
