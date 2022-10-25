@@ -108,6 +108,10 @@ nav ul li ul li a {
   justify-content: center;
   align-items: center;
   min-height: 60vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .form-box{
   margin-top: 7vh;
@@ -149,9 +153,10 @@ label{
   font-weight: 600;
   margin:5px;
   font-size: 11pt;
-  background: transparent;
+  background:transparent;
   transition: 1s;
   outline: none;
+  position:relative;
 }
 /* additem button */
 .additem-btn{
@@ -182,6 +187,7 @@ label{
   transition: 600ms;
   opacity: 1;
   visibility: visible;
+  position:absolute;
 }
 .show.active{
   transform: translateY(100 px) scale(0) rotateY(170 edge);

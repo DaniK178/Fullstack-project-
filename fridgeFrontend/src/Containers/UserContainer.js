@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthService from "../Components/Authentication/services/authService";
 import Login from "../Components/Authentication/loginComponents/login";
@@ -38,14 +38,15 @@ const UserContainer = () => {
   };
 
   return (
-    <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+    
+    <BrowserRouter>
+      <div className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
-          bezKoder
+          DigitalFridge
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
-            <Link to={"/home"} className="nav-link">
+            <Link to={"/home"} className="nav-link"> 
               Home
             </Link>
           </li>
@@ -68,9 +69,9 @@ const UserContainer = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <a href="/login" className="nav-link" onClick={logOut}>
+              <Link to ="/login" className="nav-link" onClick={logOut}>
                 LogOut
-              </a>
+              </Link>
             </li>
           </div>
         ) : (
@@ -88,7 +89,7 @@ const UserContainer = () => {
             </li>
           </div>
         )}
-      </nav>
+      </div>
 
       <div className="container mt-3">
         <Routes>
@@ -101,7 +102,7 @@ const UserContainer = () => {
         </Routes>
       </div>
 
-    </div>
+    </BrowserRouter>
   );
 };
 

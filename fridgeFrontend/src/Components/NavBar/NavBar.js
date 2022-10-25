@@ -1,16 +1,22 @@
 import React from "react"
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import ShoppingList from "../ShoppingList";
-import Login from "../Login";
 import FavouriteList from "../FavouriteList";
-import Fridge from "../Fridge";
+import currentFridge from "../currentFridge";
 import "./NavBar.css";
+import addFridge from "../addFridge";
+import fridgeList from "../fridgeList";
 
 
 const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
     const handleClick = () => {
       handleAddItemClick();
     };
+
+    // const categoryOptions = categories ? categories.map((category) => {
+    //   return <option key={category.categoryid}>{category}</option>
+    // }); 
+    // category option tag
 
 
     return (
@@ -20,12 +26,13 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
      <nav className="navbar">
         <div className="nav-links">
         <ul className="menu">
-            <li><Link to = '/' className="link">Login</Link></li>
-            <li><Link to = '/Fridge' className="link">Fridge</Link></li>
+          {/* need add fridge function  */}
+            <li><Link to = '/addFridge' className="link">Add Fridge</Link></li> 
+            <li><Link to = '/currentFridge' className="link">Current Fridge</Link></li>
             <li><Link to = '/ShoppingList' className="link">Shopping List</Link></li>
-            <li><a href="#" className="link">User</a>
+            <li><a href="user profile" className="link">User</a>
             <ul className="dropdown">
-                <li><Link to = '/fridge' className="link">Fridges</Link></li>
+                <li><Link to = '/fridgeList' className="link">Fridges</Link></li>
                 <li><Link to = '/FavouriteList' className="link">Favourites</Link></li>
                 <li><Link to = '/login' className="link">Log Out</Link></li>
             </ul>
@@ -41,13 +48,15 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
         <div className="form-box"> 
           <form>
             <h1 className="additem-text">Add Item</h1>
-            <label>Food Name</label>
+            <br/>
+            <label className="additem-box">Food Name</label>
             <br></br>
             <input type="text" name="foodname" className="additem-box" />
+            <label className="additem-text">Category</label> 
+            {/* Using option tag to enable Category choose */}
             <br></br>
-            <label>Category</label> //Using option tag to enable Category choose
-            <br></br>
-            <input type="text" name="expiry date" className="additem-box" />
+            <input type="text"  className="additem-box" />
+            {/* <select> <option> select category </option> </select>*/ }
             <br></br>
             <input type="submit" value="Add now" className="additem-btn" />
           </form>
@@ -60,9 +69,11 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
    </nav>
 
         <Routes>
-        <Route path="/fridge" element={<Fridge />}/>
-        <Route path="/shoppingList" element={<ShoppingList />}/>
+        <Route path="/addfridge" element={<addFridge />} />
+        <Route path="/currentfridge" element={<curerntFridge />}/>
+        <Route path="/ShoppingList" element={<ShoppingList />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
+        <Route path="/fridgeList" element={<fridgeList/>} />
     </Routes>
     </BrowserRouter>
 
