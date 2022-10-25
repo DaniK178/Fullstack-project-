@@ -95,4 +95,7 @@ public class User {
     public void setUserFridges(List<Fridge> userFridges) {
         this.userFridges = userFridges;
     }
+    public void addFridge(Fridge fridge){
+        this.userFridges.add(fridge);
+    }
 }

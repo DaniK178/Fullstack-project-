@@ -107,7 +107,9 @@ public class Dataloader implements ApplicationRunner {
         shoppingListItemRepository.save(shoppingListItem1);
 
 
-
+//adding a fridge to user
+        user1.addFridge(fridge1);
+        userRepository.save(user1);
 
 
 
