@@ -51,15 +51,16 @@ public class Dataloader implements ApplicationRunner {
         FoodItem foodItem1 = new FoodItem("bread", FoodGroup.CARBS);
         FoodItem foodItem2 = new FoodItem("pasta", FoodGroup.CARBS);
         FoodItem foodItem3 = new FoodItem("carrots", FoodGroup.VEGETABLES);
+        FoodItem foodItem4 = new FoodItem("broccoli", FoodGroup.VEGETABLES);
 
         foodItemRepository.save(foodItem1);
         foodItemRepository.save(foodItem2);
         foodItemRepository.save(foodItem3);
 
         FridgeItem fridgeItem1 = new FridgeItem(fridge1, foodItem1, 310022, 5.23f, true);
-        FridgeItem fridgeItem2 = new FridgeItem(fridge1, foodItem2, 170222, 5.23f, true);
+        FridgeItem fridgeItem2 = new FridgeItem(fridge1,  foodItem2, 170222, 5.23f, true);
         FridgeItem fridgeItem3 = new FridgeItem(fridge2, foodItem3, 310422, 5.23f, false);
-        FridgeItem fridgeItem4 = new FridgeItem(fridge2, foodItem1, 210522, 5.23f, true);
+        FridgeItem fridgeItem4 = new FridgeItem( fridge2, foodItem1, 210522, 5.23f, true);
         FridgeItem fridgeItem5 = new FridgeItem(fridge3, foodItem2, 050422, 5.23f, false);
 
         fridgeItemRepository.save(fridgeItem1);
@@ -98,6 +99,12 @@ public class Dataloader implements ApplicationRunner {
         favListItemRepository.save(favListItem3_2);
         user2.setFavourites(favourites2);
         userRepository.save(user2);
+
+        ShoppingList shoppingList1 = new ShoppingList("shoppingList1",fridge1);
+        shoppingListRepository.save(shoppingList1);
+
+        ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5);
+        shoppingListItemRepository.save(shoppingListItem1);
 
 
 

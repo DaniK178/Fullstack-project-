@@ -31,9 +31,12 @@ public class FridgeItemService {
     }
 
 //    get fridgeItem by ID
-    public Optional<FridgeItem> getFridgeItemByID(FridgeItemCompositeKey id){
+    public Optional<FridgeItem> getFridgeItemByID(Long id){
         return fridgeItemRepository.findById(id);
     }
+
+
+
 //
     //get item by name
 //    public List<FridgeItem> getFridgeItemByName(String name){

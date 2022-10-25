@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FridgeItemRepository extends JpaRepository<FridgeItem, FridgeItemCompositeKey> {
+public interface FridgeItemRepository extends JpaRepository<FridgeItem, Long> {
 
     List<FridgeItem> findAllByFridgeId (Long id);
 
