@@ -1,10 +1,8 @@
 package com.example.DigitalFridgeAPI.controllers;
 
 import com.example.DigitalFridgeAPI.models.*;
-import com.example.DigitalFridgeAPI.services.FridgeItemService;
-import com.example.DigitalFridgeAPI.services.FridgeService;
-import com.example.DigitalFridgeAPI.services.ShoppingListItemService;
-import com.example.DigitalFridgeAPI.services.ShoppingListService;
+import com.example.DigitalFridgeAPI.services.*;
+import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 
 @RestController
 //@RequestMapping = endpoint
@@ -23,6 +23,8 @@ public class FridgeController {
 
     @Autowired
     FridgeItemService fridgeItemService;
+    @Autowired
+    FoodItemService foodItemService;
 
     @Autowired
     ShoppingListService shoppingListService;
@@ -64,33 +66,70 @@ public class FridgeController {
         return new ResponseEntity<>(fridgeItems, HttpStatus.OK);
     }
 
-    @GetMapping("/{fridgeId}/fridgeItem/{foodId}")
-    public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long fridgeId, @PathVariable Long foodId) {
-         FridgeItemCompositeKey id = new FridgeItemCompositeKey(fridgeId, foodId);
-         Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemByID(id);
-             if (fridgeItem.isPresent()) {
-                 return new ResponseEntity<>(fridgeItem.get(), HttpStatus.OK);
-
-             } else {
-                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
-             }
-    }
-//    @PostMapping("/{fridgeId}/fridgeItem")
-//    public ResponseEntity<FridgeItem> addNewFridgeItem(
-//            @PathVariable Fridge fridgeId,
-//            @RequestBody FoodItem foodItem,
-//            @RequestBody  Integer expiryDate,
-//            @RequestBody  Float quantity,
-//            @RequestBody  Boolean isExpired)
-//    {
-//        FridgeItem fridgeItem = new FridgeItem(frifoodItem,expiryDate,quantity,isExpired);
-//        fridgeItemService.addNewItem(fridgeItem);
-//        return ResponseEntity.ok().body(fridgeItem);
+//    @GetMapping("/{fridgeId}/{foodItemId}/fridgeItem")
+//    public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long fridgeId, @PathVariable Long foodItemId) {
+//         FridgeItemCompositeKey id = new FridgeItemCompositeKey(fridgeId, foodItemId);
+//         Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemByID(id);
+//             if (fridgeItem.isPresent()) {
+//                 return new ResponseEntity<>(fridgeItem.get(), HttpStatus.OK);
+//
+//             } else {
+//                 return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+//             }
 //    }
 
-    @PatchMapping("/{fridgeId}/fridgeItem/{foodId}"
+    @GetMapping("/fridgeItem/{id}")
+    public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long id) {
+        Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemByID(id);
+        if (fridgeItem.isPresent()) {
+            return new ResponseEntity<>(fridgeItem.get(), HttpStatus.OK);
 
-    )
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/{fridgeId}/{foodItemId}/fridgeItem")
+    public ResponseEntity<FridgeItem> addNewFridgeItem(
+            @PathVariable Long fridgeId,
+            @PathVariable Long foodItemId,
+            @RequestBody RequestPojo request
+            )
+
+    {   System.out.println("first print");
+        Fridge fridge = fridgeService.getFridgeByID(fridgeId).get();
+        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
+        System.out.println("worked till here");
+        FridgeItem fridgeItem = new FridgeItem(fridge,foodItem, request.getExpiryDate(), request.getQuantity(), request.getExpired());
+        fridgeItemService.addNewItem(fridgeItem);
+//        String message = "item has been added to fridge";
+//        return new ResponseEntity<>(message,HttpStatus.CREATED);
+        return ResponseEntity.ok().body(fridgeItem);
+    }
+
+//    @PatchMapping("/{fridgeId}/fridgeItem/{foodId}")
+//    public ResponseEntity<FridgeItem> updateAFridgeItem (
+//
+//    )
+
+//    @PatchMapping(value = "/{id}/email")
+//    public ResponseEntity<User> updateUserEmail(@PathVariable Long id, @RequestBody Map<String, String> bodyParams) {
+//        User user = userService.getUserById(id).get();
+//        userService.updateUserEmail(id, bodyParams.get("email"));
+//        userService.saveUser(user);
+//        return new ResponseEntity<>(user, HttpStatus.OK);
+//    }
+
+//    public void updateUserEmail (Long id, String email) {
+//        User user = userRepository.findById(id).get();
+//        user.setEmail(email);
+//    }
+//
+//    public void updateUserFullName (Long id, String fullName) {
+//        User user = userRepository.findById(id).get();
+//        user.setFullName(fullName);
+//    }
+
 
 
     @DeleteMapping(value = "/delete/{id}")

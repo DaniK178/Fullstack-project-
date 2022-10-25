@@ -51,6 +51,7 @@ public class Dataloader implements ApplicationRunner {
         FoodItem foodItem1 = new FoodItem("bread", FoodGroup.CARBS);
         FoodItem foodItem2 = new FoodItem("pasta", FoodGroup.CARBS);
         FoodItem foodItem3 = new FoodItem("carrots", FoodGroup.VEGETABLES);
+        FoodItem foodItem4 = new FoodItem("broccoli", FoodGroup.VEGETABLES);
 
         foodItemRepository.save(foodItem1);
         foodItemRepository.save(foodItem2);

@@ -82,23 +82,6 @@ public class Fridge {
         this.name = name;
     }
 
-//    public Set<FridgeItem> getExpiryDate() {
-//        return expiryDate;
-//    }
-//
-//    public void setExpiryDate(Set<FridgeItem> expiryDate) {
-//        this.expiryDate = expiryDate;
-//    }
-//
-//    public Set<FridgeItem> getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setQuantity(Set<FridgeItem> quantity) {
-//        this.quantity = quantity;
-//    }
-
-
     public ShoppingList getShoppingList() {
         return shoppingList;
     }
