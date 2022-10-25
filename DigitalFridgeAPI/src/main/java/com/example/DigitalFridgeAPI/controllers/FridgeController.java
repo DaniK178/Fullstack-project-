@@ -80,7 +80,7 @@ public class FridgeController {
 
     @GetMapping("/fridgeItem/{id}")
     public ResponseEntity<FridgeItem> getFridgeItemByID(@PathVariable Long id) {
-        Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemByID(id);
+        Optional <FridgeItem> fridgeItem = fridgeItemService.getFridgeItemById(id);
         if (fridgeItem.isPresent()) {
             return new ResponseEntity<>(fridgeItem.get(), HttpStatus.OK);
 
@@ -107,37 +107,20 @@ public class FridgeController {
         return ResponseEntity.ok().body(fridgeItem);
     }
 
-//    @PatchMapping("/{fridgeId}/fridgeItem/{foodId}")
-//    public ResponseEntity<FridgeItem> updateAFridgeItem (
-//
-//    )
-
-//    @PatchMapping(value = "/{id}/email")
-//    public ResponseEntity<User> updateUserEmail(@PathVariable Long id, @RequestBody Map<String, String> bodyParams) {
-//        User user = userService.getUserById(id).get();
-//        userService.updateUserEmail(id, bodyParams.get("email"));
-//        userService.saveUser(user);
-//        return new ResponseEntity<>(user, HttpStatus.OK);
-//    }
-
-//    public void updateUserEmail (Long id, String email) {
-//        User user = userRepository.findById(id).get();
-//        user.setEmail(email);
-//    }
-//
-//    public void updateUserFullName (Long id, String fullName) {
-//        User user = userRepository.findById(id).get();
-//        user.setFullName(fullName);
-//    }
+    @PatchMapping(value = "/fridgeItem/{id}")
+    public ResponseEntity<FridgeItem> updateFridgeItemExpiryDate(@PathVariable Long id, @RequestBody RequestPojo request) {
+        FridgeItem fridgeItem = fridgeItemService.getFridgeItemById(id).get();
+        fridgeItemService.updateExpiryDate(id, request.getExpiryDate());
+        return new ResponseEntity<>(fridgeItem, HttpStatus.OK);
+    }
 
 
-
-//    @DeleteMapping(value = "/delete/foodItem/{id}")
-//    public ResponseEntity<String> deleteFridgeItemById(@PathVariable Long id){
-//        fridgeItemService.removeFridge(id);
-//        String message = "Fridge" + id + " has been deleted";
-//        return new ResponseEntity<>(message,HttpStatus.OK);
-//    }
+    @DeleteMapping(value = "/delete/foodItem/{id}")
+    public ResponseEntity<String> deleteFridgeItemById(@PathVariable Long id){
+        fridgeItemService.removeFridgeItem(id);
+        String message = "FridgeItem" + id + " has been deleted";
+        return new ResponseEntity<>(message,HttpStatus.OK);
+    }
 
 // SHOPPING LIST ITEMS
 

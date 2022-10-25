@@ -2,6 +2,7 @@ package com.example.DigitalFridgeAPI.services;
 
 import com.example.DigitalFridgeAPI.models.FridgeItem;
 import com.example.DigitalFridgeAPI.models.FridgeItemCompositeKey;
+import com.example.DigitalFridgeAPI.models.User;
 import com.example.DigitalFridgeAPI.repositories.FridgeItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,13 +32,21 @@ public class FridgeItemService {
     }
 
 //    get fridgeItem by ID
-    public Optional<FridgeItem> getFridgeItemByID(Long id){
+    public Optional<FridgeItem> getFridgeItemById(Long id){
         return fridgeItemRepository.findById(id);
     }
 
+    public FridgeItem updateExpiryDate (Long id, Integer expiryDate) {
+        FridgeItem fridgeItem = fridgeItemRepository.findById(id).get();
+        fridgeItem.setExpiryDate(expiryDate);
+        fridgeItemRepository.save(fridgeItem);
+        return fridgeItem;
+    }
 
+    public void removeFridgeItem (Long id){
+        fridgeItemRepository.deleteById(id);
+    }
 
-//
     //get item by name
 //    public List<FridgeItem> getFridgeItemByName(String name){
 //        //you want to search through the name of all the food items listed in the
@@ -48,10 +57,8 @@ public class FridgeItemService {
 //
 //    //update Item
 //
-//    //delete item by ID
-//    public void removeItem (Long id){
-//        fridgeItemRepository.deleteById(id);
-//    }
+    //delete item by ID
+
 
     //delete item by Name
 
