@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/foodItem")    //@RequestMapping = endpoint
+@RequestMapping(value = "/foodItems")    //@RequestMapping = endpoint
 public class FoodItemController {
 
     @Autowired
@@ -27,23 +27,23 @@ public class FoodItemController {
 
     //Method 1: get all foodItems - grab all the foodItems from foodItemRepository (our database)
 
-    @GetMapping("/foodItem/All")
+    @GetMapping // localhost:8080/foodItems
     public ResponseEntity<List<FoodItem>> getAllFoodItems() {
         // the controller will call the getAllFoodItems method from the foodItemService
-        List<FoodItem> foodItems = foodItemService.getAllFoodItems();
-        return new ResponseEntity<>(foodItems, HttpStatus.OK);
+//        List<FoodItem> foodItems = foodItemService.getAllFoodItems();
+        return new ResponseEntity<>(foodItemRepository.findAll(), HttpStatus.OK);
 
     }
 
     //method: find foodItem by name:
-    @GetMapping("/foodItem/name")
+    @GetMapping("/name")
     public void findByName(@PathVariable String foodItem) {
         foodItemService.getByName(foodItem);
     }
 
     //method: find foodItem by food Group:
 
-    @GetMapping("/foodItem/food_Group")
+    @GetMapping("/foodItems/food_Group")
     public void findByFoodGroup(@PathVariable String foodItem){
         foodItemService.getByFoodGroup(foodItem);
     }
