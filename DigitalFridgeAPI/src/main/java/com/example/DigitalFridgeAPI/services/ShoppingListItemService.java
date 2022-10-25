@@ -21,17 +21,27 @@ public class ShoppingListItemService{
         return shoppingListItem;
     }
 
-//    public List<ShoppingListItem> getAllShoppingListItems(Long id){
-//        //we want to look into the fridge Item respository - find where fridge == fridge id
-////        List <FridgeItem> allFridgeItems =
-////        System.out.println(allFridgeItems);
-//        Fr fridgeItemRepository.findAllByFridgeId(id);
-//
-//    }
+    public List<ShoppingListItem> getAllShoppingListItems(Long id){
+    return shoppingListItemRepository.findAllByShoppingListId(id);
 
+  }
 
     public Optional<ShoppingListItem> getShoppingListItemById(Long id) {
         return shoppingListItemRepository.findById(id);
+    }
+
+    public ShoppingListItem updateQuantity (Long id, Integer quantity) {
+        ShoppingListItem shoppingListItem = shoppingListItemRepository.findById(id).get();
+        shoppingListItem.setQuantity(quantity);
+        shoppingListItemRepository.save(shoppingListItem);
+        return shoppingListItem;
+    }
+
+    public ShoppingListItem updateShop (Long id, String shop) {
+        ShoppingListItem shoppingListItem = shoppingListItemRepository.findById(id).get();
+        shoppingListItem.setShop(shop);
+        shoppingListItemRepository.save(shoppingListItem);
+        return shoppingListItem;
     }
 
 

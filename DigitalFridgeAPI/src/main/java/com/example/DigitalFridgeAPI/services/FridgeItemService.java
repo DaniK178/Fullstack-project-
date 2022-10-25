@@ -1,5 +1,6 @@
 package com.example.DigitalFridgeAPI.services;
 
+import com.example.DigitalFridgeAPI.models.FoodItem;
 import com.example.DigitalFridgeAPI.models.FridgeItem;
 import com.example.DigitalFridgeAPI.models.FridgeItemCompositeKey;
 import com.example.DigitalFridgeAPI.models.User;
@@ -53,20 +54,13 @@ public class FridgeItemService {
 //        fridgeItemRepository.findBy().
 //        return;
 //    }
-//
-//
-//    //update Item
-//
-    //delete item by ID
-
-
     //delete item by Name
 
 
     //add to Shopping List
     //for it to access the food item ID, within the fridge item, and add that to the list
     public void addToShoppingList(FridgeItem fridgeItem){
-         Long fridgeItemFoodID = fridgeItem.getFoodItem().getId();
+         FoodItem fridgeItemFood = fridgeItem.getFoodItem();
          //post method  passing in food ID- to create shopping Item
 
 

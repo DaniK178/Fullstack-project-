@@ -66,8 +66,8 @@ public class Dataloader implements ApplicationRunner {
 
 
 
-        ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5);
-        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem2, 7);
+        ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5, "sainsbury");
+        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem2, 7, "tesco");
         shoppingListItemRepository.save(shoppingListItem1);
         shoppingListItemRepository.save(shoppingListItem2);
 

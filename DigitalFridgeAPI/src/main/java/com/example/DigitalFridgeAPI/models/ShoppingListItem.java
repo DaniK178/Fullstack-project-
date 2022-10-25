@@ -40,12 +40,12 @@ import javax.persistence.*;
 
         //CONSTRUCTOR
 
-        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Integer quantity) {
+        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Integer quantity, String shop) {
 //            this.id = new ShoppingListItemCompositeKey(shoppingList.getId(), foodItem.getId());
             this.shoppingList = shoppingList;
             this.foodItem = foodItem;
             this.quantity = quantity;
-            this.shop = null;
+            this.shop = shop;
         }
 
         public ShoppingListItem() {
