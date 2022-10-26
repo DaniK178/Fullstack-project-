@@ -1,0 +1,7 @@
+.foodItem-title-container {
+    display: flex;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight:bolder;
+    font-size: 25px;
+}
