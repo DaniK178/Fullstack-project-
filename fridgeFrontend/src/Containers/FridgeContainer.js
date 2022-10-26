@@ -5,6 +5,7 @@ import FavouriteList from "../Components/FavouriteList";
 import Fridge from "../Components/currentFridge";
 import NavBar from "../Components/NavBar/NavBar";
 import React, { useState,useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom"
 
 const FridgeContainer =() => {
     const [fridges, setfridges] = useState([])
@@ -69,6 +70,9 @@ const FridgeContainer =() => {
     }
 
 
+    const [selectedFridge, setSelectedFridge] = useState(null);
+
+   
 
 
     // SHOPPING LIST METHODS
@@ -83,7 +87,15 @@ const FridgeContainer =() => {
     return(
 
     <>
-    <NavBar handleAddItemClick = {handleAddItemClick} isShownAddItem={isShowAddItem}  Fridge={Fridge} fridges = {fridges} />
+    <NavBar handleAddItemClick = {handleAddItemClick} isShownAddItem={isShowAddItem}  Fridge={Fridge} 
+    fridges = {fridges}
+    deleteFridge = {deleteFridge}
+    postFridgeItem = {postFridgeItem}
+    deleteFridgeItem = {deleteFridgeItem}
+    setSelectedFridge = {setSelectedFridge}
+    selectedFridge = {selectedFridge}
+
+     />
 
     </>
     )

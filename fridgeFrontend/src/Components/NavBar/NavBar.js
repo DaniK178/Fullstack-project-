@@ -8,7 +8,9 @@ import AddFridge from "../addFridge";
 import FridgeList from "../FridgeList";
 
 
-const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges }) => {
+const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
+  postFridgeItem, deleteFridgeItem,
+  setSelectedFridge, selectedFridge}) => {
     const handleClick = () => {
       handleAddItemClick();
     };
@@ -70,10 +72,17 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges }) => {
 
         <Routes>
         <Route path="/addfridge" element={<AddFridge />} />
-        <Route path="/currentfridge" element={<CurrentFridge fridges = {fridges} />}/>
+        <Route path="/currentfridge" element={<CurrentFridge fridges = {[selectedFridge]}
+    postFridgeItem = {postFridgeItem}
+    deleteFridgeItem = {deleteFridgeItem}
+     />}/>
         <Route path="/ShoppingList" element={<ShoppingList />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
-        <Route path="/fridgeList" element={<FridgeList/>} />
+        <Route path="/fridgeList" element={<FridgeList fridges = {fridges} 
+         deleteFridge = {deleteFridge} 
+    setSelectedFridge = {setSelectedFridge}
+    selectedFridge = {selectedFridge}
+    />} />
     </Routes>
     </BrowserRouter>
 
