@@ -9,6 +9,8 @@ import { useNavigate, useParams } from "react-router-dom"
 
 const FridgeContainer =() => {
     const [fridges, setfridges] = useState([])
+    const [selectedFridge, setSelectedFridge] = useState(null);
+    const [selectedFridgeItem, setSelectedFridgeItem] = useState(null)
 
     const [isShowAddItem, setIsShowAddItem] = useState(false);
     const handleAddItemClick =() => {
@@ -70,7 +72,7 @@ const FridgeContainer =() => {
     }
 
 
-    const [selectedFridge, setSelectedFridge] = useState(null);
+    
 
    
 
@@ -94,6 +96,7 @@ const FridgeContainer =() => {
     deleteFridgeItem = {deleteFridgeItem}
     setSelectedFridge = {setSelectedFridge}
     selectedFridge = {selectedFridge}
+    selectedFridgeItem = {selectedFridgeItem}
 
      />
 
