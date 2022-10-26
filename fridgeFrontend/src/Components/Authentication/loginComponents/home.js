@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import UserService from "../services/userService";
 
 const Home = () => {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(""); // render user information with error message
 
   useEffect(() => {
-    UserService.getPublicContent().then(
+    UserService.getPublicContent()
+    .then(
       (response) => {
         setContent(response.data);
       },
@@ -22,11 +23,12 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3> 
-      </header>
-    </div>
+    // <div className="container">
+    //   <header className="jumbotron">
+    //     <h3>{content}</h3> 
+    //   </header>
+    // </div>
+    <p><b>login first</b> to access all other pages</p>
   );
 };
 
