@@ -3,7 +3,7 @@ import ShoppingList from "../Components/ShoppingList";
 import Login from "../Components/Login";
 import FavouriteList from "../Components/FavouriteList";
 import Fridge from "../Components/currentFridge";
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar/Navbar";
 import React, { useState,useEffect } from "react";
 
 const FridgeContainer =() => {
