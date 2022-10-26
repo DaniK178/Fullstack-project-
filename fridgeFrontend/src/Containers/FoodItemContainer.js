@@ -1,3 +1,6 @@
+import{ useState, useEffect } from "react";
+import FoodItem from "../Components/FoodItem";
+import NavBar from "../Components/NavBar/NavBar";
 
 
 const FoodItemContainer = () => {

@@ -1,13 +1,9 @@
-
-
-
-
 const FoodList =() => {
 
     return(
 
     <>
-    <p>FoodList</p>
+    <p>Food List</p>
     </>
     
     )

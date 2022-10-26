@@ -1,14 +1,34 @@
+import { useParams } from "react-router-dom";
+import FoodItemsList from "./FoodItemsList";
 
 
 
-const FoodItem =() => {
+const FoodItem = ({ foodItems }) => {
+    const { id } = useParams()
 
-    return(
+    const foodItem = foodItems.find((foodItem) => {
+        const foodItemId = parseInt(id)
+        return foodItemId === foodItem.id;
+    })
 
-    <>
-    <p>FoodItem</p>
-    </>
-    
+    const foodListItems = foodItems.map((foodItem) => {
+        return <FoodItemsList
+                foodItem={foodItem}
+        />
+    })
+
+    return (
+
+        <>
+
+            <ul>
+                <li>
+                    {foodListItems}
+                </li>
+
+            </ul>
+        </>
+
     )
 
 };
