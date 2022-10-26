@@ -3,16 +3,16 @@ import authHeader from "./authHeader";
 
 const API_URL = "http://localhost:8080/users";
 
-const getPublicContent = () => {
-  return axios.get(API_URL + "all");
-};
+// const getPublicContent = () => {
+//   return axios.get(API_URL + "all");
+// };
 
 const getUser = () => {
-  return axios.get(API_URL + "user", { headers: authHeader() });
+  return axios.get(API_URL , { headers: authHeader() });
 };
 
 const UserService = {
-  getPublicContent,
+  // getPublicContent,
   getUser,
 };
 

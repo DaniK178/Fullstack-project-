@@ -5,7 +5,7 @@ import FavouriteList from "../FavouriteList";
 import CurrentFridge from "../currentFridge";
 import "./NavBar.css";
 import AddFridge from "../addFridge";
-import FridgeList from "../FridgeList";
+import FridgeList from "../fridgeList";
 
 
 const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
