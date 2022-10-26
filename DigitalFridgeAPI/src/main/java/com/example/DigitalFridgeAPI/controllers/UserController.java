@@ -2,6 +2,7 @@ package com.example.DigitalFridgeAPI.controllers;
 
 import com.example.DigitalFridgeAPI.models.*;
 import com.example.DigitalFridgeAPI.services.FoodItemService;
+import com.example.DigitalFridgeAPI.services.FridgeService;
 import com.example.DigitalFridgeAPI.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ public class UserController {
 
     @Autowired
     FoodItemService foodItemService;
+
+    @Autowired
+    FridgeService fridgeService;
 
 //    get a list of users
     @GetMapping
@@ -76,17 +80,42 @@ public class UserController {
 
 //    add items to favourites list
 
-//    @PostMapping("/favourites/{favId}/{foodItemId}")
-//    public ResponseEntity<FavListItem> addNewFridgeItem(
-//            @PathVariable Long favId,
-//            @PathVariable Long foodItemId
-//    )
-//
-//    {   Favourites favourites = userService.getFavouritesById(favId).get();
-//        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
-//        FavListItem favlistItem = new FavListItem(favourites,foodItem);
-//        userService.addNewItem(favlistItem);
-//        return ResponseEntity.ok().body(favlistItem);
-//    }
+    @PostMapping("/favourites/{favId}/{foodItemId}")
+    public ResponseEntity<FavListItem> addNewFridgeItem(
+            @PathVariable Long favId,
+            @PathVariable Long foodItemId
+    )
+
+    {   Favourites favourites = userService.getFavouritesById(favId).get();
+        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
+        FavListItem favlistItem = new FavListItem(favourites,foodItem);
+        userService.addItemToFav(favlistItem);
+        return ResponseEntity.ok().body(favlistItem);
+    }
+
+//    remove item from favourites list
+
+    @DeleteMapping(value = "/favourites/{id}")
+    public ResponseEntity deleteFavItem(@PathVariable Long id) {
+        userService.removeItemFromFav(id);
+        return new ResponseEntity(null, HttpStatus.NO_CONTENT);
+    }
+//    get all items in a favourites list
+    @GetMapping("/favourites/{favouritesId}")
+    public ResponseEntity<List<FavListItem>> getAllFavItems(@PathVariable Long favouritesId) {
+        List<FavListItem> favListItems = userService.getAllFavListItems(favouritesId);
+        return new ResponseEntity<>(favListItems, HttpStatus.OK);
+    }
+
+//    get fridges by userID
+    @GetMapping(value="/fridge/{userId}")
+    public ResponseEntity<List<Fridge>> getFridgesByUser(@PathVariable Long userId) {
+        List<Fridge> fridges = userService.getAllFridgesByUser(userId);
+        return new ResponseEntity<>(fridges, HttpStatus.OK);
+    }
+
+
+
+
 
 }

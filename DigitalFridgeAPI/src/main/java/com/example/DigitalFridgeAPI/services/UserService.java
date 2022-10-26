@@ -1,5 +1,6 @@
 package com.example.DigitalFridgeAPI.services;
 
+import com.example.DigitalFridgeAPI.models.FavListItem;
 import com.example.DigitalFridgeAPI.models.Favourites;
 import com.example.DigitalFridgeAPI.models.Fridge;
 import com.example.DigitalFridgeAPI.models.User;
@@ -67,12 +68,20 @@ public class UserService {
         saveUser(user);
 
     }
+    public List<FavListItem> getAllFavListItems(Long id){
+        return favListItemRepository.findAllByFavouritesId(id);
+    }
 
     public void addFridgeToUser(Long userId, Long fridgeId){
         User user = userRepository.findById(userId).get();
         Fridge fridge = fridgeRepository.findById(fridgeId).get();
         user.addFridge(fridge);
         saveUser(user);
+    }
+    public List<Fridge> getAllFridgesByUser(long id) {
+//        return fridgeRepository.findAllByUserId(id);
+        User user = userRepository.findById(id).get();
+        return user.getUserFridges();
     }
     public List<Favourites> getAllFavourites() {
         return favouritesRepository.findAll();
@@ -87,7 +96,13 @@ public class UserService {
         favouritesRepository.deleteById(id);
     }
 
+    public void addItemToFav(FavListItem favListItem){
+        favListItemRepository.save(favListItem);
+    }
 
+    public void removeItemFromFav(Long id){
+        favListItemRepository.deleteById(id);
+    }
 
 }
 
