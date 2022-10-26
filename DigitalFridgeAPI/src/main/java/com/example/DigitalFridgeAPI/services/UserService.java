@@ -74,6 +74,19 @@ public class UserService {
         user.addFridge(fridge);
         saveUser(user);
     }
+    public List<Favourites> getAllFavourites() {
+        return favouritesRepository.findAll();
+    }
+
+    public Optional<Favourites> getFavouritesById(Long id) {
+        return favouritesRepository.findById(id);
+    }
+
+
+    public void deleteFavourites(Long id) {
+        favouritesRepository.deleteById(id);
+    }
+
 
 
 }

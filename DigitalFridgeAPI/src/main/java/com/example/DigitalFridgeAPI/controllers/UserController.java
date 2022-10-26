@@ -1,6 +1,7 @@
 package com.example.DigitalFridgeAPI.controllers;
 
 import com.example.DigitalFridgeAPI.models.*;
+import com.example.DigitalFridgeAPI.services.FoodItemService;
 import com.example.DigitalFridgeAPI.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    FoodItemService foodItemService;
 
 //    get a list of users
     @GetMapping
@@ -72,22 +76,17 @@ public class UserController {
 
 //    add items to favourites list
 
-//    @PostMapping("/favourites/{userId}/{fridgeId}/{foodItemId}/fridgeItem")
-//    public ResponseEntity<FridgeItem> addNewFridgeItem(
-//            @PathVariable Long fridgeId,
-//            @PathVariable Long foodItemId,
-//            @RequestBody RequestPojo request
+//    @PostMapping("/favourites/{favId}/{foodItemId}")
+//    public ResponseEntity<FavListItem> addNewFridgeItem(
+//            @PathVariable Long favId,
+//            @PathVariable Long foodItemId
 //    )
 //
-//    {   System.out.println("first print");
-//        Fridge fridge = fridgeService.getFridgeByID(fridgeId).get();
+//    {   Favourites favourites = userService.getFavouritesById(favId).get();
 //        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
-//        System.out.println("worked till here");
-//        FridgeItem fridgeItem = new FridgeItem(fridge,foodItem, request.getExpiryDate(), request.getQuantity(), request.getExpired());
-//        fridgeItemService.addNewItem(fridgeItem);
-////        String message = "item has been added to fridge";
-////        return new ResponseEntity<>(message,HttpStatus.CREATED);
-//        return ResponseEntity.ok().body(fridgeItem);
+//        FavListItem favlistItem = new FavListItem(favourites,foodItem);
+//        userService.addNewItem(favlistItem);
+//        return ResponseEntity.ok().body(favlistItem);
 //    }
 
 }
