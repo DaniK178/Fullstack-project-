@@ -1,5 +1,7 @@
 package com.example.DigitalFridgeAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 
@@ -7,20 +9,26 @@ import javax.persistence.*;
     @Entity(name = "shopping_list_items")
     public class ShoppingListItem {
 
-        @EmbeddedId
+//        @EmbeddedId
+//        @Column (name = "shopping_list_item_id")
+//        private ShoppingListItemCompositeKey id;
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column (name = "shopping_list_item_id")
-        private ShoppingListItemCompositeKey id;
-//        private ShoppingListItemCompositeKey id = new ShoppingListItemCompositeKey();
+        private Long id;
+
 
         //JOIN TO SHOPPING LIST
         @ManyToOne
-        @MapsId("shopping_list_id")
+//        @MapsId("shopping_list_id")
+        @JsonIgnoreProperties({"shoppingListItems"})
         @JoinColumn(name = "shopping_list_id")
         private ShoppingList shoppingList;
 
         //JOIN TO FOOD ITEM
         @ManyToOne
-        @MapsId("food_item_id")
+//        @MapsId("food_item_id")
         @JoinColumn(name = "food_item_id")
         private FoodItem foodItem;
 
@@ -32,22 +40,31 @@ import javax.persistence.*;
 
         //CONSTRUCTOR
 
-        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Integer quantity) {
-            this.id = new ShoppingListItemCompositeKey(shoppingList.getId(), foodItem.getId());
+        public ShoppingListItem(ShoppingList shoppingList, FoodItem foodItem, Integer quantity, String shop) {
+//            this.id = new ShoppingListItemCompositeKey(shoppingList.getId(), foodItem.getId());
             this.shoppingList = shoppingList;
             this.foodItem = foodItem;
             this.quantity = quantity;
-            this.shop = null;
+            this.shop = shop;
         }
 
         public ShoppingListItem() {
         }
 
-        public ShoppingListItemCompositeKey getId() {
+//        public ShoppingListItemCompositeKey getId() {
+//            return id;
+//        }
+//
+//        public void setId(ShoppingListItemCompositeKey id) {
+//            this.id = id;
+//        }
+
+
+        public Long getId() {
             return id;
         }
 
-        public void setId(ShoppingListItemCompositeKey id) {
+        public void setId(Long id) {
             this.id = id;
         }
 
@@ -80,7 +97,7 @@ import javax.persistence.*;
         }
 
         public void setShop(String shop) {
-            shop = shop;
+            this.shop = shop;
         }
     }
 
