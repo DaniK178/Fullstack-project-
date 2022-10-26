@@ -1,6 +1,7 @@
 package com.example.DigitalFridgeAPI.controllers;
 
-import com.example.DigitalFridgeAPI.models.User;
+import com.example.DigitalFridgeAPI.models.*;
+import com.example.DigitalFridgeAPI.services.FoodItemService;
 import com.example.DigitalFridgeAPI.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    FoodItemService foodItemService;
 
 //    get a list of users
     @GetMapping
@@ -54,5 +58,35 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity(null, HttpStatus.NO_CONTENT);
     }
+//    add a fridge to user
+    @PostMapping(value="/fridge/{userId}/{fridgeId}")
+    public ResponseEntity addFridge(@PathVariable Long userId,@PathVariable Long fridgeId) {
+        userService.addFridgeToUser(userId,fridgeId);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+//    adding a favourites list to user
+    @PostMapping(value="/favourites/{userId}")
+    public ResponseEntity addFavList(@RequestBody Map<String, String> bodyParams,@PathVariable Long userId) {
+        userService.addFavList(bodyParams.get("name"),userId);
+        return new ResponseEntity<>(null, HttpStatus.CREATED);
+    }
+
+
+
+//    add items to favourites list
+
+//    @PostMapping("/favourites/{favId}/{foodItemId}")
+//    public ResponseEntity<FavListItem> addNewFridgeItem(
+//            @PathVariable Long favId,
+//            @PathVariable Long foodItemId
+//    )
+//
+//    {   Favourites favourites = userService.getFavouritesById(favId).get();
+//        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
+//        FavListItem favlistItem = new FavListItem(favourites,foodItem);
+//        userService.addNewItem(favlistItem);
+//        return ResponseEntity.ok().body(favlistItem);
+//    }
 
 }
