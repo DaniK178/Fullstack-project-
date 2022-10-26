@@ -7,6 +7,7 @@ const FoodList =() => {
     return(
 
     <>
+    <p>FoodList</p>
     </>
     
     )

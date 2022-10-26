@@ -6,6 +6,7 @@ const FavouriteList =() => {
     return(
 
     <>
+    <p>Favourite List</p>
     </>
     
     )
