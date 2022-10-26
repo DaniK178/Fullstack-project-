@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +14,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank
     @Column(unique = true) // ensuring only unique username is allowed
     private String username;
 
+    @NotBlank
     @Column
     private String password;
 
+    @NotBlank
     @Column(name = "email")
     private String email;
 
@@ -96,6 +100,7 @@ public class User {
         this.userFridges = userFridges;
     }
     public void addFridge(Fridge fridge){
-        this.userFridges.add(fridge);
-    }
+        this.userFridges.add(fridge);}
+
+
 }
