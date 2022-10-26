@@ -18,7 +18,7 @@ public class FoodItem {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "foodGroup")
+    @Column
     @Enumerated(EnumType.STRING)
     private FoodGroup foodGroup;
 
@@ -43,6 +43,7 @@ public class FoodItem {
     public FoodItem(String name, FoodGroup foodGroup) {
         this.name = name;
         this.foodGroup = foodGroup;
+
 
 
     }

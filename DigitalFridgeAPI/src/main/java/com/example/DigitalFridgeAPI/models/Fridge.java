@@ -24,8 +24,10 @@ public class Fridge {
 //    @OneToMany(mappedBy = "fridge")
 //    Set<FridgeItem> quantity;
 
-    @OneToMany(mappedBy = "fridge")
-    Set<FridgeItem> fridgeItems;
+
+    @OneToMany(mappedBy = "fridge",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties ({"fridge"})
+    List<FridgeItem> fridgeItems;
 
     //Fridge - Shopping list JOIN
    @OneToOne(cascade = CascadeType.ALL)
@@ -53,7 +55,7 @@ public class Fridge {
     public Fridge(String name) {
         this.name = name;
         this.shoppingList = null;
-        this.fridgeItems = new HashSet<>();
+        this.fridgeItems = new ArrayList<>();
 //        this.reminderItems = new ArrayList<>();
 //        this.fridgeItems = new ArrayList<>();
         this.fridgeUsers = new ArrayList<>();
@@ -80,22 +82,6 @@ public class Fridge {
         this.name = name;
     }
 
-//    public Set<FridgeItem> getExpiryDate() {
-//        return expiryDate;
-//    }
-//
-//    public void setExpiryDate(Set<FridgeItem> expiryDate) {
-//        this.expiryDate = expiryDate;
-//    }
-//
-//    public Set<FridgeItem> getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setQuantity(Set<FridgeItem> quantity) {
-//        this.quantity = quantity;
-//    }
-
     public ShoppingList getShoppingList() {
         return shoppingList;
     }
@@ -104,14 +90,6 @@ public class Fridge {
         this.shoppingList = shoppingList;
     }
 
-//    public List<FridgeItem> getReminderItems() {
-//        return reminderItems;
-//    }
-//
-//    public void setReminderItems(List<FridgeItem> reminderItems) {
-//        this.reminderItems = reminderItems;
-//    }
-
     public List<User> getFridgeUsers() {
         return fridgeUsers;
     }
@@ -119,12 +97,13 @@ public class Fridge {
     public void setFridgeUsers(List<User> fridgeUsers) {
         this.fridgeUsers = fridgeUsers;
     }
-//
-//    public List<FridgeItem> getFridgeItems() {
-//        return fridgeItems;
-//    }
-//
-//    public void setFridgeItems(List<FridgeItem> fridgeItems) {
-//        this.fridgeItems = fridgeItems;
-//    }
+
+
+    public List<FridgeItem> getFridgeItems() {
+        return fridgeItems;
+    }
+
+    public void setFridgeItems(List<FridgeItem> fridgeItems) {
+        this.fridgeItems = fridgeItems;
+    }
 }

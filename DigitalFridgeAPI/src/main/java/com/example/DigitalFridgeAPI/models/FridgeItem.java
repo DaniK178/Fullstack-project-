@@ -1,25 +1,33 @@
 package com.example.DigitalFridgeAPI.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity(name = "fridge_items")
 public class FridgeItem {
 
-    @EmbeddedId
-    @Column (name = "fridge_item_id")
-    private FridgeItemCompositeKey id;
+//    @EmbeddedId
+//    @Column (name = "fridge_item_id")
+//    private FridgeItemCompositeKey id;
 //    private FridgeItemCompositeKey id = new FridgeItemCompositeKey();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "fridge_item_id")
+    private Long id;
+
 
     //JOIN TO FRIDGE
     @ManyToOne
-    @MapsId("fridge_id")
+//    @MapsId("fridge_id")
+    @JsonIgnoreProperties({"fridgeItems"})
     @JoinColumn(name = "fridge_id")
     private Fridge fridge;
 
     //JOIN TO FOOD ITEM
     @ManyToOne
-    @MapsId("food_item_id")
+//    @MapsId("food_item_id")
     @JoinColumn(name = "food_item_id")
     private FoodItem foodItem;
 
@@ -34,8 +42,8 @@ public class FridgeItem {
     private Float quantity;
 
     //CONSTRUCTOR
-    public FridgeItem(Fridge fridge, FoodItem foodItem, Integer expiryDate, Float quantity, Boolean isExpired) {
-        this.id = new FridgeItemCompositeKey(fridge.getId(), foodItem.getId());
+    public FridgeItem( Fridge fridge, FoodItem foodItem, Integer expiryDate, Float quantity, Boolean isExpired) {
+//        this.id = new FridgeItemCompositeKey(fridge.getId(), foodItem.getId());
         this.fridge = fridge;
         this.foodItem = foodItem;
         this.expiryDate = expiryDate;
@@ -46,11 +54,11 @@ public class FridgeItem {
     public FridgeItem() {
     }
 
-    public FridgeItemCompositeKey getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(FridgeItemCompositeKey id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -1,6 +1,8 @@
 package com.example.DigitalFridgeAPI.services;
 
 import com.example.DigitalFridgeAPI.models.FridgeItem;
+import com.example.DigitalFridgeAPI.models.FridgeItemCompositeKey;
+import com.example.DigitalFridgeAPI.models.User;
 import com.example.DigitalFridgeAPI.repositories.FridgeItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,27 +23,42 @@ public class FridgeItemService {
     }
 
     //get all food items
-    public List<FridgeItem> getallFridgeItems(){
-        return fridgeItemRepository.findAll();
+    public List<FridgeItem> getAllFridgeItems(Long id){
+        //we want to look into the fridge Item respository - find where fridge == fridge id
+//        List <FridgeItem> allFridgeItems =
+//        System.out.println(allFridgeItems);
+         return fridgeItemRepository.findAllByFridgeId(id);
+
     }
 
-    //get item by ID
-//    public Optional<FridgeItem> getFridgeItemsByID(Long id){
-//        return fridgeItemRepository.findById(id);
+//    get fridgeItem by ID
+    public Optional<FridgeItem> getFridgeItemById(Long id){
+        return fridgeItemRepository.findById(id);
+    }
+
+    public FridgeItem updateExpiryDate (Long id, Integer expiryDate) {
+        FridgeItem fridgeItem = fridgeItemRepository.findById(id).get();
+        fridgeItem.setExpiryDate(expiryDate);
+        fridgeItemRepository.save(fridgeItem);
+        return fridgeItem;
+    }
+
+    public void removeFridgeItem (Long id){
+        fridgeItemRepository.deleteById(id);
+    }
+
+    //get item by name
+//    public List<FridgeItem> getFridgeItemByName(String name){
+//        //you want to search through the name of all the food items listed in the
+//        fridgeItemRepository.findBy().
+//        return;
 //    }
-//
-//    //get item by name
-////    public List<FridgeItem> getFridgeItemByName(String name){
-////        return fridgeItemRepository.findById(id).get().getFridge().getReminderItems();
-////    }
 //
 //
 //    //update Item
 //
-//    //delete item by ID
-//    public void removeItem (Long id){
-//        fridgeItemRepository.deleteById(id);
-//    }
+    //delete item by ID
+
 
     //delete item by Name
 
@@ -58,7 +75,7 @@ public class FridgeItemService {
 
 
 
-
+// return fridgeItemRepository.findById(id).get().getFridge().getReminderItems()
 
 
 }

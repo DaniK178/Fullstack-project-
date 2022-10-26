@@ -1,6 +1,9 @@
 package com.example.DigitalFridgeAPI.services;
 
+import com.example.DigitalFridgeAPI.models.Favourites;
 import com.example.DigitalFridgeAPI.models.User;
+import com.example.DigitalFridgeAPI.repositories.FavListItemRepository;
+import com.example.DigitalFridgeAPI.repositories.FavouritesRepository;
 import com.example.DigitalFridgeAPI.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,12 @@ public class UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    FavouritesRepository favouritesRepository;
+
+    @Autowired
+    FavListItemRepository favListItemRepository;
 
 
     public List<User> getAllUsers() {
@@ -45,7 +54,9 @@ public class UserService {
         saveUser(user);
         }
 
-
+    public void addFavourites(Favourites favourites){
+        favouritesRepository.save(favourites);
+    }
 
 
 }

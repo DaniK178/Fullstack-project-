@@ -1,5 +1,7 @@
 package com.example.DigitalFridgeAPI.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,32 +17,20 @@ public class Favourites {
     @Column
     private String name;
 
-//// not sure if favourites should contain shopping list and fridge list?
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "shopping_id", referencedColumnName = "id")
-//    private List<Shopping> shoppingList;
-//    // not sure if favourites should contain shopping list and fridge list?
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "fridge_id", referencedColumnName = "id")
-//    private List<Fridge> fridgeList;
-
+    @OneToMany(mappedBy = "favourites",cascade = CascadeType.ALL)
+    @JsonIgnoreProperties({"favourites"})
+    List<FavListItem> favItems;
 
     @OneToOne(mappedBy = "favourites")
     private User user;
 
-    @OneToMany(mappedBy = "favourites")
-    Set<FavListItem> expiryDate;
-
-
-//    @Column
-//    private List<FavListItem> favList;
-
     public Favourites( String name, User user) {
         this.name = name;
         this.user = user;
+        this.favItems = new ArrayList<>();
 //        this.shoppingList = new ArrayList<>();
 //        this.fridgeList = new ArrayList<>();
-//        this.favList = new ArrayList<>();
+
     }
 
     public Favourites() {}
@@ -62,28 +52,13 @@ public class Favourites {
         this.name = name;
     }
 
-//    public List<Shopping> getShoppingList() {
-//        return shoppingList;
-//    }
+        public List<FavListItem> getFavItems() {
+        return favItems;
+    }
 
-//    public void setShoppingList(List<Shopping> shoppingList) {
-//        this.shoppingList = shoppingList;
-//    }
+    public void setFavItems(List<FavListItem> favItems) {
+        this.favItems = favItems;
+    }
 
-//    public List<Fridge> getFridgeList() {
-//        return fridgeList;
-//    }
-
-//    public void setFridgeList(List<Fridge> fridgeList) {
-//        this.fridgeList = fridgeList;
-//    }
-
-//    public List<FavListItem> getFavList() {
-//        return favList;
-//    }
-//
-//    public void setFavList(List<FavListItem> favList) {
-//        this.favList = favList;
-//    }
 }
 
