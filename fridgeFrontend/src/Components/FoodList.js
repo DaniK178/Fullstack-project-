@@ -1,4 +1,4 @@
-const FoodList =() => {
+const FoodList = () => {
 
     return(
 
