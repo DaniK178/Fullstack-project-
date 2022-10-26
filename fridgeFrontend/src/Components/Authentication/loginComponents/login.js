@@ -15,12 +15,14 @@ const required = (value) => {
     );
   }
 };
-// register login error message setup
+// register, login, error message setup
 const Login = () => {
   let navigate = useNavigate();
 
   const form = useRef();
   const checkBtn = useRef();
+
+  //loggedInUser 
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -46,7 +48,9 @@ const Login = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(username, password).then(
+      AuthService
+      .login(username, password)
+      .then(
         () => {
           navigate("/profile");
           window.location.reload();
@@ -103,7 +107,6 @@ const Login = () => {
           </div>
 
           <div className="form-group">
-            <br />
             <button className="btn btn-primary btn-block" disabled={loading}>
               {loading && (
                 <span className="spinner-border spinner-border-sm"></span>

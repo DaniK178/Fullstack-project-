@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AuthService from "../Components/Authentication/services/authService";
@@ -8,18 +8,20 @@ import Home from "../Components/Authentication/loginComponents/home";
 import Profile from "../Components/Authentication/loginComponents/profile";
 import User from "../Components/Authentication/loginComponents/user";
 import EventBus from "../Components/Authentication/common/EventBus";
+import UserContext from "../useContext";
 
 
-const UserContainer = () => {
+const UserContainer = ( {addUser}) => {
   // no fridge false
   const [currentUser, setCurrentUser] = useState(undefined);
+
+  const {setLoggedInUser} = useContext(UserContext);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
 
     if (user) {
       setCurrentUser(user);
-      // set no fridge
     }
 
     EventBus.on("logout", () => {
