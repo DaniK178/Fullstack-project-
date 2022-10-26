@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import ShoppingList from "../ShoppingList";
 import FavouriteList from "../FavouriteList";
 import CurrentFridge from "../currentFridge";
-import "./Navbar.css";
+import "./NavBar.css";
 import AddFridge from "../addFridge";
 import FridgeList from "../fridgeList";
 
