@@ -43,10 +43,21 @@ public class Dataloader implements ApplicationRunner {
         FoodItem foodItem2 = new FoodItem("pasta", FoodGroup.CARBS);
         FoodItem foodItem3 = new FoodItem("carrots", FoodGroup.VEGETABLES);
         FoodItem foodItem4 = new FoodItem("broccoli", FoodGroup.VEGETABLES);
+        FoodItem foodItem5 = new FoodItem("milk", FoodGroup.DAIRY);
+        FoodItem foodItem6 = new FoodItem("ketchup", FoodGroup.CONDIMENTS);
+        FoodItem foodItem7 = new FoodItem("bacon", FoodGroup.MEAT);
+        FoodItem foodItem8 = new FoodItem("mustard", FoodGroup.CONDIMENTS);
+        FoodItem foodItem9 = new FoodItem("cheese", FoodGroup.DAIRY);
 
         foodItemRepository.save(foodItem1);
         foodItemRepository.save(foodItem2);
         foodItemRepository.save(foodItem3);
+        foodItemRepository.save(foodItem4);
+        foodItemRepository.save(foodItem5);
+        foodItemRepository.save(foodItem6);
+        foodItemRepository.save(foodItem7);
+        foodItemRepository.save(foodItem8);
+        foodItemRepository.save(foodItem9);
 
         Fridge fridge1 = new Fridge("fridge1");
         Fridge fridge2 = new Fridge("fridge2");
@@ -63,7 +74,6 @@ public class Dataloader implements ApplicationRunner {
         shoppingListRepository.save(shoppingList1);
         shoppingListRepository.save(shoppingList2);
         shoppingListRepository.save(shoppingList3);
-
 
 
         ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5, "sainsbury");

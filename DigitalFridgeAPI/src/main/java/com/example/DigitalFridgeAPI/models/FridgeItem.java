@@ -42,7 +42,7 @@ public class FridgeItem {
     private Float quantity;
 
     //CONSTRUCTOR
-    public FridgeItem( Fridge fridge, FoodItem foodItem, Integer expiryDate, Float quantity, Boolean isExpired) {
+    public FridgeItem( Fridge fridge, FoodItem foodItem, Integer expiryDate, Float quantity, boolean isExpired) {
 //        this.id = new FridgeItemCompositeKey(fridge.getId(), foodItem.getId());
         this.fridge = fridge;
         this.foodItem = foodItem;
@@ -94,7 +94,7 @@ public class FridgeItem {
         this.quantity = quantity;
     }
 
-    public boolean isExpired() {
+    public boolean getExpired() {
         return isExpired;
     }
 

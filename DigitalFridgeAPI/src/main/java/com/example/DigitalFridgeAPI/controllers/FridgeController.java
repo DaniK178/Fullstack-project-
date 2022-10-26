@@ -83,7 +83,7 @@ public class FridgeController {
     public ResponseEntity<FridgeItem> addNewFridgeItem(
             @PathVariable Long fridgeId,
             @PathVariable Long foodItemId,
-            @RequestBody RequestPojo request
+            @RequestBody FridgeItem request
             )
 
     {   System.out.println("first print");
@@ -176,11 +176,55 @@ public class FridgeController {
         return new ResponseEntity<>(message,HttpStatus.OK);
     }
 
+    @PostMapping("/fridgeItem/{fridgeItemId}/{shoppingListId}")
+    public ResponseEntity<ShoppingListItem> addFridgeItemtoShoppingList(
+            @PathVariable Long shoppingListId,
+            @PathVariable Long fridgeItemId,
+            @RequestBody ShoppingListItem shoppingListItem)
+    {
+        ShoppingList shoppingList = shoppingListService.getShoppingListByID(shoppingListId).get();
+        FoodItem foodItem = fridgeItemService.getFoodItemFromFridgeItem(fridgeItemId);
+
+        ShoppingListItem newShoppingListItem = new ShoppingListItem(shoppingList, foodItem, shoppingListItem.getQuantity(), shoppingListItem.getShop());
+        shoppingListItemService.addNewItem(newShoppingListItem);
+        return ResponseEntity.ok().body(newShoppingListItem);
     }
 
-    //Add fridge Item to Shopping List/Item
-    //Add fridge Item to Shopping List/item
+//    @PostMapping("/shoppingList/shoppingListItem/{shoppingListItemId}/{fridgeId}")
+//    public ResponseEntity<ShoppingListItem> addShoppingListItemtoFridgeList(
+//            @PathVariable Long shoppingListItemId,
+//            @PathVariable Long fridgeId,
+//            @RequestBody FridgeItem fridgeItem)
+//    {
+//        ShoppingList shoppingList = shoppingListService.getShoppingListByID(shoppingListId).get();
+//        FoodItem foodItem = fridgeItemService.getFoodItemFromFridgeItem(fridgeId);
+//
+//        ShoppingListItem newShoppingListItem = new ShoppingListItem(shoppingList, foodItem, shoppingListItem.getQuantity(), shoppingListItem.getShop());
+//        shoppingListItemService.addNewItem(newShoppingListItem);
+//        return ResponseEntity.ok().body(newFridgeItem);
+//    }
 
+//    public ResponseEntity<FridgeItem> addNewFridgeItem(
+//            @PathVariable Long fridgeId,
+//            @PathVariable Long foodItemId,
+//            @RequestBody RequestPojo request
+//    )
+//
+//    {   System.out.println("first print");
+//        Fridge fridge = fridgeService.getFridgeByID(fridgeId).get();
+//        FoodItem foodItem = foodItemService.getFoodItemById(foodItemId).get();
+//        System.out.println("worked till here");
+//        FridgeItem fridgeItem = new FridgeItem(fridge,foodItem, request.getExpiryDate(), request.getQuantity(), request.getExpired());
+//        fridgeItemService.addNewItem(fridgeItem);
+//        return ResponseEntity.ok().body(fridgeItem);
+//    }
+
+
+
+
+}
+
+    //Add fridge Item to Shopping List/Item
 
 
 

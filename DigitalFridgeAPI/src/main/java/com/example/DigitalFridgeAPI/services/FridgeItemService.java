@@ -25,14 +25,10 @@ public class FridgeItemService {
 
     //get all food items
     public List<FridgeItem> getAllFridgeItems(Long id){
-        //we want to look into the fridge Item respository - find where fridge == fridge id
-//        List <FridgeItem> allFridgeItems =
-//        System.out.println(allFridgeItems);
          return fridgeItemRepository.findAllByFridgeId(id);
-
     }
 
-//    get fridgeItem by ID
+//  get fridgeItem by ID
     public Optional<FridgeItem> getFridgeItemById(Long id){
         return fridgeItemRepository.findById(id);
     }
@@ -59,11 +55,11 @@ public class FridgeItemService {
 
     //add to Shopping List
     //for it to access the food item ID, within the fridge item, and add that to the list
-    public void addToShoppingList(FridgeItem fridgeItem){
-         FoodItem fridgeItemFood = fridgeItem.getFoodItem();
-         //post method  passing in food ID- to create shopping Item
-
-
+    public FoodItem getFoodItemFromFridgeItem(Long id) {
+        Optional<FridgeItem> fridgeItem = fridgeItemRepository.findById(id);
+        FoodItem fridgeItemFood = fridgeItem.get().getFoodItem();
+        return fridgeItemFood;
+    }
     }
     //add to favourites List
 
@@ -71,5 +67,3 @@ public class FridgeItemService {
 
 // return fridgeItemRepository.findById(id).get().getFridge().getReminderItems()
 
-
-}

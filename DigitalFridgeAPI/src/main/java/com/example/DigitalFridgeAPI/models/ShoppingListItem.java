@@ -97,7 +97,7 @@ import javax.persistence.*;
         }
 
         public void setShop(String shop) {
-            shop = shop;
+            this.shop = shop;
         }
     }
 
