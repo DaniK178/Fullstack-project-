@@ -23,7 +23,7 @@ public class UserController {
     FoodItemService foodItemService;
 
 //    get a list of users
-    @GetMapping
+    @GetMapping  //?
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);

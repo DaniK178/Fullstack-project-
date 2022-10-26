@@ -10,13 +10,13 @@ function App() {
   const [users,setUsers] = useState([]);
 
   const fetchUsers = async () => {
-    const response = await fetch('http://localhost:8080/user');
+    const response = await fetch('http://localhost:8080/users');
     const userData = await response.json();
     setUsers(userData);
   }
 
-  const addUser = async (newUser) => {
-    const response = await fetch("http://localhost:8080/register", {
+  const addUser = async (newUser) => { 
+    const response = await fetch("http://localhost:8080/users", {
             method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newUser)
@@ -38,8 +38,6 @@ function App() {
         <UserContainer  register={addUser} />
       }
     </UserContext.Provider>
-        
-    {/* <FridgeContainer /> */}
     
     </>
   

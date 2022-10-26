@@ -53,7 +53,7 @@ const Login = () => {
       .then(
         () => {
           navigate("/profile");
-          window.location.reload();
+        //   window.location.reload();
         },
         (error) => {
           const resMessage =
