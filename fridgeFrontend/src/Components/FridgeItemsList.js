@@ -1,12 +1,16 @@
 
 
-const FridgeItemsList =(fridgeItem) => {
+const FridgeItemsList =({fridge}) => {
+
+    
 
     return(
 
 
     <>
-    <p>Favourite List</p>
+    <p>Fridge Item </p>
+    <li>{fridge.name}</li>
+
     </>
     
     )

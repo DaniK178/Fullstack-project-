@@ -8,7 +8,7 @@ import AddFridge from "../addFridge";
 import FridgeList from "../FridgeList";
 
 
-const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
+const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges }) => {
     const handleClick = () => {
       handleAddItemClick();
     };
@@ -70,7 +70,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
 
         <Routes>
         <Route path="/addfridge" element={<AddFridge />} />
-        <Route path="/currentfridge" element={<CurrentFridge />}/>
+        <Route path="/currentfridge" element={<CurrentFridge fridges = {fridges} />}/>
         <Route path="/ShoppingList" element={<ShoppingList />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
         <Route path="/fridgeList" element={<FridgeList/>} />
