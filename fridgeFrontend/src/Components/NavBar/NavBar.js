@@ -11,7 +11,7 @@ import FridgeList from "../FridgeList";
 const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
   postFridgeItem, deleteFridgeItem,
   setSelectedFridge, selectedFridge,selectedFridgeItem,
-  selectFridgeItem, checked, setChecked, Checkbox}) => {
+  selectFridgeItem, checked, setChecked, Checkbox, deleteShoppingListItem }) => {
     const handleClick = () => {
       handleAddItemClick();
     };
@@ -73,19 +73,23 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
 
         <Routes>
         <Route path="/addfridge" element={<AddFridge />} />
-        
-        <Route path="/currentfridge" element={<CurrentFridge fridges = {[selectedFridge]}
+
+        <Route path="/currentfridge" element={<CurrentFridge fridge = {selectedFridge}
             postFridgeItem = {postFridgeItem}
             deleteFridgeItem = {deleteFridgeItem}
             selectedFridgeItem = {selectedFridgeItem}
             selectFridgeItem = {selectFridgeItem}
 
+
      />}/>
         <Route path="/ShoppingList" element={<ShoppingList 
-          fridges = {[selectedFridge]} 
+          fridge = {selectedFridge} 
           checked = {checked} 
-          setChecked = {setChecked}/>}
+          setChecked = {setChecked}
           Checkbox = {Checkbox}
+          deleteShoppingListItem = {deleteShoppingListItem} 
+          />}
+          
           />
 
         <Route path="/favouriteList" element={<FavouriteList />}/>

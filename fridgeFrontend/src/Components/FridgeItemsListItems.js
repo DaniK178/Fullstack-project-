@@ -1,49 +1,45 @@
+import React, { useState,useEffect } from "react";
+import FridgeItemDetails from "./FridgeItemDetails";
 
+const FridgeItemsListItems =({fridgeItem, deleteFridgeItem}) => {
+    
 
-const FridgeItemsListItems =({fridgeItem, deleteFridgeItem,selectFridgeItem }) => {
-
-    // const fridgeItemFoodItem = fridgeItem.foodItem.map((fridgeItemFoodItem)=> { 
-    //     return 
-    //    <FridgeItemFoodItem 
-    //    fridgeItemFoodItem = {fridgeItemFoodItem }
-    //    />
-    // })
-
-    // const fridgeListItems = fridgeItems.map((fridgeItems)=>{
-    //     return fridgeItems
-    //     // return <FridgeItemsList 
-    //     //             fridge={fridge} 
-    //        //     />
-    // })
+    const [isSelected, setIsSelected] = useState(false)
 
     const handleDeleteFridgeItem = () => {
         deleteFridgeItem(fridgeItem.id);
     } 
 
     const handleViewFridgeItem = () => {
-        selectFridgeItem(fridgeItem);
+        setIsSelected(!isSelected)
     } 
 
-
     return(
-
-
     <>
     <hr></hr>
     <p>Fridge Item ID: {fridgeItem.id}, </p>
     <p>{fridgeItem.foodItem.id}, {fridgeItem.foodItem.name}, {fridgeItem.foodItem.foodGroup}</p>
 
-    <li> Quantity: {fridgeItem.quantity} - ExpiryDate: {fridgeItem.expiryDate}</li>
+    <li> Quantity: {fridgeItem.quantity} </li>
+    <li> ExpiryDate: {fridgeItem.expiryDate}</li>
+    
 
-    <button class ="View Item" onClick= {handleViewFridgeItem}>View Item</button>
+    <button className ="View Item" onClick= {handleViewFridgeItem}>View Item</button>
 
-    <button class ="delete-fridgeItem-button" onClick= {handleDeleteFridgeItem}>Delete Fridge Item</button>
+    <button className ="delete-fridgeItem-button" onClick= {handleDeleteFridgeItem}>Delete Fridge Item</button>
     <br></br>
 
+    {isSelected?
+       <FridgeItemDetails
+       fridgeItem = {fridgeItem}
+       />
+       :<div></div>
+    
+            }
     </>
     
-    )
+    );
 
-};
+}
 
 export default  FridgeItemsListItems ;

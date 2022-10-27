@@ -90,12 +90,42 @@ const FridgeContainer =() => {
           </label>
         );
       };
-      
 
-   
+    //   const updateChangefridgeItemExpiryDate = (id) => {
+       
+    //     const response = fetch(`http://localhost:8080/fridges/fridgeItem/${foodItemId}`, {
+    //         method: "POST",
+    //         headers: { 'Content-type': 'application/json; charset=UTF-8' },
+    //         body: JSON.stringify({expiryDate})
+    //     })
 
+    //     const responseFridges = await response.json()
+    //     await fetchFridges()
+
+    // }
 
     // SHOPPING LIST METHODS
+
+    const deleteShoppingListItem = async (id) => {
+        console.log(id);
+        await fetch(`http://localhost:8080/fridges/shoppingList/shoppingListItem/${id}`, {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' }
+        });
+        await fetchFridges();
+        const updatedSelectedShoppingListItems = selectedFridge.shoppingList.shoppingListItems.filter((shoppingListItem) => 
+        {
+
+            return id !== shoppingListItem.id 
+        })
+
+        console.log(updatedSelectedShoppingListItems);
+        setSelectedFridge({...selectedFridge, shoppingListItems:updatedSelectedShoppingListItems})
+    }
+
+
+
+
 
 
     useEffect(() => {
@@ -123,6 +153,8 @@ const FridgeContainer =() => {
 
     checked = {checked}
     setChecked = {setChecked}
+
+    deleteShoppingListItem = {deleteShoppingListItem} 
 
      />
 

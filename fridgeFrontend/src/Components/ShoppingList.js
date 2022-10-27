@@ -1,24 +1,21 @@
 import ShoppingListProperties from "./ShoppingListProperties";
 
 
-const ShoppingList =({fridges, checked, setChecked, Checkbox}) => {
+const ShoppingList =({fridge, checked, setChecked, Checkbox, deleteShoppingListItem }) => {
     
-    
-    const shoppingListItems = fridges.map((fridge) => {
-        return <ShoppingListProperties
-        fridge = {fridge}
-        checked = {checked}
-        setChecked = {setChecked}
-        checkbox = {Checkbox}
-        />
-    })
 
     return(
 
     <>
     <h2>Shopping List</h2>
     <ul> 
-        {shoppingListItems}
+        <ShoppingListProperties
+        fridge = {fridge}
+        checked = {checked}
+        setChecked = {setChecked}
+        checkbox = {Checkbox}
+        deleteShoppingListItem = {deleteShoppingListItem} 
+        />
     </ul>
     </>
     
