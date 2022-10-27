@@ -89,27 +89,16 @@ function App() {
   //FRIDGE CONTAINER ------------
   
   // FRIDGE METHODS
-
-  // var myHeaders = new Headers();
-  // myHeaders.append("Authorization", "`Bearer ${currentUser.accessToken}`");
+let requestOptions;
+  if(currentUser){
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${currentUser.accessToken}`);
   
-  // var requestOptions = {
-  //   method: 'GET',
-  //   headers: myHeaders,
-  //   redirect: 'follow'
-  // };
-
-  // const fetchFridges = fetch("http://localhost:8080/fridges", requestOptions)
-  // .then(response => response.json())
-  // .then(result => console.log(result))
-  // .catch(error => console.log('error', error));
-
-  
-  // fetch("http://localhost:8080/fridges", requestOptions)
-  //   .then(response => response.text())
-  //   .then(result => console.log(result))
-  //   .catch(error => console.log('error', error));
-
+  requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+  };}
 
 
   const fetchFridges = async () => {
@@ -229,7 +218,7 @@ function App() {
 
   useEffect(() => {
       fetchFridges()
-  }, []);
+  }, [currentUser]);
 
 
 
