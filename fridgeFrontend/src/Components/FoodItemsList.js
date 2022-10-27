@@ -6,12 +6,15 @@ const FoodItemsList = ({foodItem, handleDeleteFoodItem}) => {
 
     return (
         <>
+            <div className="foodItemList-list">
 
-        <li><b>ITEM: </b>{foodItem.name}</li>
-        <p>Food Group: {foodItem.foodGroup}</p>
-        <button onClick={handleDeleteFoodItem}>
+                <p><b>Food Item: </b>{foodItem.name}</p>
+                <p><b>Food Category: </b>{foodItem.foodGroup}</p>
+                <button onClick={handleDeleteFoodItem}>
                 delete
-            </button>
+                </button>
+
+            </div>
         </>
     )
 }

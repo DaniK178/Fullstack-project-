@@ -4,12 +4,13 @@ import NavBar from "../Components/NavBar/NavBar";
 
 
 const FoodItemContainer = () => {
+
     const [foodItems, setFoodItems] = useState([])
 
-    const [isShowAddItem, setIsShowAddItem] = useState(false);
-    const handleAddItemClick = () => {
-        setIsShowAddItem(!isShowAddItem);
-    };
+    // const [isShowAddItem, setIsShowAddItem] = useState(false);
+    // const handleAddItemClick = () => {
+    //     setIsShowAddItem(!isShowAddItem);
+    // };
 
     //fetching the foodItem data
 
@@ -27,7 +28,7 @@ const FoodItemContainer = () => {
     return (
 
         <>
-            <NavBar handleAddItemClick={handleAddItemClick} isShownAddItem={isShowAddItem} FoodItem={FoodItem} foodItems={foodItems} />
+            <NavBar FoodItem={FoodItem} foodItems={foodItems} />
 
         </>
     )
