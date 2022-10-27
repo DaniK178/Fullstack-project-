@@ -6,9 +6,10 @@ import CurrentFridge from "../currentFridge";
 import "./NavBar.css";
 import AddFridge from "../addFridge";
 import FridgeList from "../FridgeList";
+import FoodItem from "../FoodItem";
 
 
-const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
+const NavBar = ({ handleAddItemClick ,isShownAddItem, foodItems }) => {
     const handleClick = () => {
       handleAddItemClick();
     };
@@ -30,6 +31,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
             <li><Link to = '/AddFridge' className="link">Add Fridge</Link></li> 
             <li><Link to = '/CurrentFridge' className="link">Current Fridge</Link></li>
             <li><Link to = '/ShoppingList' className="link">Shopping List</Link></li>
+            <li><Link to='/FoodItem' className="link">Food List</Link></li>
             <li><a href="user profile" className="link">User</a>
             <ul className="dropdown">
                 <li><Link to = '/fridgeList' className="link">Fridges</Link></li>
@@ -73,6 +75,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem }) => {
         <Route path="/currentfridge" element={<CurrentFridge />}/>
         <Route path="/ShoppingList" element={<ShoppingList />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
+        <Route path="/foodItem" element={<FoodItem foodItems={foodItems} />} />
         <Route path="/fridgeList" element={<FridgeList/>} />
     </Routes>
     </BrowserRouter>
