@@ -2,7 +2,7 @@ import FoodItemsList from "./FoodItemsList";
 import { React } from "react"
 import "./Style.css";
 import { useState } from 'react';
-import {FaSearch} from "react-icons/fa";
+
 
 
 const FoodItem = ({ handleAddItemClick, isShownAddItem, foodItems, deleteFoodItem, selectFoodItem }) => {
@@ -24,6 +24,8 @@ const FoodItem = ({ handleAddItemClick, isShownAddItem, foodItems, deleteFoodIte
     //     copiedFooodItem[propertyName] = event.target.value;
     //     setStateFoodItem(copiedFoodItem);
     // }
+
+    
 
 
     const foodItemsListComponent = foodItems.map((foodItem, selectFoodItem) => {
@@ -56,7 +58,10 @@ const FoodItem = ({ handleAddItemClick, isShownAddItem, foodItems, deleteFoodIte
             <div className='foodItem-content'>
 
             <div className="searchBar-wrap">
-                <input type="text" placeholder="Search..." />
+                <form>
+                    <input type="text" placeholder="Search..." />
+                    <button type="submit">Search</button>
+                </form>
             </div>
 
                 <button onClick={handleClick} className="addItemIcon">Add New Item</button>
