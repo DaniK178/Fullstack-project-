@@ -96,6 +96,7 @@ const Login = ({log}) => {
               value={username}
               onChange={onChangeUsername}
               validations={[required]}
+              placeholder="username"
             />
           </div>
 
@@ -108,6 +109,7 @@ const Login = ({log}) => {
               value={password}
               onChange={onChangePassword}
               validations={[required]}
+              placeholder="password"
             />
           </div>
 
