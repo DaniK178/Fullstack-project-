@@ -12,6 +12,7 @@
     padding-top: 20px;
     font-family: 'Poppins', sans-serif;
     border-radius: 10px;
+    font-size: 20px;
 }
 .fridge-top-container hr {
     margin: auto 60px;
@@ -19,8 +20,9 @@
     border-color: grey;
     border-width: 0 0 4px 0;
     margin-bottom: 30px;
+
 }
-.fridge-middle-container {
+.fridge-middle-container h2{
     padding-left: 60px;
     font-size: 18px;
     font-weight: bold;
@@ -28,7 +30,6 @@
 /* list items /////////////////*/
 .fridge-list-container ul {
     text-decoration: none;
-    background-color: darkgray;
     display: flex;
     flex-direction: row;
     top: 23%;
@@ -48,6 +49,10 @@
 /* list items buttons */
 .fridge-list-container button {
  width: 195px;
+ height: 100px;
+ border-radius: 20px;
+ /* change button colour */
+ background-color: rgb(175, 239, 202);
 }
 .fridge-list-container button:hover {
     background-color: #ddd;

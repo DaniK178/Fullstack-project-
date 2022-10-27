@@ -15,10 +15,7 @@ const FridgeListItem =({fridge, handleFridgeNavigation, setSelectedFridge}) => {
     <div className="fridge-list-container">
     
     <ul>
-
-   
-        <li>{fridge.name}</li>
-        <button onClick={handleClick}>Go to this fridge!</button>
+        <button onClick={handleClick}><li>{fridge.name}</li></button>
     </ul> 
     </div>
     </>

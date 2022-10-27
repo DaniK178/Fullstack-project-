@@ -31,8 +31,8 @@ const FridgeList =({fridges , setSelectedFridge, selectedFridge}) => {
         <>
 
         <div className="fridge-top-container">
-                {/* <hr className="top-hr"/> */}
-         <p>Fridge List</p>
+                <hr className="top-hr"/>
+         <h1>All Available Fridges</h1>
 
          <hr />
             </div>
@@ -40,7 +40,7 @@ const FridgeList =({fridges , setSelectedFridge, selectedFridge}) => {
 
 
          <section> 
-        <h2>Please select the Fridge</h2> 
+        <h2>Please select the fridge</h2> 
         </section>
        
         </div>
