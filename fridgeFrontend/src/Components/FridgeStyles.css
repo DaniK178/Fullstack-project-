@@ -37,6 +37,7 @@
     align-items: center;
     padding-left: 100px;
     padding-right: 100px;
+    list-style: none;
 }
 .fridge-list-container {
     float: left;
