@@ -118,13 +118,15 @@ let requestOptions;
       await fetchFridges()
   }
 
-
+  
   const deleteFridge = async (id) => {
       console.log(id);
-      await fetch(`http://localhost:8080/fridges/delete/${id}`, {
+      await fetch(`http://localhost:8080/fridges/delete/${id}`
+      ,{
           method: "DELETE",
           headers: { 'Content-Type': 'application/json' }
-      });
+      }
+      );
       await fetchFridges();
   }
 
@@ -149,13 +151,20 @@ let requestOptions;
 
   }
 
-
+  let deleteRequestOptions;
+  if(currentUser){
+  const myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${currentUser.accessToken}`);
+  
+  deleteRequestOptions = {
+    method: 'DELETE',
+    headers: myHeaders,
+    redirect: 'follow'
+  };}
   const deleteFridgeItem = async (id) => {
       console.log(id);
-      await fetch(`http://localhost:8080/fridges/delete/foodItem/${id}`, {
-          method: "DELETE",
-          headers: { 'Content-Type': 'application/json' }
-      });
+      await fetch(`http://localhost:8080/fridges/delete/foodItem/${id}`, deleteRequestOptions
+      );
       await fetchFridges();
       const updatedSelectedFridgeItems = selectedFridge.fridgeItems.filter((fridgeItem) => {
           return id !== fridgeItem.id 
@@ -198,12 +207,11 @@ let requestOptions;
 
   // SHOPPING LIST METHODS
 
+
+
   const deleteShoppingListItem = async (id) => {
       console.log(id);
-      await fetch(`http://localhost:8080/fridges/shoppingList/shoppingListItem/${id}`, {
-          method: "DELETE",
-          headers: { 'Content-Type': 'application/json' }
-      });
+      await fetch(`http://localhost:8080/fridges/shoppingList/shoppingListItem/${id}`, deleteRequestOptions);
       await fetchFridges();
       const updatedSelectedShoppingListItems = selectedFridge.shoppingList.shoppingListItems.filter((shoppingListItem) => 
       {
