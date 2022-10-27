@@ -52,7 +52,7 @@
  height: 100px;
  border-radius: 20px;
  /* change button colour */
- background-color: rgb(175, 239, 202);
+ background-color: rgb(113, 182, 172);
 }
 .fridge-list-container button:hover {
     background-color: #ddd;
