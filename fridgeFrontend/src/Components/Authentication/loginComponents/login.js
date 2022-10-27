@@ -1,10 +1,13 @@
 import React, { useState, useRef } from "react";
-import { useNavigate } from 'react-router-dom';
+import { redirect, useNavigate  } from 'react-router-dom';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthService from "../services/authService";
 import "../auth.css";
+import FoodItemContainer from "../../../Containers/FoodItemContainer";
+import FoodItem from "../../FoodItem";
+
 
 const required = (value) => {
   if (!value) {
@@ -16,7 +19,7 @@ const required = (value) => {
   }
 };
 // register, login, error message setup
-const Login = () => {
+const Login = ({log}) => {
   let navigate = useNavigate();
 
   const form = useRef();
@@ -54,8 +57,8 @@ const Login = () => {
       .then(
         () => {
           navigate("/profile");
-          console.log(username);
-        //   window.location.reload();
+          //set active user
+          window.location.reload();
         },
         (error) => {
           const resMessage =
