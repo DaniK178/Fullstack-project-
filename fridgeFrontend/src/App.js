@@ -21,6 +21,7 @@ import ShoppingList from "./Components/ShoppingList";
 import FavouriteList from "./Components/FavouriteList";
 import FoodItem from "./Components/FoodItem";
 import FridgeList from "./Components/fridgeList";
+import Footer from './Components/Footer';
 
 function App() {
 
@@ -167,8 +168,8 @@ function App() {
 {/* 
     useContxt for if statement
 
-    see usr container (login) first
-    if sucessfully logged --> fridge container
+      see usr container (login) first
+      if sucessfully logged --> fridge container
                                if assigned to a fridge ---> access to all pages
                               else---> only access to addFridge & favList & logout --> usecontainer once clciked on logout */}
     {/* <FridgeContainer /> */}
