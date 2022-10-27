@@ -1,8 +1,8 @@
 import FridgeItemsListItems from "./FridgeItemsListItems";
 
-const FridgeItemsList =({fridge}) => {
+const FridgeItemsList =({fridge, deleteFridgeItem, selectFridgeItem }) => {
 
-    const fridgeListItems = fridge.fridgeItems.map((fridgeItem, deleteFridgeItem)=>{
+    const fridgeListItems = fridge.fridgeItems.map((fridgeItem)=>{
 
 
         // fridgeItems.foodItems.map((fridgeItemFoodItem)=>{
@@ -10,6 +10,7 @@ const FridgeItemsList =({fridge}) => {
             return <FridgeItemsListItems
                     fridgeItem={fridgeItem} 
                     deleteFridgeItem = {deleteFridgeItem}
+                    selectFridgeItem ={selectFridgeItem}
                     // fridgeItemFoodItem = {fridgeItemFoodItem}
                />
 

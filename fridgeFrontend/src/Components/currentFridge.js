@@ -1,9 +1,10 @@
 import { useState, React } from "react"
 import { useParams } from "react-router-dom"
+import FridgeItemDetails from "./FridgeItemDetails";
 import FridgeItemsList from "./FridgeItemsList";
 
 const CurrentFridge =({fridges, postFridgeItem,
-    deleteFridgeItem}) => {
+    deleteFridgeItem, setSelectedFridge, selectedFridge, selectFridgeItem, selectedFridgeItem }) => {
 
     const { id } = useParams()
     const fridge = fridges.find((fridge) => {
@@ -16,6 +17,8 @@ const CurrentFridge =({fridges, postFridgeItem,
                     fridge={fridge} 
                     postFridgeItem = {postFridgeItem}
                     deleteFridgeItem = {deleteFridgeItem}
+                    selectedFridgeItem = {selectedFridgeItem}
+                    selectFridgeItem = {selectFridgeItem}
                 />
     })
 
@@ -23,6 +26,14 @@ const CurrentFridge =({fridges, postFridgeItem,
     //     event.preventDefault()
     //     postFridgeItem(fridge.id, foodItem.id)
     // }
+
+    const fridgeItemDetails = <FridgeItemDetails
+    selectedFridgeItem = {selectedFridgeItem}
+    /> 
+   
+
+  
+    
 
 
     return(
@@ -45,11 +56,14 @@ const CurrentFridge =({fridges, postFridgeItem,
 
 
 
-     <h2>current fridge</h2>
+
+
+     <h2>Fridge</h2>
     <ul>
         {fridgeListItems}
     </ul>
-   
+
+    
     </>
     
     )

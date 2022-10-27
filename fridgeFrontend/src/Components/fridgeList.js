@@ -13,9 +13,10 @@ const FridgeList =({fridges , setSelectedFridge, selectedFridge}) => {
     }
 
 
-    const fridgeOptions = fridges.map((fridge) => {
+    const fridgeOptions = fridges.map((fridge, index) => {
         return <FridgeListItem
            fridge= {fridge}
+           key= {index}
            handleFridgeNavigation = {handleFridgeNavigation}
            setSelectedFridge = {setSelectedFridge}
            />

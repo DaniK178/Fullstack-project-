@@ -1,6 +1,6 @@
 
 
-const FridgeItemsListItems =({fridgeItem, deleteFridgeItem}) => {
+const FridgeItemsListItems =({fridgeItem, deleteFridgeItem,selectFridgeItem }) => {
 
     // const fridgeItemFoodItem = fridgeItem.foodItem.map((fridgeItemFoodItem)=> { 
     //     return 
@@ -16,10 +16,14 @@ const FridgeItemsListItems =({fridgeItem, deleteFridgeItem}) => {
     //        //     />
     // })
 
-    const handleDeleteFridgeItem = (evt) => {
-        evt.preventDefault();
+    const handleDeleteFridgeItem = () => {
         deleteFridgeItem(fridgeItem.id);
     } 
+
+    const handleViewFridgeItem = () => {
+        selectFridgeItem(fridgeItem);
+    } 
+
 
     return(
 
@@ -31,7 +35,9 @@ const FridgeItemsListItems =({fridgeItem, deleteFridgeItem}) => {
 
     <li> Quantity: {fridgeItem.quantity} - ExpiryDate: {fridgeItem.expiryDate}</li>
 
-    <button class ="delete-movie-button" onClick= {handleDeleteFridgeItem}>Delete Fridge Item</button>
+    <button class ="View Item" onClick= {handleViewFridgeItem}>View Item</button>
+
+    <button class ="delete-fridgeItem-button" onClick= {handleDeleteFridgeItem}>Delete Fridge Item</button>
     <br></br>
 
     </>

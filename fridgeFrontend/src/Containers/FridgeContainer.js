@@ -11,6 +11,7 @@ const FridgeContainer =() => {
     const [fridges, setfridges] = useState([])
     const [selectedFridge, setSelectedFridge] = useState(null);
     const [selectedFridgeItem, setSelectedFridgeItem] = useState(null)
+    const [checked, setChecked] = React.useState(false);
 
     const [isShowAddItem, setIsShowAddItem] = useState(false);
     const handleAddItemClick =() => {
@@ -69,10 +70,27 @@ const FridgeContainer =() => {
             headers: { 'Content-Type': 'application/json' }
         });
         await fetchFridges();
+        const updatedSelectedFridgeItems = selectedFridge.fridgeItems.filter((fridgeItem) => {
+            return id !== fridgeItem.id 
+        })
+        setSelectedFridge({...selectedFridge, fridgeItems:updatedSelectedFridgeItems})
     }
 
 
-    
+
+    const selectFridgeItem = (fridgeItem) => {
+        setSelectedFridgeItem(fridgeItem);
+    }
+
+    const Checkbox = ({ label, value, onChange }) => {
+        return (
+          <label>
+            <input type="checkbox" checked={value} onChange={onChange} />
+            {label}
+          </label>
+        );
+      };
+      
 
    
 
@@ -94,9 +112,17 @@ const FridgeContainer =() => {
     deleteFridge = {deleteFridge}
     postFridgeItem = {postFridgeItem}
     deleteFridgeItem = {deleteFridgeItem}
+
     setSelectedFridge = {setSelectedFridge}
     selectedFridge = {selectedFridge}
+
     selectedFridgeItem = {selectedFridgeItem}
+    selectFridgeItem = {selectFridgeItem}
+
+    Checkbox = {Checkbox}
+
+    checked = {checked}
+    setChecked = {setChecked}
 
      />
 

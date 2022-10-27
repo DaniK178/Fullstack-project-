@@ -1,15 +1,15 @@
 
 
-const FoodList =() => {
+const FridgeItemDetails =({selectedFridgeItem}) => {
 
     return(
 
     <>
-    <p>FoodList</p>
+    <p>{selectedFridgeItem.fododItem.name}</p>
     </>
     
     )
 
 };
 
-export default FoodList;
+export default FridgeItemDetails;
