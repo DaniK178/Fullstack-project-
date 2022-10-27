@@ -121,6 +121,7 @@ const Register = () => {
                   value={username}
                   onChange={onChangeUsername}
                   validations={[required, vusername]}
+                  placeholder="username"
                 />
               </div>
 
@@ -133,6 +134,8 @@ const Register = () => {
                   value={email}
                   onChange={onChangeEmail}
                   validations={[required, validEmail]}
+                  placeholder="email"
+                  
                 />
               </div>
 
@@ -145,6 +148,7 @@ const Register = () => {
                   value={password}
                   onChange={onChangePassword}
                   validations={[required, vpassword]}
+                  placeholder="password"
                 />
               </div>
 
