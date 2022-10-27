@@ -15,7 +15,7 @@ const UserContainer = ( {addUser}) => {
   // no fridge false
   const [currentUser, setCurrentUser] = useState(undefined);
 
-  const {setLoggedInUser} = useContext(UserContext);
+  // const {setLoggedInUser} = useContext(UserContext);
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();

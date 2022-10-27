@@ -50,9 +50,11 @@ const Login = () => {
     if (checkBtn.current.context._errors.length === 0) {
       AuthService
       .login(username, password)
+      
       .then(
         () => {
           navigate("/profile");
+          console.log(username);
         //   window.location.reload();
         },
         (error) => {
@@ -124,6 +126,7 @@ const Login = () => {
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
+        
       </div>
     </div>
   );
