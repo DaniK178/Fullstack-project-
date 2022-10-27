@@ -38,6 +38,9 @@ function App() {
   const [checked, setChecked] = React.useState(false);
 
   const [isShowAddItem, setIsShowAddItem] = useState(false);
+
+  //FOODITEM STATES
+  const [foodItems, setFoodItems] = useState([])
  
   //Methods
 
@@ -161,6 +164,7 @@ let requestOptions;
     headers: myHeaders,
     redirect: 'follow'
   };}
+  
   const deleteFridgeItem = async (id) => {
       console.log(id);
       await fetch(`http://localhost:8080/fridges/delete/foodItem/${id}`, deleteRequestOptions
@@ -213,6 +217,7 @@ let requestOptions;
       console.log(id);
       await fetch(`http://localhost:8080/fridges/shoppingList/shoppingListItem/${id}`, deleteRequestOptions);
       await fetchFridges();
+      console.log(fridges[0].shoppingList.shoppingListItems)
       const updatedSelectedShoppingListItems = selectedFridge.shoppingList.shoppingListItems.filter((shoppingListItem) => 
       {
 
@@ -220,7 +225,10 @@ let requestOptions;
       })
 
       console.log(updatedSelectedShoppingListItems);
-      setSelectedFridge({...selectedFridge, shoppingListItems:updatedSelectedShoppingListItems})
+      const innerShoppingList = {...selectedFridge.shoppingList}
+      innerShoppingList.shoppingListItems = updatedSelectedShoppingListItems
+      setSelectedFridge({...selectedFridge, shoppingListItems:updatedSelectedShoppingListItems,
+      shoppingList:innerShoppingList})
   }
 
 
@@ -228,25 +236,43 @@ let requestOptions;
       fetchFridges()
   }, [currentUser]);
 
+//FOODITEM METHODS
 
+    // const [isShowAddItem, setIsShowAddItem] = useState(false);
+    // const handleAddItemClick = () => {
+    //     setIsShowAddItem(!isShowAddItem);
+    // };
+
+    //fetching the foodItem data
+
+    const fetchFoodItems = async () => {
+        const response = await fetch("http://localhost:8080/foodItems", requestOptions);
+        const jsonFoodItems = await response.json();
+        setFoodItems(jsonFoodItems);
+    }
+
+
+    useEffect(() => {
+        fetchFoodItems()
+    }, [currentUser]);
 
   
   return (
     <> 
 
-<BrowserRouter>
-      <div className="navbar navbar-expand navbar-dark bg-dark">
-        <Link to={"/"} className="navbar-brand">
-          DigitalFridge
-        </Link>
-        <div className="navbar-nav mr-auto">
+  <BrowserRouter>
+        <div className="navbar navbar-expand navbar-dark bg-dark">
+          <Link to={"/"} className="navbar-brand">
+            DigitalFridge
+          </Link>
+          <div className="navbar-nav mr-auto">
 
 
-          {currentUser && (
-            <li className="nav-item">
-             
-  
-                
+            {currentUser && (
+              <li className="nav-item">
+              
+    
+                  
 
             </li>
 
@@ -314,7 +340,9 @@ let requestOptions;
          deleteShoppingListItem = {deleteShoppingListItem} 
         />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
-        {/* <Route path="/FoodItem" element={<FoodItem foodItems={foodItems} />} /> */}
+
+        <Route path="/FoodItem" element={<FoodItem foodItems={foodItems} FoodItem={FoodItem}/>} />
+
         <Route path="/fridgeList" element={<FridgeList
         fridges = {fridges} 
         deleteFridge = {deleteFridge} 
