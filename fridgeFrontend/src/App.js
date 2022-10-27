@@ -1,7 +1,7 @@
 import './App.css';
 // import FridgeContainer from './Containers/FridgeContainer';
 import FoodItemContainer from './Containers/FoodItemContainer';
-// import UserContainer from './Containers/UserContainer';
+import UserContainer from './Containers/UserContainer';
 
 function App() {
   
@@ -17,7 +17,7 @@ function App() {
     {/* <FridgeContainer /> */}
     <FoodItemContainer/>
       {/* <usecontext>  */}
-        {/* <UserContainer /> */}
+        <UserContainer />
     
     </>
     
