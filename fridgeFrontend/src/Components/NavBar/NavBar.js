@@ -6,7 +6,7 @@ import CurrentFridge from "../currentFridge";
 import "./NavBar.css";
 import AddFridge from "../addFridge";
 
-import FridgeList from "../FridgeList";
+import FridgeList from "../fridgeList";
 import FoodItem from "../FoodItem";
 
 
@@ -23,13 +23,13 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, foodItems }) => {
 
     return (
     <>  
-<BrowserRouter>
+
 
      <nav className="navbar">
         <div className="nav-links">
         <ul className="menu">
-          {/* need add fridge function  */}
-            <li><Link to = '/AddFridge' className="link">Add Fridge</Link></li> 
+          
+            {/* <li><Link to = '/AddFridge' className="link">Add Fridge</Link></li> 
             <li><Link to = '/CurrentFridge' className="link">Current Fridge</Link></li>
             <li><Link to = '/ShoppingList' className="link">Shopping List</Link></li>
             <li><Link to='/FoodItem' className="link">Food List</Link></li>
@@ -39,7 +39,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, foodItems }) => {
                 <li><Link to = '/FavouriteList' className="link">Favourites</Link></li>
                 <li><Link to = '/login' className="link">Log Out</Link></li>
             </ul>
-            </li>
+            </li> */}
             <li>
           <span onClick={handleClick} className="additemicon">
             Add Item
@@ -78,8 +78,8 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, foodItems }) => {
         <Route path="/favouriteList" element={<FavouriteList />}/>
         <Route path="/foodItem" element={<FoodItem foodItems={foodItems} />} />
         <Route path="/fridgeList" element={<FridgeList/>} />
-    </Routes>
-    </BrowserRouter>
+        </Routes>
+    
 
     
         </>
