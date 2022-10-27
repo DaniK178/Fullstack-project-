@@ -27,8 +27,19 @@ function App() {
 
 
   const [currentUser, setCurrentUser] = useState(undefined);
+  
 
   // const {setLoggedInUser} = useContext(UserContext);
+
+  //FRIDGE STATES 
+  const [fridges, setfridges] = useState([])
+  const [selectedFridge, setSelectedFridge] = useState(null);
+  const [selectedFridgeItem, setSelectedFridgeItem] = useState(null)
+  const [checked, setChecked] = React.useState(false);
+
+  const [isShowAddItem, setIsShowAddItem] = useState(false);
+ 
+  //Methods
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
@@ -74,6 +85,154 @@ function App() {
   // useEffect(() => {
   //   fetchUsers();
   // },[])
+
+  //FRIDGE CONTAINER ------------
+  
+  // FRIDGE METHODS
+
+  // var myHeaders = new Headers();
+  // myHeaders.append("Authorization", "`Bearer ${currentUser.accessToken}`");
+  
+  // var requestOptions = {
+  //   method: 'GET',
+  //   headers: myHeaders,
+  //   redirect: 'follow'
+  // };
+
+  // const fetchFridges = fetch("http://localhost:8080/fridges", requestOptions)
+  // .then(response => response.json())
+  // .then(result => console.log(result))
+  // .catch(error => console.log('error', error));
+
+  
+  // fetch("http://localhost:8080/fridges", requestOptions)
+  //   .then(response => response.text())
+  //   .then(result => console.log(result))
+  //   .catch(error => console.log('error', error));
+
+
+
+  const fetchFridges = async () => {
+      const response = await fetch("http://localhost:8080/fridges", requestOptions);
+      const jsonFridges = await response.json();
+      setfridges(jsonFridges);
+  }
+
+  const postFridge = async (newFridge, id) => {
+      const response = await fetch(`http://localhost:8080/fridges`, {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newFridge)
+      })
+
+      const responseFridge = await response.json()
+      await fetchFridges()
+  }
+
+
+  const deleteFridge = async (id) => {
+      console.log(id);
+      await fetch(`http://localhost:8080/fridges/delete/${id}`, {
+          method: "DELETE",
+          headers: { 'Content-Type': 'application/json' }
+      });
+      await fetchFridges();
+  }
+
+
+
+  // //FRIDGE LIST METHODS
+
+
+
+
+
+  const postFridgeItem = async (newFridgeItem, fridgeId, foodItemId) => {
+
+      const response = await fetch(`http://localhost:8080/fridges/${fridgeId}/${foodItemId}/fridgeItem`, {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newFridgeItem)
+      })
+
+      const responseFridges = await response.json()
+      await fetchFridges()
+
+  }
+
+
+  const deleteFridgeItem = async (id) => {
+      console.log(id);
+      await fetch(`http://localhost:8080/fridges/delete/foodItem/${id}`, {
+          method: "DELETE",
+          headers: { 'Content-Type': 'application/json' }
+      });
+      await fetchFridges();
+      const updatedSelectedFridgeItems = selectedFridge.fridgeItems.filter((fridgeItem) => {
+          return id !== fridgeItem.id 
+      })
+      setSelectedFridge({...selectedFridge, fridgeItems:updatedSelectedFridgeItems})
+  }
+
+
+
+  const selectFridgeItem = (fridgeItem) => {
+      setSelectedFridgeItem(fridgeItem);
+  }
+
+  const handleAddItemClick =() => {
+    setIsShowAddItem(!isShowAddItem);
+};
+
+
+  const Checkbox = ({ label, value, onChange }) => {
+      return (
+        <label>
+          <input type="checkbox" checked={value} onChange={onChange} />
+          {label}
+        </label>
+      );
+    };
+
+  //   const updateChangefridgeItemExpiryDate = (id) => {
+     
+  //     const response = fetch(`http://localhost:8080/fridges/fridgeItem/${foodItemId}`, {
+  //         method: "POST",
+  //         headers: { 'Content-type': 'application/json; charset=UTF-8' },
+  //         body: JSON.stringify({expiryDate})
+  //     })
+
+  //     const responseFridges = await response.json()
+  //     await fetchFridges()
+
+  // }
+
+  // SHOPPING LIST METHODS
+
+  const deleteShoppingListItem = async (id) => {
+      console.log(id);
+      await fetch(`http://localhost:8080/fridges/shoppingList/shoppingListItem/${id}`, {
+          method: "DELETE",
+          headers: { 'Content-Type': 'application/json' }
+      });
+      await fetchFridges();
+      const updatedSelectedShoppingListItems = selectedFridge.shoppingList.shoppingListItems.filter((shoppingListItem) => 
+      {
+
+          return id !== shoppingListItem.id 
+      })
+
+      console.log(updatedSelectedShoppingListItems);
+      setSelectedFridge({...selectedFridge, shoppingListItems:updatedSelectedShoppingListItems})
+  }
+
+
+  useEffect(() => {
+      fetchFridges()
+  }, []);
+
+
+
   
   return (
     <> 
@@ -115,7 +274,7 @@ function App() {
             <li><Link to = '/ShoppingList' className="link">Shopping List</Link></li>
             <li><Link to = '/FavouriteList' className="link">Favourites</Link></li>
             <li><Link to='/FoodItem' className="link">Food List</Link></li>
-            {/* <li><Link to = '/fridgeList' className="link">Fridges</Link></li> */}
+            <li><Link to = '/fridgeList' className="link">Fridges</Link></li>
           </div>
         ) : (
           <div className="navbar-nav ml-auto">
@@ -142,16 +301,45 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
 
         <Route path="/addfridge" element={<AddFridge />} />
-        <Route path="/currentfridge" element={<CurrentFridge />}/>
-        <Route path="/ShoppingList" element={<ShoppingList />}/>
+        <Route path="/currentfridge" element={<CurrentFridge 
+            fridge = {selectedFridge}
+            postFridgeItem = {postFridgeItem}
+            deleteFridgeItem = {deleteFridgeItem}
+            selectedFridgeItem = {selectedFridgeItem}
+            selectFridgeItem = {selectFridgeItem}
+        
+        />}/>
+        <Route path="/ShoppingList" element={<ShoppingList 
+         fridge = {selectedFridge} 
+         checked = {checked} 
+         setChecked = {setChecked}
+         Checkbox = {Checkbox}
+         deleteShoppingListItem = {deleteShoppingListItem} 
+        />}/>
         <Route path="/favouriteList" element={<FavouriteList />}/>
         {/* <Route path="/FoodItem" element={<FoodItem foodItems={foodItems} />} /> */}
-        <Route path="/fridgeList" element={<FridgeList/>} />
+        <Route path="/fridgeList" element={<FridgeList
+        fridges = {fridges} 
+        deleteFridge = {deleteFridge} 
+        setSelectedFridge = {setSelectedFridge}
+        selectedFridge = {selectedFridge}
+        />} />
           
         </Routes>
       </div>
 
     </BrowserRouter>
+
+
+    </>
+  
+     
+  );
+}
+
+export default App;
+      
+    
 
  
      {/* <UserContext.Provider value={{loggedInUser, users,setLoggedInUser}} >
@@ -177,10 +365,4 @@ function App() {
       {/* <usecontext>  */}
   
     
-    </>
-  
-     
-  );
-}
-
-export default App;
+    
