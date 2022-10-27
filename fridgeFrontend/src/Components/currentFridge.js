@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import FridgeItemDetails from "./FridgeItemDetails";
 import FridgeItemsList from "./FridgeItemsList";
 import AddFridgeItemForm from "./AddFridgeItemForm";
+import './CurrentFridge.css'
 
 const CurrentFridge =({fridge, postFridgeItem,
     deleteFridgeItem, setSelectedFridge, selectedFridge, selectFridgeItem, selectedFridgeItem }) => {
@@ -43,10 +44,12 @@ const CurrentFridge =({fridge, postFridgeItem,
 
     <>
 
-    <h2>Fridge</h2>
+    <h2 className= "list-heading"><span>Fridge</span></h2>
 
-     <button className ="View Item" onClick= {handleViewAddForm}>Add Item</button>
-
+    <div className="add-item-button">
+        <button id ="add-item" onClick= {handleViewAddForm}>Add Item</button>
+    </div>
+    
      {isAddSelected?
        <AddFridgeItemForm
        />

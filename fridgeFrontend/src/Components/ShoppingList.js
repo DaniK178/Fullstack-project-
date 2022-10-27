@@ -7,7 +7,7 @@ const ShoppingList =({fridge, checked, setChecked, Checkbox, deleteShoppingListI
     return(
 
     <>
-    <h2>Shopping List</h2>
+    <h2 className= "list-heading" ><span>Shopping List </span></h2>
     <ul> 
         <ShoppingListProperties
         fridge = {fridge}

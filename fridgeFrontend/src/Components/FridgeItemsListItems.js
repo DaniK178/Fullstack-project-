@@ -16,18 +16,21 @@ const FridgeItemsListItems =({fridgeItem, deleteFridgeItem}) => {
 
     return(
     <>
+    <div className="list-item">
+        
+        <p>{fridgeItem.foodItem.name} </p>
+
+        <li> Quantity: {fridgeItem.quantity} </li>
+        <li> ExpiryDate: {fridgeItem.expiryDate}</li>
+        
+
+        <button className ="list-item-button" onClick= {handleViewFridgeItem}>View Item Details</button>
+
+        <button className ="list-item-button" onClick= {handleDeleteFridgeItem}>Delete Fridge Item</button>
+        <br></br>
+    </div>
+
     <hr></hr>
-    <p>Fridge Item ID: {fridgeItem.id}, </p>
-    <p>{fridgeItem.foodItem.id}, {fridgeItem.foodItem.name}, {fridgeItem.foodItem.foodGroup}</p>
-
-    <li> Quantity: {fridgeItem.quantity} </li>
-    <li> ExpiryDate: {fridgeItem.expiryDate}</li>
-    
-
-    <button className ="View Item" onClick= {handleViewFridgeItem}>View Item</button>
-
-    <button className ="delete-fridgeItem-button" onClick= {handleDeleteFridgeItem}>Delete Fridge Item</button>
-    <br></br>
 
     {isSelected?
        <FridgeItemDetails
@@ -36,6 +39,7 @@ const FridgeItemsListItems =({fridgeItem, deleteFridgeItem}) => {
        :<div></div>
     
             }
+            
     </>
     
     );

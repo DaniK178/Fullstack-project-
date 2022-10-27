@@ -5,7 +5,9 @@ const FridgeItemDetails =({fridgeItem}) => {
     return(
 
     <>
-    <p>{ fridgeItem.foodItem.name}</p>
+    <p>{ fridgeItem.foodItem.name}
+    </p>
+    <p>{fridgeItem.foodItem.foodGroup}</p>
 
     <button>Change quantity</button>
     <button> Change expiry Date </button>

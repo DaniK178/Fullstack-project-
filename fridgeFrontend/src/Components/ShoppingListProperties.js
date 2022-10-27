@@ -22,8 +22,7 @@ const ShoppingListProperties =({fridge, checked, setChecked, Checkbox, deleteSho
     return(
 
     <>
-    <h3>{shoppingListName}</h3>
-    <li>{fridgeId}</li>
+    <h3 className= "current-fridge-heading">{shoppingListName}</h3>
     
     <ul>
     {shoppingListItems}

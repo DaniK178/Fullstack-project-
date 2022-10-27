@@ -1,4 +1,5 @@
 import FridgeItemsListItems from "./FridgeItemsListItems";
+import './CurrentFridge.css'
 
 const FridgeItemsList =({fridge, deleteFridgeItem, selectFridgeItem }) => {
 
@@ -15,8 +16,10 @@ const FridgeItemsList =({fridge, deleteFridgeItem, selectFridgeItem }) => {
 
     return(
     <>
-    <h3> {fridge.name}</h3>
+    <h3 className= "current-fridge-heading"> {fridge.name}</h3>
+    <div className="items-card">
     {fridgeListItems}
+    </div>
     </>
     
     )

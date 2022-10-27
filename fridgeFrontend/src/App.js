@@ -298,6 +298,7 @@ let requestOptions;
             <li><Link to = '/FavouriteList' className="link">Favourites</Link></li>
             <li><Link to='/FoodItem' className="link">Food List</Link></li>
             <li><Link to = '/fridgeList' className="link">Fridges</Link></li>
+            
           </div>
         ) : (
           <div className="navbar-nav ml-auto">
