@@ -9,8 +9,10 @@ import AddFridge from "../addFridge";
 import FridgeList from "../fridgeList";
 import FoodItem from "../FoodItem";
 
-
-const NavBar = ({ handleAddItemClick ,isShownAddItem, foodItems }) => {
+const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
+  postFridgeItem, deleteFridgeItem,
+  setSelectedFridge, selectedFridge,selectedFridgeItem,
+  selectFridgeItem, checked, setChecked, Checkbox, deleteShoppingListItem }) => {
     const handleClick = () => {
       handleAddItemClick();
     };
@@ -73,13 +75,41 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, foodItems }) => {
 
         <Routes>
         <Route path="/addfridge" element={<AddFridge />} />
-        <Route path="/currentfridge" element={<CurrentFridge />}/>
-        <Route path="/ShoppingList" element={<ShoppingList />}/>
+
+        <Route path="/currentfridge" element={<CurrentFridge fridge = {selectedFridge}
+            postFridgeItem = {postFridgeItem}
+            deleteFridgeItem = {deleteFridgeItem}
+            selectedFridgeItem = {selectedFridgeItem}
+            selectFridgeItem = {selectFridgeItem}
+
+
+     />}/>
+        <Route path="/ShoppingList" element={<ShoppingList 
+          fridge = {selectedFridge} 
+          checked = {checked} 
+          setChecked = {setChecked}
+          Checkbox = {Checkbox}
+          deleteShoppingListItem = {deleteShoppingListItem} 
+          />}
+          
+          />
+
+        <Route path="/favouriteList" element={<FavouriteList />}/>
+
         <Route path="/favouriteList" element={<FavouriteList />}/>
         <Route path="/foodItem" element={<FoodItem foodItems={foodItems} />} />
         <Route path="/fridgeList" element={<FridgeList/>} />
-        </Routes>
-    
+        
+
+        <Route path="/fridgeList" element={<FridgeList fridges = {fridges} 
+            deleteFridge = {deleteFridge} 
+            setSelectedFridge = {setSelectedFridge}
+            selectedFridge = {selectedFridge}
+        />} />
+
+    </Routes>
+
+    </BrowserRouter>
 
     
         </>

@@ -1,16 +1,25 @@
+import FridgeItemsListItems from "./FridgeItemsListItems";
 
+const FridgeItemsList =({fridge, deleteFridgeItem, selectFridgeItem }) => {
 
-const FridgeItemsList =(fridgeItem) => {
+    const fridgeListItems = fridge.fridgeItems.map((fridgeItem)=>{
+    
+            return <FridgeItemsListItems
+                    fridgeItem={fridgeItem} 
+                    deleteFridgeItem = {deleteFridgeItem}
+                    selectFridgeItem ={selectFridgeItem}
+                    key = {fridgeItem.id}
+               />
+        })
+        
 
     return(
-
-
     <>
-    <p>Favourite List</p>
+    <h3> {fridge.name}</h3>
+    {fridgeListItems}
     </>
     
     )
 
 };
-
 export default  FridgeItemsList;

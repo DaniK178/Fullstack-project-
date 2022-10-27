@@ -59,35 +59,68 @@ public class Dataloader implements ApplicationRunner {
         foodItemRepository.save(foodItem8);
         foodItemRepository.save(foodItem9);
 
-        Fridge fridge1 = new Fridge("fridge1");
-        Fridge fridge2 = new Fridge("fridge2");
-        Fridge fridge3 = new Fridge("fridge3");
+        Fridge fridge1 = new Fridge("The Brown Household");
+        Fridge fridge2 = new Fridge("The Mini fridge");
+        Fridge fridge3 = new Fridge("Purple Fridge");
+        Fridge fridge4 = new Fridge("Green Family Fridge");
+        Fridge fridge5 = new Fridge("Main Fridge");
 
         fridgeRepository.save(fridge1);
         fridgeRepository.save(fridge2);
         fridgeRepository.save(fridge3);
+        fridgeRepository.save(fridge4);
+        fridgeRepository.save(fridge5);
 
-        ShoppingList shoppingList1 = new ShoppingList("shoppingList1",fridge1);
-        ShoppingList shoppingList2 = new ShoppingList("shoppingList2",fridge2);
-        ShoppingList shoppingList3 = new ShoppingList("shoppingList3",fridge3);
+        ShoppingList shoppingList1 = new ShoppingList("The Brown Household shopping List",fridge1);
+        ShoppingList shoppingList2 = new ShoppingList("The Mini fridge shopping List",fridge2);
+        ShoppingList shoppingList3 = new ShoppingList("Purple Fridge Items to Buy",fridge3);
+        ShoppingList shoppingList4 = new ShoppingList("Green Family Fridge Shopping",fridge4);
+        ShoppingList shoppingList5 = new ShoppingList("Main Fridge Shopping List",fridge5);
 
         shoppingListRepository.save(shoppingList1);
         shoppingListRepository.save(shoppingList2);
         shoppingListRepository.save(shoppingList3);
+        shoppingListRepository.save(shoppingList4);
+        shoppingListRepository.save(shoppingList5);
+
 
 
         ShoppingListItem shoppingListItem1 = new ShoppingListItem(shoppingList1, foodItem1, 5, "sainsbury");
-        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem2, 7, "tesco");
+        ShoppingListItem shoppingListItem2 = new ShoppingListItem(shoppingList1, foodItem2, 7, "sainsbury");
+        ShoppingListItem shoppingListItem3 = new ShoppingListItem(shoppingList1, foodItem3, 7, "tesco");
+        ShoppingListItem shoppingListItem4 = new ShoppingListItem(shoppingList1, foodItem4, 7, "tesco");
+        ShoppingListItem shoppingListItem5 = new ShoppingListItem(shoppingList1, foodItem5, 7, "tesco");
+        ShoppingListItem shoppingListItem6 = new ShoppingListItem(shoppingList2, foodItem8, 7, "tesco");
+        ShoppingListItem shoppingListItem7 = new ShoppingListItem(shoppingList2, foodItem2, 7, "Market");
+        ShoppingListItem shoppingListItem8 = new ShoppingListItem(shoppingList2, foodItem3, 7, "tesco");
+        ShoppingListItem shoppingListItem9 = new ShoppingListItem(shoppingList2, foodItem5, 7, "sainsbury");
+        ShoppingListItem shoppingListItem10 = new ShoppingListItem(shoppingList3, foodItem2, 7, "Market");
+        ShoppingListItem shoppingListItem11 = new ShoppingListItem(shoppingList3, foodItem7, 7, "tesco");
+        ShoppingListItem shoppingListItem12 = new ShoppingListItem(shoppingList3, foodItem4, 7, "tesco");
         shoppingListItemRepository.save(shoppingListItem1);
         shoppingListItemRepository.save(shoppingListItem2);
+        shoppingListItemRepository.save(shoppingListItem3);
+        shoppingListItemRepository.save(shoppingListItem4);
+        shoppingListItemRepository.save(shoppingListItem5);
+        shoppingListItemRepository.save(shoppingListItem6);
+        shoppingListItemRepository.save(shoppingListItem7);
+        shoppingListItemRepository.save(shoppingListItem8);
+        shoppingListItemRepository.save(shoppingListItem9);
+        shoppingListItemRepository.save(shoppingListItem10);
+        shoppingListItemRepository.save(shoppingListItem11);
+        shoppingListItemRepository.save(shoppingListItem12);
 
         fridge1.setShoppingList(shoppingList1);
         fridge2.setShoppingList(shoppingList2);
         fridge3.setShoppingList(shoppingList3);
+        fridge4.setShoppingList(shoppingList4);
+        fridge5.setShoppingList(shoppingList5);
 
         fridgeRepository.save(fridge1);
         fridgeRepository.save(fridge2);
         fridgeRepository.save(fridge3);
+        fridgeRepository.save(fridge4);
+        fridgeRepository.save(fridge5);
 
 
         FridgeItem fridgeItem1 = new FridgeItem(fridge1, foodItem1, 310022, 5.23f, true);

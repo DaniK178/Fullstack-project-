@@ -1,11 +1,22 @@
+import ShoppingListProperties from "./ShoppingListProperties";
 
 
-const ShoppingList =() => {
+const ShoppingList =({fridge, checked, setChecked, Checkbox, deleteShoppingListItem }) => {
+    
 
     return(
 
     <>
-    <p>Shopping</p>
+    <h2>Shopping List</h2>
+    <ul> 
+        <ShoppingListProperties
+        fridge = {fridge}
+        checked = {checked}
+        setChecked = {setChecked}
+        checkbox = {Checkbox}
+        deleteShoppingListItem = {deleteShoppingListItem} 
+        />
+    </ul>
     </>
     
     )
