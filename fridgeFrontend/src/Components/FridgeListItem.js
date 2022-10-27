@@ -1,4 +1,7 @@
 
+import './FridgeStyles.css'
+
+
 const FridgeListItem =({fridge, handleFridgeNavigation, setSelectedFridge}) => {
 
     const handleClick = () => {
@@ -9,8 +12,15 @@ const FridgeListItem =({fridge, handleFridgeNavigation, setSelectedFridge}) => {
     return(
 
     <>
-    <li>{fridge.name}</li>
-    <button onClick={handleClick}>Go to this fridge!</button>
+    <div className="fridge-list-container">
+    
+    <ul>
+
+   
+        <li>{fridge.name}</li>
+        <button onClick={handleClick}>Go to this fridge!</button>
+    </ul> 
+    </div>
     </>
     
     )

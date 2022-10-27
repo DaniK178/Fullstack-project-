@@ -1,0 +1,57 @@
+.fridge-top-container h1 {
+    margin-bottom: 2rem;
+    font-weight: bolder;
+    background-color: #F5F5F5;
+    padding-bottom: 20px;
+    margin: 2rem 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 1px 1px gray;
+    font-size: 3rem;
+    color: #1C1919;
+    padding-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+}
+.fridge-top-container hr {
+    margin: auto 60px;
+    border-style: dashed;
+    border-color: grey;
+    border-width: 0 0 4px 0;
+    margin-bottom: 30px;
+}
+.fridge-middle-container {
+    padding-left: 60px;
+    font-size: 18px;
+    font-weight: bold;
+}
+/* list items /////////////////*/
+.fridge-list-container ul {
+    text-decoration: none;
+    background-color: darkgray;
+    display: flex;
+    flex-direction: row;
+    top: 23%;
+    width: 20%;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.fridge-list-container {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+/* list items buttons */
+.fridge-list-container button {
+ width: 195px;
+}
+.fridge-list-container button:hover {
+    background-color: #ddd;
+}
+.fridge-list-container button.active {
+    background-color: #666;
+    color: white;
+}

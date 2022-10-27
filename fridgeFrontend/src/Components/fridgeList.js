@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useState } from "react";
 import FridgeListItem from "./FridgeListItem";
+import './FridgeStyles.css'
 
 
 const FridgeList =({fridges , setSelectedFridge, selectedFridge}) => {
@@ -28,16 +29,24 @@ const FridgeList =({fridges , setSelectedFridge, selectedFridge}) => {
     return(
 
         <>
+
+        <div className="fridge-top-container">
+                {/* <hr className="top-hr"/> */}
          <p>Fridge List</p>
 
-         <section> 
-        <h2>Please select the Fridge</h2>
-        <ul>
-        {fridgeOptions} 
-        </ul>
+         <hr />
+            </div>
+            <div className="fridge-middle-container">
 
-        
-       </section>
+
+         <section> 
+        <h2>Please select the Fridge</h2> 
+        </section>
+       
+        </div>
+            <ul>
+            {fridgeOptions} 
+            </ul>
 
         
         </>
