@@ -47,9 +47,9 @@ const CurrentFridge =({fridge, postFridgeItem,
     <h2 className= "list-heading"><span>Fridge</span></h2>
 
     <div className="add-item-button">
-        <button id ="add-item" onClick= {handleViewAddForm}>Add Item</button>
+        <button className="add-item" onClick= {handleViewAddForm}>Add Item</button>
     </div>
-    
+
      {isAddSelected?
        <AddFridgeItemForm
        />

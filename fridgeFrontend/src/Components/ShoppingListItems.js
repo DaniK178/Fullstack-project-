@@ -1,3 +1,4 @@
+import './CurrentFridge.css'
 
 
 const ShoppingListItems =({shoppingListItem, checked, setChecked,Checkbox, deleteShoppingListItem}) => {
@@ -13,35 +14,26 @@ const ShoppingListItems =({shoppingListItem, checked, setChecked,Checkbox, delet
     return(
 
     <>
-    <li> {shoppingListItem.foodItem.name},{shoppingListItem.quantity}, {shoppingListItem.shop} </li>
+    <p className="fridgeItemName"> {shoppingListItem.foodItem.name}</p>
+    <p>Quantity: {shoppingListItem.quantity}</p>
+    <p>Shop: {shoppingListItem.shop} </p>
 
-    <button className ="delete-shoppingListItem-button" onClick= {handleDeleteShoppingListItem}>Delete Shopping List Item</button>
+    <button className ="list-item-button" onClick= {handleDeleteShoppingListItem}>Delete Shopping List Item</button>
     <br></br>
-
-
-    <div>
-      {/* <Checkbox
-        label="My Value"
-        value={checked}
-        onChange={handleChange}
-      />
-      */}
-
-      <p>Is "My Value" checked? {checked.toString()}</p> 
-    </div>
     
     
-    {/* <div>
-        <label>
+     <div >
+        <label className="checkbox-component">
       <input type="checkbox" 
        checked = {checked}
        onChange={handleChange}
-      />
-     My value 
+      /><span class="checkmark"></span>
+
+      
       </label>
 
-      <p>Is "My Value" checked? {checked.toString()}</p>
-    </div> */}
+      <hr></hr>
+    </div>
     </>
     
     )

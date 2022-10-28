@@ -72,7 +72,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
     </ul>
     </div>
    </nav>
-   <BrowserRouter>
+   {/* <BrowserRouter>
 
         <Routes>
         <Route path="/addfridge" element={<AddFridge />} />
@@ -98,7 +98,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
         <Route path="/favouriteList" element={<FavouriteList />}/>
 
         <Route path="/favouriteList" element={<FavouriteList />}/>
-        {/* <Route path="/foodItem" element={<FoodItem foodItems={foodItems} />} /> */}
+        <Route path="/foodItem" element={<FoodItem foodItems={foodItems} />} />
         <Route path="/fridgeList" element={<FridgeList/>} />
         
 
@@ -110,7 +110,7 @@ const NavBar = ({ handleAddItemClick ,isShownAddItem, fridges, deleteFridge,
 
     </Routes>
 
-    </BrowserRouter>
+    </BrowserRouter> */}
 
     
         </>

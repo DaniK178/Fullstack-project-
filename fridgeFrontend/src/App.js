@@ -23,6 +23,7 @@ import FoodItem from "./Components/FoodItem";
 import FridgeList from "./Components/fridgeList";
 import Footer from './Components/Footer';
 
+
 function App() {
 
 
