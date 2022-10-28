@@ -1,3 +1,6 @@
+import './CurrentFridge.css'
+
+
 import ShoppingListProperties from "./ShoppingListProperties";
 
 
@@ -7,7 +10,12 @@ const ShoppingList =({fridge, checked, setChecked, Checkbox, deleteShoppingListI
     return(
 
     <>
-    <h2>Shopping List</h2>
+    <h2 className= "list-heading" ><span>Shopping List </span></h2>
+
+    <div className="add-item-button">
+        <button className="add-item" >Add Item</button>
+    </div>
+
     <ul> 
         <ShoppingListProperties
         fridge = {fridge}

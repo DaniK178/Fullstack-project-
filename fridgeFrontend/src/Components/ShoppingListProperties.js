@@ -1,3 +1,6 @@
+import './CurrentFridge.css'
+
+
 import ShoppingListItems from "./ShoppingListItems";
 
 const ShoppingListProperties =({fridge, checked, setChecked, Checkbox, deleteShoppingListItem }) => {
@@ -22,11 +25,11 @@ const ShoppingListProperties =({fridge, checked, setChecked, Checkbox, deleteSho
     return(
 
     <>
-    <h3>{shoppingListName}</h3>
-    <li>{fridgeId}</li>
+    <h3 className= "current-fridge-heading">{shoppingListName}</h3>
     
-    <ul>
+    <ul><div className="items-card">
     {shoppingListItems}
+    </div>
     </ul>
 
     </>

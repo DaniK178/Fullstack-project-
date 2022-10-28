@@ -51,7 +51,8 @@ const FoodItem = ({ handleAddItemClick, isShownAddItem, foodItems, deleteFoodIte
             <br />
             <br />
 
-            <div className="foodItem-title-container">
+            {/* <div className="foodItem-title-container"> */}
+                <div className= "list-heading" > 
                 <h1>Food List</h1>
             </div>
 
@@ -99,7 +100,9 @@ const FoodItem = ({ handleAddItemClick, isShownAddItem, foodItems, deleteFoodIte
 
 
             <ul>
+            <div className="items-card">
                 {foodItemsListComponent}
+                </div>
             </ul>
         </>
 

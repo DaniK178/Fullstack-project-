@@ -1,18 +1,29 @@
-
+import './CurrentFridge.css'
 
 const FridgeItemDetails =({fridgeItem}) => {
 
     return(
 
     <>
-    <p>{ fridgeItem.foodItem.name}</p>
+    <div className="list-component">
+        <div id = "fridge-item-details"> 
+            
+            <p>Food Group: {fridgeItem.foodItem.foodGroup}</p>
 
-    <button>Change quantity</button>
-    <button> Change expiry Date </button>
+            <div className='updateFridgeItemButtons'>
+            <button className="details-button">Change quantity</button>
+            <button  className="details-button"> Change expiry Date </button>
+            </div>
+            <br></br>
 
 
-    <button>Add to Shopping List!</button>
-    <button>Add to Favourites List!</button>
+            <p>Add to one of your lists!</p>
+            <div className='addFridgeItemtoListsButtons'>
+            <button  className="details-button">Add to Shopping List!</button>
+            <button  className="details-button">Add to Favourites List!</button>
+            </div>
+         </div>
+    </div> 
     </>
     
     )

@@ -62,12 +62,14 @@ nav ul li ul li a:hover {
   }
 nav ul li ul li a { 
   transition: all 0.5s ease; 
+  
 }
 
   /* get rid of underline in link */
 .link{
   color: white;
   text-decoration: none;
+  padding: 2%;
 }
 
  /* font import needed*/
