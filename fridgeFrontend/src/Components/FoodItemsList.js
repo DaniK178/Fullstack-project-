@@ -8,11 +8,12 @@ const FoodItemsList = ({foodItem, handleDeleteFoodItem}) => {
         <>
             <div className="foodItemList-list">
 
-                <p><b>Food Item: </b>{foodItem.name}</p>
+                <p className= "fridgeItemName"><b>Food Item: </b>{foodItem.name}</p>
                 <p><b>Food Category: </b>{foodItem.foodGroup}</p>
-                <button onClick={handleDeleteFoodItem}>
+                <button className ="list-item-button" onClick={handleDeleteFoodItem}>
                 delete
                 </button>
+                <hr></hr>
 
             </div>
         </>
